@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Intersector;
 
 public class PongGame extends ApplicationAdapter {
 	private final static int WIDTH = 1600, HEIGHT = 960;
@@ -14,15 +15,17 @@ public class PongGame extends ApplicationAdapter {
 	private Texture paddleTwo;
 	private Ball ball;
 	private PlayerPaddle playerPaddle;
+	private PlayerPaddle opponentPaddle;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		backgroundImage = new Texture("testbackground.jpg");
-		paddleTwo = new Texture("paddleTwo.jpg");
+		//paddleTwo = new Texture("paddleTwo.jpg");
 
 		ball = new Ball(this);
-		playerPaddle = new PlayerPaddle(this);
+		playerPaddle = new PlayerPaddle(this, true, false);
+		opponentPaddle = new PlayerPaddle(this, false, true);
 
 
 		//private Sound hitPaddle; //Use 'Sound' if < 10 seconds
@@ -36,11 +39,18 @@ public class PongGame extends ApplicationAdapter {
 		batch.begin();
 
 		batch.draw(backgroundImage, 0, 0); //Places the background in (x,y)
-		batch.draw(paddleTwo, 1550, 460);
 		batch.end();
+
+		//If the ball hits the paddle, it will bounce back.
+		if(Intersector.overlaps(playerPaddle.getRectangle(), ball.getRectangle())
+				&& playerPaddle.getRectangle().x == ball.getRectangle().x) //Checks for intersection.
+		{
+			ball.switchVelocity();
+		}
 
 		ball.render();
 		playerPaddle.render();
+		opponentPaddle.render();
 
 
 	}
@@ -49,9 +59,9 @@ public class PongGame extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		backgroundImage.dispose();
-		paddleTwo.dispose();
 		ball.dispose();
 		playerPaddle.dispose();
+		opponentPaddle.dispose();
 	}
 
 	//Getters and Setters

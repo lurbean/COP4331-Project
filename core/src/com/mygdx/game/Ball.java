@@ -23,14 +23,10 @@ public class Ball extends ApplicationAdapter {
         batch = new SpriteBatch();
         this.game = game;
         pingPong = new Texture("pongBall.jpg");
-        pongBall = new Rectangle();
 
+        //Rectangle (float x, float y, float width, float height)
+        pongBall = new Rectangle(game.getWidth()/2, game.getHeight()/2, WIDTH, HEIGHT);
 
-        //Starts the ball in the middle of the screen.
-        pongBall.x = game.getWidth()/2;
-        pongBall.y = game.getHeight()/2;
-        pongBall.width = 25;
-        pongBall.height = 25;
     }
 
     @Override
@@ -41,7 +37,7 @@ public class Ball extends ApplicationAdapter {
         batch.end();
 
         //THING TO DO: Make the ball move a random direction every time the game starts
-        //ans every time the ball is reset.
+        //and every time the ball is reset.
         pongBall.x += xv;
         pongBall.y += yv;
 
@@ -50,9 +46,15 @@ public class Ball extends ApplicationAdapter {
         {
             yv = -yv; //Invert y when it does.
         }
-        if(pongBall.x < 0 || pongBall.x > game.getWidth() - WIDTH)
+
+        if(pongBall.x < 0)
         {
             xv = -xv;
+        }
+        //Every time the ball hits the sides, reset its position.
+        if(pongBall.x > game.getWidth() - WIDTH)
+        {
+            reset();
         }
     }
 
@@ -62,4 +64,20 @@ public class Ball extends ApplicationAdapter {
         pingPong.dispose();
     }
 
+    public void reset()
+    {
+        pongBall.x = game.getWidth()/2;
+        pongBall.y = game.getHeight()/2;
+    }
+
+    public void switchVelocity()
+    {
+        xv = -xv;
+        yv = -yv;
+    }
+
+    public Rectangle getRectangle()
+    {
+        return pongBall;
+    }
 }
