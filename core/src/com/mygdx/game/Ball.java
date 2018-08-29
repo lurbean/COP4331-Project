@@ -5,12 +5,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-//So far, made a simple code where the ball just bounces around the screen.
-
 public class Ball extends ApplicationAdapter {
 
     private final static int WIDTH = 25, HEIGHT = 25; //Dimensions of the Ball.
-    private int xv = 5, yv = 5; //The ball's velocity.
+    private int xv = 5, yv = 5; //The ball's default velocity.
 
     private SpriteBatch batch;
     private PongGame game;
@@ -76,6 +74,7 @@ public class Ball extends ApplicationAdapter {
         yv = -yv;
     }
 
+    //Getters/Setters
     public Rectangle getRectangle()
     {
         return pongBall;

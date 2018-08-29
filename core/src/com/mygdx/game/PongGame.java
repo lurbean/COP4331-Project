@@ -11,27 +11,25 @@ public class PongGame extends ApplicationAdapter {
 	private final static int WIDTH = 1600, HEIGHT = 960;
 	private SpriteBatch batch;
 	private Texture backgroundImage;
-	//private Texture paddleOne;
-	private Texture paddleTwo;
 	private Ball ball;
-	private PlayerPaddle playerPaddle;
-	private PlayerPaddle opponentPaddle;
+	private Player player;
+	private Paddle opponentPaddle;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		backgroundImage = new Texture("testbackground.jpg");
-		//paddleTwo = new Texture("paddleTwo.jpg");
 
 		ball = new Ball(this);
-		playerPaddle = new PlayerPaddle(this, true, false);
-		opponentPaddle = new PlayerPaddle(this, false, true);
+		player = new Player(this);
+		opponentPaddle = new Paddle(this, false, true);
 
-
+		//To add later:
 		//private Sound hitPaddle; //Use 'Sound' if < 10 seconds
 		//private Music backgroundMusic;
 	}
 
+	//Render updates the game's frame with a frequency that depends on your hardware
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
@@ -42,14 +40,16 @@ public class PongGame extends ApplicationAdapter {
 		batch.end();
 
 		//If the ball hits the paddle, it will bounce back.
-		if(Intersector.overlaps(playerPaddle.getRectangle(), ball.getRectangle())
-				&& playerPaddle.getRectangle().x == ball.getRectangle().x) //Checks for intersection.
+		if((Intersector.overlaps(player.getPaddle().getRectangle(), ball.getRectangle())
+				&& player.getPaddle().getRectangle().x == ball.getRectangle().x)
+		||Intersector.overlaps(opponentPaddle.getRectangle(), ball.getRectangle())
+				&& opponentPaddle.getRectangle().x == ball.getRectangle().x)
 		{
 			ball.switchVelocity();
 		}
 
 		ball.render();
-		playerPaddle.render();
+		player.render();
 		opponentPaddle.render();
 
 
@@ -60,7 +60,7 @@ public class PongGame extends ApplicationAdapter {
 		batch.dispose();
 		backgroundImage.dispose();
 		ball.dispose();
-		playerPaddle.dispose();
+		player.dispose();
 		opponentPaddle.dispose();
 	}
 
