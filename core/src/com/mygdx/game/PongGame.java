@@ -21,7 +21,7 @@ public class PongGame extends ApplicationAdapter {
 		backgroundImage = new Texture("testbackground.jpg");
 
 		ball = new Ball(this);
-		player = new Player(this);
+		player = new Player(this, ball);
 		opponentPaddle = new Paddle(this, false, true);
 
 		//To add later:
@@ -38,15 +38,6 @@ public class PongGame extends ApplicationAdapter {
 
 		batch.draw(backgroundImage, 0, 0); //Places the background in (x,y)
 		batch.end();
-
-		//If the ball hits the paddle, it will bounce back.
-		if((Intersector.overlaps(player.getPaddle().getRectangle(), ball.getRectangle())
-				&& player.getPaddle().getRectangle().x == ball.getRectangle().x)
-		||Intersector.overlaps(opponentPaddle.getRectangle(), ball.getRectangle())
-				&& opponentPaddle.getRectangle().x == ball.getRectangle().x)
-		{
-			ball.switchVelocity();
-		}
 
 		ball.render();
 		player.render();

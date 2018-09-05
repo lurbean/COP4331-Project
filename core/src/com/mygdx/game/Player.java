@@ -7,16 +7,21 @@ public class Player {
 
     private Paddle paddle;
     private PongGame game;
+    private Ball ball;
+    private Character character;
 
-    public Player(PongGame game)
+
+    public Player(PongGame game, Ball ball)
     {
-        this.game = game;
         this.paddle = new Paddle(game, true, false);
+        this.character = new Character(game, ball, paddle,50, 5);
+
     }
 
     public void render()
     {
-        paddle.render();
+        character.render();
+
         keyboard();
     }
 
@@ -42,5 +47,6 @@ public class Player {
     {
         return paddle;
     }
+
 }
 

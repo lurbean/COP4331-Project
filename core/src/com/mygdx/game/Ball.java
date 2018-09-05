@@ -74,6 +74,20 @@ public class Ball extends ApplicationAdapter {
         yv = -yv;
     }
 
+    public void setVelocity(int x, int y)
+    {
+        if(xv < 0)
+            xv = -x;
+        else
+            xv = x;
+
+        if(yv < 0)
+            yv = -x;
+        else
+            yv = x;
+
+    }
+
     //Getters/Setters
     public Rectangle getRectangle()
     {

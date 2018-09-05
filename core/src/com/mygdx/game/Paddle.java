@@ -33,6 +33,7 @@ public class Paddle extends ApplicationAdapter {
 
     }
 
+    @Override
     public void render()
     {
         batch.begin();
