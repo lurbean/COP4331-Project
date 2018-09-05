@@ -2,7 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.math.Intersector;
 
-public abstract class Character {
+public class Character {
 
     private int xv, yv;
     private int hitPoints;
