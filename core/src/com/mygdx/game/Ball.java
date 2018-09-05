@@ -68,10 +68,10 @@ public class Ball extends ApplicationAdapter {
         pongBall.y = game.getHeight()/2;
     }
 
-    public void switchVelocity()
+    public void switchVelocity(int speed)
     {
-        xv = -xv;
-        yv = -yv;
+        xv = -speed;
+        yv = -speed;
     }
 
     public void setVelocity(int x, int y)
