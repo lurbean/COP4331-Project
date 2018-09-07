@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Intersector;
 
 public class PongGame extends ApplicationAdapter {
 	private final static int WIDTH = 800, HEIGHT = 460;
@@ -13,7 +12,7 @@ public class PongGame extends ApplicationAdapter {
 	private Texture backgroundImage;
 	private Ball ball;
 	private Player player;
-	private Paddle opponentPaddle;
+	private ComputerAI computerAI;
 	
 	@Override
 	public void create () {
@@ -21,8 +20,8 @@ public class PongGame extends ApplicationAdapter {
 		backgroundImage = new Texture("testbackground.jpg");
 
 		ball = new Ball(this);
-		player = new Player(this, ball);
-		opponentPaddle = new Paddle(this, false, true);
+		player = new Player(this, false, ball);
+		computerAI = new ComputerAI(this, true, ball);
 
 		//To add later:
 		//private Sound hitPaddle; //Use 'Sound' if < 10 seconds
@@ -41,7 +40,7 @@ public class PongGame extends ApplicationAdapter {
 
 		ball.render();
 		player.render();
-		opponentPaddle.render();
+		computerAI.render();
 
 
 	}
@@ -52,7 +51,7 @@ public class PongGame extends ApplicationAdapter {
 		backgroundImage.dispose();
 		ball.dispose();
 		player.dispose();
-		opponentPaddle.dispose();
+		computerAI.dispose();
 	}
 
 	//Getters and Setters

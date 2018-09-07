@@ -7,15 +7,14 @@ public class Controller {
 
     public Paddle paddle;
 
-    //Default Constructor
     Controller()
     {
 
     }
 
-    Controller(PongGame game)
+    Controller(PongGame game, boolean side)
     {
-        this.paddle = new Paddle(game, true, false);
+        this.paddle = new Paddle(game, side);
     }
 
     public void  keyboard()

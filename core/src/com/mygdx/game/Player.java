@@ -1,17 +1,15 @@
 package com.mygdx.game;
 
-//import com.badlogic.gdx.Gdx;
-//import com.badlogic.gdx.Input;
 
 public class Player extends Controller{
 
     private Character character;
 
 
-    public Player(PongGame game, Ball ball)
+    public Player(PongGame game, boolean side, Ball ball)
     {
-        super(game);
-        this.character = new Character(game, ball, paddle,50, 5, 7);
+        super(game, side);
+        this.character = new Character(game, ball, paddle,50, 5, 7, side);
 
     }
 
@@ -25,11 +23,6 @@ public class Player extends Controller{
     public void dispose()
     {
         paddle.dispose();
-    }
-
-    public Paddle getPaddle()
-    {
-        return paddle;
     }
 
 }
