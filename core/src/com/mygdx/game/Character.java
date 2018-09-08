@@ -21,6 +21,7 @@ public class Character {
         this.paddle = paddle;
         this.game = game;
         this.ball = ball;
+        this.side = side;
 
     }
 
@@ -30,13 +31,9 @@ public class Character {
         paddle.render();
 
         //If the ball hits the paddle, it will bounce back.
-
         if(Intersector.overlaps(paddle.getRectangle(), ball.getRectangle()))
         {
-            if(paddle.getRectangle().x == ball.getRectangle().x)
-            {
                 ball.switchVelocity(speed);
-            }
         }
 
     }

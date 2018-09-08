@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PongGame extends ApplicationAdapter {
-	private final static int WIDTH = 800, HEIGHT = 460;
+	private final static int WIDTH = 800, HEIGHT = 480;
 	private SpriteBatch batch;
 	private Texture backgroundImage;
 	private Ball ball;

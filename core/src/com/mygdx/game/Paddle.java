@@ -24,9 +24,9 @@ public class Paddle extends ApplicationAdapter {
 
         //Rectangle (float x, float y, float width, float height)
         if(side == true)
-            paddle = new Rectangle(WIDTH, game.getHeight()/2, WIDTH, HEIGHT);
+            paddle = new Rectangle(WIDTH, (game.getHeight()/2 - HEIGHT/2), WIDTH, HEIGHT);
         else
-            paddle = new Rectangle((game.getWidth() - 2*WIDTH), game.getHeight()/2, WIDTH, HEIGHT);
+            paddle = new Rectangle((game.getWidth() - 2*WIDTH), (game.getHeight()/2 - HEIGHT/2), WIDTH, HEIGHT);
 
 
     }

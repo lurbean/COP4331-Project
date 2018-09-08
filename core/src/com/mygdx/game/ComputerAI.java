@@ -11,7 +11,6 @@ public class ComputerAI extends Controller{
     {
         super(game, side);
 
-        this.paddle = new Paddle(game, side);
         this.character = new Character(game, ball, paddle,50, 5, 5, side);
         this.ball = ball;
 
