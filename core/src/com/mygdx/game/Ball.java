@@ -83,7 +83,7 @@ public class Ball extends ApplicationAdapter {
     public void switchVelocity(int speed)
     {
         xv = speed;
-        yv = speed;
+        yv = speed * (yv>0?1:-1);
         if (pongBall.x > game.getWidth()/2)
         {
            xv *= -1;
