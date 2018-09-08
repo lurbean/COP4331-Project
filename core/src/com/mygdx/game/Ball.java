@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import java.util.Random;
 
 public class Ball extends ApplicationAdapter {
 
@@ -15,6 +16,7 @@ public class Ball extends ApplicationAdapter {
     private Rectangle pongBall;
     private Texture pingPong;
 
+    private Random RNG = new Random();
 
     public Ball(PongGame game)
     {
@@ -34,8 +36,6 @@ public class Ball extends ApplicationAdapter {
         batch.draw(pingPong, pongBall.x, pongBall.y);
         batch.end();
 
-        //THING TO DO: Make the ball move a random direction every time the game starts
-        //and every time the ball is reset.
         pongBall.x += xv;
         pongBall.y += yv;
 
@@ -64,8 +64,20 @@ public class Ball extends ApplicationAdapter {
 
     public void reset()
     {
+        // Center the ball
         pongBall.x = game.getWidth()/2;
         pongBall.y = game.getHeight()/2;
+        // Randomize ball velocity
+        // X velocity range of 5-6, Y velocity range of 3-7 for test purposes
+        this.xv = (RNG.nextInt(2) + 5);
+        this.yv = (RNG.nextInt(5) + 3);
+        switch (RNG.nextInt(4))
+        {
+            case 0: break;
+            case 1: this.xv *= -1; break;
+            case 2: this.yv *= -1; break;
+            case 3: this.xv *= -1; this.yv *= -1; break;
+        }
     }
 
     public void switchVelocity(int speed)
