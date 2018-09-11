@@ -30,4 +30,9 @@ public class Controller {
         }
     }
 
+    public void xbox()
+    {
+
+    }
+
 }
