@@ -1,6 +1,6 @@
 package com.mygdx.game;
 
-public class ComputerAI extends Controller{
+public class ComputerAI extends Control{
 
 
     private Ball ball;

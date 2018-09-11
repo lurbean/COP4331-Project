@@ -1,7 +1,7 @@
 package com.mygdx.game;
 
 
-public class Player extends Controller{
+public class Player extends Control{
 
     private Character character;
     private Ball ball;
@@ -17,6 +17,7 @@ public class Player extends Controller{
     {
         character.render();
         keyboard();
+        xbox();
     }
 
 

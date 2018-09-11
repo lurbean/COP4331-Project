@@ -2,17 +2,20 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.controllers.Controllers;
+import com.badlogic.gdx.controllers.Controller;
+import com.badlogic.gdx.controllers.*;
 
-public class Controller {
+public class Control {
 
     public Paddle paddle;
 
-    Controller()
+    Control()
     {
 
     }
 
-    Controller(PongGame game, boolean side)
+    Control(PongGame game, boolean side)
     {
         this.paddle = new Paddle(game, side);
     }
@@ -32,7 +35,19 @@ public class Controller {
 
     public void xbox()
     {
+        Controller pad = Controllers.getControllers().get(0);
+        if (pad != null)
+        {
+            if (pad.getAxis(XBox.AXIS_LEFT_Y) > 0.15)
+            {
+                paddle.movePaddleDown();
+            }
+            if (pad.getAxis(XBox.AXIS_LEFT_Y) < -0.15)
+            {
+                paddle.movePaddleUp();
+            }
 
+        }
     }
 
 }
