@@ -36,8 +36,7 @@ public class Ball extends ApplicationAdapter {
         batch.draw(pingPong, pongBall.x, pongBall.y);
         batch.end();
 
-        pongBall.x += xv;
-        pongBall.y += yv;
+        pongBall.setPosition(pongBall.x + xv, pongBall.y + yv);
 
         //If the ball hits the top and bottom of the screen, it'll bounce off.
         if(pongBall.y < 0|| pongBall.y > game.getHeight() - HEIGHT)
@@ -49,11 +48,13 @@ public class Ball extends ApplicationAdapter {
         {
             xv = -xv;
         }*/
+
+        /*
         //Every time the ball hits the sides, reset its position.
-        if(pongBall.x > game.getWidth() - WIDTH || pongBall.x < 0)
-        {
-            reset();
-        }
+        //if(pongBall.x > game.getWidth() - WIDTH || pongBall.x < 0)
+        //{
+            //reset();
+        }*/
     }
 
     @Override
@@ -65,8 +66,8 @@ public class Ball extends ApplicationAdapter {
     public void reset()
     {
         // Center the ball
-        pongBall.x = game.getWidth()/2;
-        pongBall.y = game.getHeight()/2;
+        pongBall.setPosition(game.getWidth()/2, game.getWidth()/2);
+
         // Randomize ball velocity
         // X velocity range of 5-6, Y velocity range of 3-7 for test purposes
         this.xv = (RNG.nextInt(2) + 5);
@@ -90,19 +91,6 @@ public class Ball extends ApplicationAdapter {
         }
     }
 
-    public void setVelocity(int x, int y)
-    {
-        if(xv < 0)
-            xv = -x;
-        else
-            xv = x;
-
-        if(yv < 0)
-            yv = -x;
-        else
-            yv = x;
-
-    }
 
     //Getters/Setters
     public Rectangle getRectangle()

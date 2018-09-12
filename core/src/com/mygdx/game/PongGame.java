@@ -13,6 +13,7 @@ public class PongGame extends ApplicationAdapter {
 	private Ball ball;
 	private Player player;
 	private ComputerAI computerAI;
+	boolean gameOver = false;
 	
 	@Override
 	public void create () {
@@ -33,14 +34,31 @@ public class PongGame extends ApplicationAdapter {
 	public void render () {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
 
+		batch.begin();
 		batch.draw(backgroundImage, 0, 0); //Places the background in (x,y)
 		batch.end();
 
-		ball.render();
-		player.render();
-		computerAI.render();
+		if(gameOver != true)
+		{
+			ball.render();
+			player.render();
+			computerAI.render();
+
+			//Left Player
+			if (ball.getRectangle().x < 0) {
+				computerAI.getCharacter().gotHit(player.getCharacter().getDamage());
+				System.out.println("Computer HP: " + computerAI.getCharacter().getHitPoints());
+				ball.reset();
+			}
+
+			//Right Player
+			if (ball.getRectangle().x > WIDTH - ball.getRectangle().width) {
+				player.getCharacter().gotHit(computerAI.getCharacter().getDamage());
+				System.out.println("Player HP: " + player.getCharacter().getHitPoints());
+				ball.reset();
+			}
+		}
 
 
 	}
@@ -52,6 +70,11 @@ public class PongGame extends ApplicationAdapter {
 		ball.dispose();
 		player.dispose();
 		computerAI.dispose();
+	}
+
+	public void endGame()
+	{
+		gameOver = true;
 	}
 
 	//Getters and Setters

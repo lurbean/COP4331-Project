@@ -11,7 +11,7 @@ public class ComputerAI extends Control{
     {
         super(game, side);
 
-        this.character = new Character(game, ball, paddle,50, 5, 5, side);
+        this.character = new Character(game, ball, paddle,15, 5, 5, side);
         this.ball = ball;
 
     }
@@ -38,6 +38,11 @@ public class ComputerAI extends Control{
     public void dispose()
     {
         paddle.dispose();
+    }
+
+    public Character getCharacter()
+    {
+        return character;
     }
 
 }

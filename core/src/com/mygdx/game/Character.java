@@ -23,6 +23,7 @@ public class Character {
         this.ball = ball;
         this.side = side;
 
+
     }
 
     public void render()
@@ -36,5 +37,26 @@ public class Character {
                 ball.switchVelocity(speed);
         }
 
+        //If a character dies, the game ends.
+        if(hitPoints <= 0)
+        {
+            game.endGame();
+        }
+
+    }
+
+    public void gotHit(int dmg)
+    {
+        hitPoints -= dmg;
+    }
+
+    public int getDamage()
+    {
+        return damage;
+    }
+
+    public int getHitPoints()
+    {
+        return hitPoints;
     }
 }

@@ -10,14 +10,15 @@ public class Player extends Control{
     {
         super(game, side);
         this.ball = ball;
-        this.character = new Character(game, ball, paddle,50, 5, 7, side);
+        this.character = new Character(game, ball, paddle,15, 5, 7, side);
+
     }
 
     public void render()
     {
         character.render();
         keyboard();
-        xbox();
+        //xbox();
     }
 
 
@@ -26,5 +27,9 @@ public class Player extends Control{
         paddle.dispose();
     }
 
+   public Character getCharacter()
+   {
+       return character;
+   }
 }
 
