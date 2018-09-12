@@ -18,7 +18,7 @@ public class Player extends Control{
     {
         character.render();
         keyboard();
-        //xbox();
+        xbox();
     }
 
 

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.*;
+import com.badlogic.gdx.utils.Array;
 
 public class Control {
 
@@ -35,19 +36,27 @@ public class Control {
 
     public void xbox()
     {
-        Controller pad = Controllers.getControllers().get(0);
-        if (pad != null)
-        {
-            if (pad.getAxis(XBox.AXIS_LEFT_Y) > 0.15)
-            {
-                paddle.movePaddleDown();
-            }
-            if (pad.getAxis(XBox.AXIS_LEFT_Y) < -0.15)
-            {
-                paddle.movePaddleUp();
-            }
 
+        Array<Controller> controllers = Controllers.getControllers();
+        if(controllers.size==0){
+            //there are no controllers...
+        } else {
+            Controller pad = Controllers.getControllers().get(0);
+            if (pad != null)
+            {
+                if (pad.getAxis(XBox.AXIS_LEFT_Y) > 0.15)
+                {
+                    paddle.movePaddleDown();
+                }
+                if (pad.getAxis(XBox.AXIS_LEFT_Y) < -0.15)
+                {
+                    paddle.movePaddleUp();
+                }
+
+            }
         }
+
+
     }
 
 }
