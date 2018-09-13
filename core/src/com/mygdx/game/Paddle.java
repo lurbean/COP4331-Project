@@ -15,6 +15,8 @@ public class Paddle extends ApplicationAdapter {
     private PongGame game;
     private Rectangle paddle;
     private Texture paddleTexture;
+    // NOTE: Floats must be signed with "f" or they will be interpreted as a double
+    public Float momentum = 0f;
 
     public Paddle(PongGame game, boolean side)
     {
@@ -37,13 +39,17 @@ public class Paddle extends ApplicationAdapter {
         batch.begin();
         batch.draw(paddleTexture, paddle.x, paddle.y);
         batch.end();
-
     }
 
     public void movePaddleUp()
     {
         if(yv < 0)
             yv *= -1;
+
+        if (momentum <= 0)
+            momentum = 1f;
+        else
+            momentum = 1f + momentum * .9f;
 
         //Checks to see if the paddle will move out of bounds.
         if((paddle.y + yv > 0) && paddle.y + yv < game.getHeight() - HEIGHT)
@@ -55,8 +61,18 @@ public class Paddle extends ApplicationAdapter {
         if(yv > 0)
             yv *= -1;
 
+        if (momentum >= 0)
+            momentum = -1f;
+        else
+            momentum = -(1f + momentum * .9f);
+
         if(paddle.y + yv > 0 && paddle.y + yv < game.getHeight() - HEIGHT)
             paddle.y += yv;
+    }
+
+    public void zeroMomentum()
+    {
+        this.momentum = 0f;
     }
 
     @Override

@@ -34,7 +34,7 @@ public class Character {
         //If the ball hits the paddle, it will bounce back.
         if(Intersector.overlaps(paddle.getRectangle(), ball.getRectangle()))
         {
-                ball.switchVelocity(speed);
+                ball.switchVelocity(speed, paddle.momentum);
         }
 
         //If a character dies, the game ends.

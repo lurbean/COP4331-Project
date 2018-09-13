@@ -28,9 +28,13 @@ public class Control {
         {
             paddle.movePaddleUp();
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN))
+        else if(Gdx.input.isKeyPressed(Input.Keys.DOWN))
         {
             paddle.movePaddleDown();
+        }
+        else
+        {
+            paddle.zeroMomentum();
         }
     }
 
