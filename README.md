@@ -11,11 +11,21 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 ### [5. Build Instructions](#build-instructions)
 
 ## Product Backlog
+| Story                                                  | Priority|Effort|Validation                                        |
+| ------------------------------------------------------ |:-------:|:----:| ------------------------------------------------ |
+|As a user, I want to start the game, so I can play      |1        |1     |The main menu is shown on program start           |
 
 ## Sprint Backlog
+### Sprint #1: September 16, 2018
+| Story                                                  | Priority|Effort|Validation                                        |
+| ------------------------------------------------------ |:-------:|:----:| ------------------------------------------------ |
+|As a user, I want to start the game, so I can play      |1        |1     |The main menu is shown on program start           |
 
 ## Burndown Chart
+Insert a nice burning chart here.
 
 ## Design Documents
+Insert a nice UML diagram here.
 
 ## Build Instructions
+1. Cry because Java.
