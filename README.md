@@ -38,7 +38,8 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 |As a user, I want the ball to stay in play when it can't be hit, so the game can continue|1|3|The ball bounces back when it hits a boundary wall|
 
 ## Burndown Chart
-Insert a nice burning chart here.
+### Sprint #1: September 16, 2018
+![Sprint #1 Burndown Chart](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint1_burndown.png "Sprint #1 Burndown Chart")
 
 ## Design Documents
 Insert a nice UML diagram here.
