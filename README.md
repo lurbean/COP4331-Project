@@ -54,8 +54,30 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 ## Software Tests
 
 ## Build Instructions
+### Required Programs
+- [Gradle](https://gradle.org/install/)
+- [ItelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows)
 
+### Procedures
+1. After downloading the two programs above and the project, open IntelliJ. Click Open Project.
+![Build Instructions Step #1](https://github.com/lurbean/COP4331-Project/blob/master/figures/buildinstructions_1.png "Build Instructions Step #1")
 
+2. Find the file the project is located in and find the build.gradle file. Open it as a project.
+![Build Instructions Step #2](https://github.com/lurbean/COP4331-Project/blob/master/figures/buildinstructions_2.png "Build Instructions Step #2")
+
+3. When you open the project, make sure you’re using the latest JDK.
+![Build Instructions Step #3](https://github.com/lurbean/COP4331-Project/blob/master/figures/buildinstructions_3.png "Build Instructions Step #3")
+
+4. Once you opened the project, hit ‘Add Configuration’.
+![Build Instructions Step #4](https://github.com/lurbean/COP4331-Project/blob/master/figures/buildinstructions_4.png "Build Instructions Step #4")
+
+5. Hit the plus sign to add configuration and select Application.
+![Build Instructions Step #5](https://github.com/lurbean/COP4331-Project/blob/master/figures/buildinstructions_5.png "Build Instructions Step #5")
+
+6. After naming the configuration, set the main class to DesktopLauncher, the working directory to assets under the core file, and the module to desktop_main as shown below.
+![Build Instructions Step #6](https://github.com/lurbean/COP4331-Project/blob/master/figures/buildinstructions_6.png "Build Instructions Step #6")
+
+7. You should now be ready to build.
 
 ## Appendix
 
