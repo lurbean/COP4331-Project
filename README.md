@@ -48,15 +48,15 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 ![Sprint #1 Burndown Chart](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint1_burndown.png "Sprint #1 Burndown Chart")
 
 ## Design Documents
-### Sprint #1: September 16, 2018
+### Sprint #1: September 16, 2018: UML Diagram
 ![Sprint #1 UML Diagram](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint1_uml.jpg "Sprint #1 UML Diagram")
 
 ## Software Tests
-
+### TBA
 ## Build Instructions
 ### Required Programs
 - [Gradle](https://gradle.org/install/)
-- [ItelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows)
+- [ItelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows) (community is fine)
 
 ### Procedures
 1. After downloading the two programs above and the project, open IntelliJ. Click Open Project.
@@ -80,7 +80,6 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 7. You should now be ready to build.
 
 ## Appendix
-
 ### I - Backlog Quantification Metrics
 | Priority scale: 	|  	| Effort scale: 	|  	|
 |-----------------	|---------------------------------	|---------------	|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
