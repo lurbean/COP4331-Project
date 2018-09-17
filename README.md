@@ -10,9 +10,10 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 ### [2. Sprint Backlog](#sprint-backlog)
 ### [3. Burndown Chart](#burndown-chart)
 ### [4. Design Documents](#design-documents)
-### [5. Software Tests](#software-tests)
-### [6. Build Instructions](#build-instructions)
-### [7. Appendix](#appendix)
+### [5. Source Code](#source-code)
+### [6. Software Tests](#software-tests)
+### [7. Build Instructions](#build-instructions)
+### [8. Appendix](#appendix)
 
 ## Product Backlog
 | Story 	| Priority 	| Effort 	| Validation 	| Pending Requirements 	|
@@ -54,8 +55,13 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 ### Sprint #1: September 16, 2018: UML Diagram
 ![Sprint #1 UML Diagram](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint1_uml.jpg "Sprint #1 UML Diagram")
 
+## Source Code
+- [Desktop Launcher](https://github.com/lurbean/COP4331-Project/tree/master/desktop/src/com/mygdx/game/desktop)
+- [Main Source Files](https://github.com/lurbean/COP4331-Project/tree/master/core/src/com/mygdx/game)
+
 ## Software Tests
 ### TBA
+
 ## Build Instructions
 ### Required Programs
 - [Gradle](https://gradle.org/install/)
