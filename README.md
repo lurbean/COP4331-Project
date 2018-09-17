@@ -39,9 +39,12 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 |As a user, I want to have a menu, so I can choose to start a match|5|3|The main menu has a button to start a match|
 |As a user, I want to see the ball move, so I can try to play with it|1|3|The ball moves across the playing field|
 |As a user, I want to use the keyboard, so I can move my paddle up and down|1|3|The paddle moves up and down, depending on keyboard input|
-|As a user, I want to use an XBOX controller, so I can move my paddle up and down|3|3|The paddle moves up and down, corresponding to input from an XBOX controller|
+|As a user, I want to use an Xbox controller, so I can move my paddle up and down|3|4|The paddle moves up and down, corresponding to input from an Xbox controller|
 |As a user, I want to be able to hit the ball with my paddle, so I can try to keep the ball in play|1|3|The ball bounces back when it hits a paddle|
 |As a user, I want the ball to stay in play when it can't be hit, so the game can continue|1|3|The ball bounces back when it hits a boundary wall|
+|As a user, I want to have some control over the ball's direction when my paddle hits it, so I have more control|3|2.5|The ball has a reflection velocity corresponding to the velocity of the paddle|
+|As a user, I want to know when I score points, so I can know who is winning|2|3|Each player has a health bar, which is lowered when a ball is missed|
+|As a developer, I want to be able to change paddle damage and speed, so I can create different characters|4|4|Varying amounts of damage can be dealt; paddles can move with different speeds|
 
 ## Burndown Chart
 ### Sprint #1: September 16, 2018
