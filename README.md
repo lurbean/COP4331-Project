@@ -16,7 +16,7 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 
 ## Product Backlog
 | Story 	| Priority 	| Effort 	| Validation 	| Pending Requirements 	|
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|----------	|--------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------------	|---------------------------------------------------------------------------------------------	|
+| ------- |:---------:|:-------:| ----------- | --------------------- |
 | As a user, I want to play against other people, not just an AI 	| 1 	| 5 	| Try all control schemes and selecting the same character - realistically, this will test itself 	| Character set, multi-input distinction 	|
 | As a developer, I want a continuously-maintained list of supported user controls, so I can maintain a "help" suite for users and see an overview of functionality 	| 2 	| 1 	| Each time a developer pushes an update mentioning controls, it must be paired with an update to the list of controls in the repository 	| NONE 	|
 | As a developer, I want to be able to be able to add an ability that is sensitive to a certain key - for example, I want to be able to add a method and assert that method will be called whenever a keyboard user presses "Q" and whenever a gamepad user presses "right trigger" 	| 2 	| 3.5 	| A new feature is added using this functionality and works flawlessly for both control schemes - routine development will provide regression testing 	| NONE 	|
@@ -80,12 +80,20 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 7. You should now be ready to build.
 
 ## Appendix
-### I - Backlog Quantification Metrics
-| Priority scale: 	|  	| Effort scale: 	|  	|
-|-----------------	|---------------------------------	|---------------	|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| Number 	| Meaning 	| Number 	| Meaning 	|
-| 1 	| Critical functionality 	| 1 	| A quick fix, likely half an hour of work including testing and integration 	|
-| 2 	| Essential functionality 	| 2 	| A simple feature, ideally taking, at most, a little more than an hour 	|
-| 3 	| Usability requirement 	| 3 	| An involved feature, meaningfully interfacing with multiple other classes/methods, requiring a couple hours of work and light consultation or debriefing with other team members 	|
-| 4 	| High-priority aesthetic feature 	| 4 	| A small-scale refactoring or large-scale feature integration, such as adding sound to ball collisions  	|
-| 5 	| Desired feature 	| 5 	| A large-scale refactoring, involving the redesign or reworking of multiple moving parts, usually involving multiple team members 	|
+### I - Backlog Quantification Metrics: Priority
+|Number|Meaning|
+|:------:| -------- |
+|1|Critical functionality|
+|2|Essential functionality|
+|3|Usability requirement|
+|4|High-priority aesthetic feature|
+|5|Desired feature|
+
+### II - Backlog Quantification Metrics: Effort
+|Number|Meaning|
+|:------:| -------- |
+|1|A quick fix, likely half an hour of work including testing and integration|
+|2|A simple feature, ideally taking, at most, a little more than an hour|
+|3|An involved feature, meaningfully interfacing with multiple other classes/methods, requiring a couple hours of work and light consultation or debriefing with other team members|
+|4|A small-scale refactoring or large-scale feature integration, such as adding sound to ball collisions|
+|5|A large-scale refactoring, involving the redesign or reworking of multiple moving parts, usually involving multiple team members|
