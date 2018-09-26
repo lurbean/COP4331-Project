@@ -34,6 +34,7 @@ public class Character {
         //If the ball hits the paddle, it will bounce back.
         if(Intersector.overlaps(paddle.getRectangle(), ball.getRectangle()))
         {
+            if ((ball.xv > 0 && !side) || (ball.xv < 0 && side))
                 ball.switchVelocity(speed, paddle.momentum);
         }
 

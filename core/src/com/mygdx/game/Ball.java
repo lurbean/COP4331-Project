@@ -9,7 +9,7 @@ import java.util.Random;
 public class Ball extends ApplicationAdapter {
 
     private final static int WIDTH = 25, HEIGHT = 25; //Dimensions of the Ball.
-    private int xv = 5, yv = 5; //The ball's default velocity.
+    public int xv = 5, yv = 5; //The ball's default velocity.
 
     private SpriteBatch batch;
     private PongGame game;
@@ -94,7 +94,7 @@ public class Ball extends ApplicationAdapter {
         if (Math.abs(yv) > speed && Math.ceil(momentum) * yv >= 0)
             speed = (speed + yv) / 2;
 
-        yv = speed * (yv>0?1:-1) + (int)momentum/3;
+        yv += (int)momentum/3;
 
         if (pongBall.x > game.getWidth()/2)
         {

@@ -64,7 +64,7 @@ public class Paddle extends ApplicationAdapter {
         if (momentum >= 0)
             momentum = -1f;
         else
-            momentum = -(1f + momentum * .9f);
+            momentum = -1f + momentum * .9f;
 
         if(paddle.y + yv > 0 && paddle.y + yv < game.getHeight() - HEIGHT)
             paddle.y += yv;
