@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PongGame extends ApplicationAdapter {
-	private final static int WIDTH = 800, HEIGHT = 480;
+	private final static int WIDTH = 800, HEIGHT = 580;
 	private SpriteBatch batch;
 	private Texture backgroundImage;
 	private Ball ball;
@@ -18,7 +18,7 @@ public class PongGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		backgroundImage = new Texture("testbackground.jpg");
+		backgroundImage = new Texture("background.jpg");
 
 		ball = new Ball(this);
 		player = new Player(this, false, ball);
@@ -80,7 +80,7 @@ public class PongGame extends ApplicationAdapter {
 	//Getters and Setters
 	public int getHeight()
 	{
-		return HEIGHT;
+		return HEIGHT - 100;
 	}
 
 	public int getWidth()

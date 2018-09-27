@@ -25,7 +25,7 @@ public class DesktopLauncher {
 
                 config.title = "Pong"; //Title of Window
                 config.width = 800;
-                config.height = 480;
+                config.height = 580;
                 new LwjglApplication(new PongGame(), config);
             }
         });
