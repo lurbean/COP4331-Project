@@ -84,17 +84,11 @@ public class Ball extends ApplicationAdapter {
     public void switchVelocity(int speed, float momentum)
     {
         if (Math.abs(xv) > speed)
-            xv = (xv + speed) / 2;
+            xv = (Math.abs(xv) + speed) / 2;
         else
             xv = speed;
 
-        // If it's going faster than you would hit it,
-        // AND you're not moving in the opposite direction,
-        // maintain some of the current speed
-        if (Math.abs(yv) > speed && Math.ceil(momentum) * yv >= 0)
-            speed = (speed + yv) / 2;
-
-        yv += (int)momentum/3;
+        yv += (int)(momentum/3);
 
         if (pongBall.x > game.getWidth()/2)
         {
