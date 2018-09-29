@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Array;
 
 public class Control {
 
-    public Paddle paddle;
+    public Paddle paddle, paddle1;
 
     Control()
     {
@@ -19,9 +19,10 @@ public class Control {
     Control(PongGame game, boolean side)
     {
         this.paddle = new Paddle(game, side);
+
     }
 
-    public void  keyboard()
+    public void  keyboard2()
     {
         //Paddle only moves up and down, so we only need to update the y value.
         if(Gdx.input.isKeyPressed(Input.Keys.UP))
@@ -36,6 +37,25 @@ public class Control {
         {
             paddle.zeroMomentum();
         }
+
+    }
+
+    public void  keyboard()
+    {
+        //Paddle only moves up and down, so we only need to update the y value.
+        if(Gdx.input.isKeyPressed(Input.Keys.W))
+        {
+            paddle.movePaddleUp();
+        }
+        else if(Gdx.input.isKeyPressed(Input.Keys.S))
+        {
+            paddle.movePaddleDown();
+        }
+        else
+        {
+            paddle.zeroMomentum();
+        }
+
     }
 
     public void xbox()
@@ -46,6 +66,26 @@ public class Control {
             //there are no controllers...
         } else {
             Controller pad = Controllers.getControllers().get(0);
+
+            if (pad != null)
+            {
+                if (pad.getAxis(XBox.AXIS_LEFT_Y) > 0.15)
+                    paddle.movePaddleDown();
+
+                if (pad.getAxis(XBox.AXIS_LEFT_Y) < -0.15)
+                    paddle.movePaddleUp();
+            }
+        }
+    }
+
+    public void xbox2()
+    {
+        Array<Controller> controllers = Controllers.getControllers();
+        if(controllers.size==0){
+            //there are no controllers...
+        } else if (controllers.size == 2){
+            Controller pad = Controllers.getControllers().get(1);
+
             if (pad != null)
             {
                 if (pad.getAxis(XBox.AXIS_LEFT_Y) > 0.15)
@@ -56,11 +96,7 @@ public class Control {
                 {
                     paddle.movePaddleUp();
                 }
-
             }
         }
-
-
     }
-
 }

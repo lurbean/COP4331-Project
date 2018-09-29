@@ -17,8 +17,14 @@ public class Player extends Control{
     public void render()
     {
         character.render();
-        keyboard();
-        xbox();
+        if (character.getSide()) {
+            xbox();
+            keyboard();
+        }
+        if (!character.getSide()) {
+            xbox2();
+            keyboard2();
+        }
     }
 
 

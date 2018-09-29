@@ -11,7 +11,7 @@ public class PongGame extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private Texture backgroundImage;
 	private Ball ball;
-	private Player player;
+	private Player player, player1;
 	private ComputerAI computerAI;
 	boolean gameOver = false;
 	
@@ -22,6 +22,7 @@ public class PongGame extends ApplicationAdapter {
 
 		ball = new Ball(this);
 		player = new Player(this, false, ball);
+		player1 = new Player(this, true, ball);
 		computerAI = new ComputerAI(this, true, ball);
 
 		//To add later:
@@ -43,18 +44,20 @@ public class PongGame extends ApplicationAdapter {
 		{
 			ball.render();
 			player.render();
-			computerAI.render();
+			player1.render();
+			//computerAI.render();
 
 			//Left Player
 			if (ball.getRectangle().x < 0) {
-				computerAI.getCharacter().gotHit(player.getCharacter().getDamage());
+				//computerAI.getCharacter().gotHit(player.getCharacter().getDamage());
+				player1.getCharacter().gotHit(player1.getCharacter().getDamage());
 				System.out.println("Computer HP: " + computerAI.getCharacter().getHitPoints());
 				ball.reset();
 			}
 
 			//Right Player
 			if (ball.getRectangle().x > WIDTH - ball.getRectangle().width) {
-				player.getCharacter().gotHit(computerAI.getCharacter().getDamage());
+				player.getCharacter().gotHit(player1.getCharacter().getDamage());
 				System.out.println("Player HP: " + player.getCharacter().getHitPoints());
 				ball.reset();
 			}
@@ -69,7 +72,8 @@ public class PongGame extends ApplicationAdapter {
 		backgroundImage.dispose();
 		ball.dispose();
 		player.dispose();
-		computerAI.dispose();
+		player1.dispose();
+		//computerAI.dispose();
 	}
 
 	public void endGame()

@@ -60,4 +60,6 @@ public class Character {
     {
         return hitPoints;
     }
+
+    public boolean getSide() { return side; }
 }

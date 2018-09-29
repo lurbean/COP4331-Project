@@ -70,6 +70,19 @@ public class Paddle extends ApplicationAdapter {
             paddle.y += yv;
     }
 
+    public void useAbilityOne()
+    {
+        //Arbitrary system out ability
+        System.out.println("Ability1 Used!");
+
+    }
+
+    public void useAbilitytwo()
+    {
+        System.out.println("Ability2 Used!");
+    }
+
+
     public void zeroMomentum()
     {
         this.momentum = 0f;
