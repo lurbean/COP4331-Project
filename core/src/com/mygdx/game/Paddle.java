@@ -77,7 +77,7 @@ public class Paddle extends ApplicationAdapter {
 
     }
 
-    public void useAbilitytwo()
+    public void useAbilityTwo()
     {
         System.out.println("Ability2 Used!");
     }

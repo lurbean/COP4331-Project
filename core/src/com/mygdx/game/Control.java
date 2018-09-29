@@ -74,6 +74,11 @@ public class Control {
 
                 if (pad.getAxis(XBox.AXIS_LEFT_Y) < -0.15)
                     paddle.movePaddleUp();
+
+                if (pad.getButton(XBox.BUTTON_A))
+                    paddle.useAbilityOne();
+                if (pad.getButton(XBox.BUTTON_B))
+                    paddle.useAbilityTwo();
             }
         }
     }
@@ -96,6 +101,10 @@ public class Control {
                 {
                     paddle.movePaddleUp();
                 }
+                if (pad.getButton(XBox.BUTTON_A))
+                    paddle.useAbilityOne();
+                if (pad.getButton(XBox.BUTTON_B))
+                    paddle.useAbilityTwo();
             }
         }
     }
