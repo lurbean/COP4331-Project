@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Intersector;
 
 public class Character {
@@ -12,6 +14,12 @@ public class Character {
     private Ball ball;
     private Paddle paddle;
     private PongGame game;
+    private Texture healthBar;
+    private int width = 275;
+    private int barX;
+    private float barSize;
+    private float modifier;
+    private SpriteBatch batch;
 
     Character(PongGame game, Ball ball, Paddle paddle, int hP, int damage, int speed, boolean side)
     {
@@ -23,11 +31,29 @@ public class Character {
         this.ball = ball;
         this.side = side;
 
+        barSize = width;
+
+        batch = new SpriteBatch();
+        healthBar = new Texture("healthBar.jpg");
+        modifier = width/hP;
+
+        if(side == true)
+        {
+            barX = 60;
+        }
+        else
+        {
+            barX = game.getWidth() - 60 - width;
+        }
+
 
     }
 
     public void render()
     {
+        batch.begin();
+        batch.draw(healthBar, barX, game.getHeight() + 20, barSize, 25);
+        batch.end();
 
         paddle.render();
 
@@ -49,6 +75,7 @@ public class Character {
     public void gotHit(int dmg)
     {
         hitPoints -= dmg;
+        barSize -= dmg*modifier;
     }
 
     public int getDamage()
