@@ -1,25 +1,28 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Intersector;
 
 public class Character {
 
-    private int xv, yv;
-    private int hitPoints;
-    private int damage;
-    private int speed;
-    private boolean side;
+
     private Ball ball;
     private Paddle paddle;
     private PongGame game;
     private Texture healthBar;
+    private SpriteBatch batch;
     private int width = 270;
+    private int hitPoints;
+    private int damage;
+    private int speed;
+    private boolean side;
     private float barX;
     private float barSize;
     private float modifier;
-    private SpriteBatch batch;
+    Sound sound;
 
     Character(PongGame game, Ball ball, Paddle paddle, int hP, int damage, int speed, boolean side)
     {
@@ -35,6 +38,7 @@ public class Character {
 
         batch = new SpriteBatch();
         healthBar = new Texture("healthBar.jpg");
+        sound = Gdx.audio.newSound(Gdx.files.internal("pongHit.wav"));
         modifier = width/hP;
 
         if(side == true)
@@ -60,6 +64,8 @@ public class Character {
         //If the ball hits the paddle, it will bounce back.
         if(Intersector.overlaps(paddle.getRectangle(), ball.getRectangle()))
         {
+            sound.play(1.0f);
+
             if ((ball.xv > 0 && !side) || (ball.xv < 0 && side))
                 ball.switchVelocity(speed, paddle.momentum);
         }
@@ -79,18 +85,13 @@ public class Character {
 
         if(side == true)
         {
-            barX += dmg*modifier;
+            barX += dmg*modifier; //Moves bar as it's getting smaller.
         }
     }
 
     public int getDamage()
     {
         return damage;
-    }
-
-    public int getHitPoints()
-    {
-        return hitPoints;
     }
 
     public boolean getSide() { return side; }

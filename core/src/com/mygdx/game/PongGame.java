@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.audio.Music;
 
 public class PongGame extends ApplicationAdapter {
 	private final static int WIDTH = 800, HEIGHT = 580;
@@ -14,6 +15,7 @@ public class PongGame extends ApplicationAdapter {
 	private Player player, player1;
 	private ComputerAI computerAI;
 	boolean gameOver = false;
+	private Music backgroundMusic;
 	
 	@Override
 	public void create () {
@@ -25,9 +27,9 @@ public class PongGame extends ApplicationAdapter {
 		player1 = new Player(this, true, ball);
 		computerAI = new ComputerAI(this, true, ball);
 
-		//To add later:
-		//private Sound hitPaddle; //Use 'Sound' if < 10 seconds
-		//private Music backgroundMusic;
+		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("fightMusic.wav"));
+		backgroundMusic.setLooping(true);
+		backgroundMusic.play();
 	}
 
 	//Render updates the game's frame with a frequency that depends on your hardware
@@ -51,14 +53,12 @@ public class PongGame extends ApplicationAdapter {
 			if (ball.getRectangle().x < 0) {
 				//computerAI.getCharacter().gotHit(player.getCharacter().getDamage());
 				player1.getCharacter().gotHit(player1.getCharacter().getDamage());
-				System.out.println("Computer HP: " + computerAI.getCharacter().getHitPoints());
 				ball.reset();
 			}
 
 			//Right Player
 			if (ball.getRectangle().x > WIDTH - ball.getRectangle().width) {
 				player.getCharacter().gotHit(player1.getCharacter().getDamage());
-				System.out.println("Player HP: " + player.getCharacter().getHitPoints());
 				ball.reset();
 			}
 		}
@@ -74,6 +74,7 @@ public class PongGame extends ApplicationAdapter {
 		player.dispose();
 		player1.dispose();
 		//computerAI.dispose();
+		backgroundMusic.dispose();
 	}
 
 	public void endGame()
