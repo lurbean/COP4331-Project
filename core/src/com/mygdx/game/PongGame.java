@@ -16,7 +16,11 @@ public class PongGame extends ApplicationAdapter {
 	private ComputerAI computerAI;
 	boolean gameOver = false;
 	private Music backgroundMusic;
-	
+
+	public PongGame(SETTINGS settings) {
+		// do stuff here ADAM
+	}
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();

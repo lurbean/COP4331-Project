@@ -39,7 +39,7 @@ public class Ball extends ApplicationAdapter {
         pongBall.setPosition(pongBall.x + xv, pongBall.y + yv);
 
         //If the ball hits the top and bottom of the screen, it'll bounce off.
-        if(pongBall.y < 0|| pongBall.y > game.getHeight() - HEIGHT)
+        if(pongBall.y <= 0|| pongBall.y >= game.getHeight() - HEIGHT)
         {
             yv = -yv; //Invert y when it does.
         }

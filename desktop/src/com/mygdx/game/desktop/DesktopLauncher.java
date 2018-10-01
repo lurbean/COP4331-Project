@@ -2,7 +2,7 @@ package com.mygdx.game.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.mygdx.game.PongGame;
+import com.mygdx.game.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,6 +15,8 @@ public class DesktopLauncher {
     private JButton playButton;
     private JButton button2;
 
+    SETTINGS settings = new SETTINGS();
+
     public DesktopLauncher() {
 
         playButton.addActionListener(new ActionListener() {
@@ -26,7 +28,7 @@ public class DesktopLauncher {
                 config.title = "Pong"; //Title of Window
                 config.width = 800;
                 config.height = 580;
-                new LwjglApplication(new PongGame(), config);
+                new LwjglApplication(new PongGame(settings), config);
             }
         });
         button2.addActionListener(new ActionListener() {
