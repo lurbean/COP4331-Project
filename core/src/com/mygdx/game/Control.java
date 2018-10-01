@@ -33,9 +33,18 @@ public class Control {
         {
             paddle.movePaddleDown();
         }
-        else
+
+        if(!Gdx.input.isKeyPressed(Input.Keys.UP) && !Gdx.input.isKeyPressed(Input.Keys.DOWN))
         {
             paddle.zeroMomentum();
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_1))
+        {
+            paddle.useAbilityOne();
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_2))
+        {
+            paddle.useAbilityTwo();
         }
 
     }
@@ -47,14 +56,23 @@ public class Control {
         {
             paddle.movePaddleUp();
         }
-        else if(Gdx.input.isKeyPressed(Input.Keys.S))
+        if(Gdx.input.isKeyPressed(Input.Keys.S))
         {
             paddle.movePaddleDown();
         }
-        else
+        if(!Gdx.input.isKeyPressed(Input.Keys.W) && !Gdx.input.isKeyPressed(Input.Keys.S))
         {
             paddle.zeroMomentum();
         }
+        if (Gdx.input.isKeyPressed(Input.Keys.NUM_1))
+        {
+            paddle.useAbilityOne();
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.NUM_2))
+        {
+            paddle.useAbilityTwo();
+        }
+
 
     }
 
