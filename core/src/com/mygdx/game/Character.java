@@ -15,8 +15,8 @@ public class Character {
     private Paddle paddle;
     private PongGame game;
     private Texture healthBar;
-    private int width = 275;
-    private int barX;
+    private int width = 270;
+    private float barX;
     private float barSize;
     private float modifier;
     private SpriteBatch batch;
@@ -43,7 +43,7 @@ public class Character {
         }
         else
         {
-            barX = game.getWidth() - 60 - width;
+            barX = game.getWidth() - 60 - barSize;
         }
 
 
@@ -76,6 +76,11 @@ public class Character {
     {
         hitPoints -= dmg;
         barSize -= dmg*modifier;
+
+        if(side == true)
+        {
+            barX += dmg*modifier;
+        }
     }
 
     public int getDamage()
