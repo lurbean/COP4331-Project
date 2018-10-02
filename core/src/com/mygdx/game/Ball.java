@@ -17,9 +17,11 @@ public class Ball extends ApplicationAdapter {
     private Texture pingPong;
 
     private Random RNG = new Random();
+    public int SpeedMultiplier;
 
-    public Ball(PongGame game)
+    public Ball(PongGame game, SETTINGS settings)
     {
+        this.SpeedMultiplier = settings.AllBallSpeed;
         batch = new SpriteBatch();
         this.game = game;
         pingPong = new Texture("pongBall.jpg");
@@ -36,7 +38,7 @@ public class Ball extends ApplicationAdapter {
         batch.draw(pingPong, pongBall.x, pongBall.y);
         batch.end();
 
-        pongBall.setPosition(pongBall.x + xv, pongBall.y + yv);
+        pongBall.setPosition(pongBall.x + (xv * SpeedMultiplier) / 100, pongBall.y + (yv * SpeedMultiplier) / 100);
 
         //If the ball hits the top and bottom of the screen, it'll bounce off.
         if(pongBall.y <= 0|| pongBall.y >= game.getHeight() - HEIGHT)

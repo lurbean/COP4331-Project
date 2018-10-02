@@ -11,7 +11,7 @@ public class ComputerAI extends Control{
     {
         super(game, side);
 
-        this.character = new Character(game, ball, paddle,15, 5, 5, side);
+        this.character = new Character(game, ball, paddle,15, 5, 5, side, new SETTINGS());
         this.ball = ball;
         this.pid = new MiniPID(0.7, 0.04, 0.5);
     }

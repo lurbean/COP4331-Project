@@ -24,11 +24,21 @@ public class Character {
     private float modifier;
     Sound sound;
 
-    Character(PongGame game, Ball ball, Paddle paddle, int hP, int damage, int speed, boolean side)
+    Character(PongGame game, Ball ball, Paddle paddle, int hP, int damage, int speed, boolean side, SETTINGS settings)
     {
-        this.hitPoints = hP;
-        this.damage = damage;
-        this.speed = speed;
+        if (side)
+        {
+            this.hitPoints = (hP * settings.P1HealthMod) / 100;
+            this.damage = (damage * settings.P1Damage) / 100;
+            this.speed = (speed * settings.P1HitSpeed) / 100;
+        }
+        else
+        {
+            this.hitPoints = (hP * settings.P2HealthMod ) / 100;
+            this.damage = (damage * settings.P2Damage) / 100;
+            this.speed = (speed * settings.P2HitSpeed) / 100;
+        }
+        this.hitPoints = (this.hitPoints * settings.AllHealthMod) / 100;
         this.paddle = paddle;
         this.game = game;
         this.ball = ball;
@@ -41,7 +51,7 @@ public class Character {
         sound = Gdx.audio.newSound(Gdx.files.internal("pongHit.wav"));
         modifier = width/hP;
 
-        if(side == true)
+        if(side)
         {
             barX = 60;
         }

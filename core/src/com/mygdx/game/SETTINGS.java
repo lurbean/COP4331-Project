@@ -11,7 +11,7 @@ public class SETTINGS {
     public int P2Damage = 100;
     public int P2HitSpeed = 100;
     public int P2Cooldown = 100;
-    public int AllBallSpeel = 100;
+    public int AllBallSpeed = 100;
     public int AllHealthMod = 100;
     public int AllCooldown = 100;
 }

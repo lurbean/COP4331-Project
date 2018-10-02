@@ -16,9 +16,10 @@ public class PongGame extends ApplicationAdapter {
 	private ComputerAI computerAI;
 	boolean gameOver = false;
 	private Music backgroundMusic;
+	public SETTINGS settings;
 
 	public PongGame(SETTINGS settings) {
-		// do stuff here ADAM
+		this.settings = settings;
 	}
 
 	@Override
@@ -26,9 +27,9 @@ public class PongGame extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		backgroundImage = new Texture("background.jpg");
 
-		ball = new Ball(this);
-		player = new Player(this, false, ball);
-		player1 = new Player(this, true, ball);
+		ball = new Ball(this, settings);
+		player = new Player(this, false, ball, settings);
+		player1 = new Player(this, true, ball, settings);
 		computerAI = new ComputerAI(this, true, ball);
 
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("fightMusic.wav"));

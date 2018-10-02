@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Paddle extends ApplicationAdapter {
 
     private final static int WIDTH = 25, HEIGHT = 100; //Dimensions of the Paddle.
-    private int yv = 8; //The paddle's velocity.
+    public int yv = 8; //The paddle's velocity.
 
     private SpriteBatch batch;
     private PongGame game;
@@ -17,6 +17,7 @@ public class Paddle extends ApplicationAdapter {
     private Texture paddleTexture;
     // NOTE: Floats must be signed with "f" or they will be interpreted as a double
     public Float momentum = 0f;
+    public int SpeedModifier;
 
     public Paddle(PongGame game, boolean side)
     {
@@ -25,7 +26,7 @@ public class Paddle extends ApplicationAdapter {
         paddleTexture = new Texture("paddleOne.jpg");
 
         //Rectangle (float x, float y, float width, float height)
-        if(side == true)
+        if(side)
             paddle = new Rectangle(WIDTH, (game.getHeight()/2 - HEIGHT/2), WIDTH, HEIGHT);
         else
             paddle = new Rectangle((game.getWidth() - 2*WIDTH), (game.getHeight()/2 - HEIGHT/2), WIDTH, HEIGHT);

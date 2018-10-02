@@ -11,6 +11,7 @@ public class Control {
 
     public Paddle paddle, paddle1;
 
+
     Control()
     {
 
