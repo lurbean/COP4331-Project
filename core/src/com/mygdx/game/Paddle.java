@@ -17,7 +17,6 @@ public class Paddle extends ApplicationAdapter {
     private Texture paddleTexture;
     // NOTE: Floats must be signed with "f" or they will be interpreted as a double
     public Float momentum = 0f;
-    public int SpeedModifier;
 
     public Paddle(PongGame game, boolean side)
     {
