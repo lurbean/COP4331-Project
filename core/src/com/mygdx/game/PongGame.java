@@ -13,6 +13,7 @@ public class PongGame extends ApplicationAdapter {
 	private Texture backgroundImage;
 	private Texture texturePause;
 	private Texture textureShade;
+	private Texture textureControls;
 	private Ball ball;
 	private Player player, player1;
 	private ComputerAI computerAI;
@@ -32,6 +33,7 @@ public class PongGame extends ApplicationAdapter {
 		backgroundImage = new Texture("background.jpg");
 		texturePause = new Texture("paused.png");
 		textureShade = new Texture("shade.png");
+		textureControls = new Texture("controls.png");
 
 		ball = new Ball(this, settings);
 		player = new Player(this, false, ball, settings);
@@ -54,11 +56,6 @@ public class PongGame extends ApplicationAdapter {
 
 		batch.begin();
 		batch.draw(backgroundImage, 0, 0); //Places the background in (x,y)
-		if (paused)
-		{
-			batch.draw(textureShade, 0, 0);
-			batch.draw(texturePause, (WIDTH / 2) - (texturePause.getWidth() / 2), (HEIGHT / 2) - (texturePause.getHeight()/2));
-		}
 		batch.end();
 
 		if(gameOver != true)
@@ -86,7 +83,8 @@ public class PongGame extends ApplicationAdapter {
 		{
 			batch.begin();
 			batch.draw(textureShade, 0, 0);
-			batch.draw(texturePause, (WIDTH / 2) - (texturePause.getWidth() / 2), (HEIGHT / 2) - (texturePause.getHeight()/2));
+			batch.draw(texturePause, (WIDTH / 2) - (texturePause.getWidth() / 2), (HEIGHT / 2) - (texturePause.getHeight()/2) + 50);
+			batch.draw(textureControls, 0, 0);
 			batch.end();
 		}
 	}
