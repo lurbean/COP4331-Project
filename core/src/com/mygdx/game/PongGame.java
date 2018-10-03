@@ -11,12 +11,15 @@ public class PongGame extends ApplicationAdapter {
 	private final static int WIDTH = 800, HEIGHT = 580;
 	private SpriteBatch batch;
 	private Texture backgroundImage;
+	private Texture texturePause;
 	private Ball ball;
 	private Player player, player1;
 	private ComputerAI computerAI;
 	boolean gameOver = false;
 	private Music backgroundMusic;
 	public SETTINGS settings;
+	private boolean paused;
+	long pauseToggleTime;
 
 	public PongGame(SETTINGS settings) {
 		this.settings = settings;
@@ -26,6 +29,7 @@ public class PongGame extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		backgroundImage = new Texture("background.jpg");
+		texturePause = new Texture("paused.png");
 
 		ball = new Ball(this, settings);
 		player = new Player(this, false, ball, settings);
@@ -35,6 +39,9 @@ public class PongGame extends ApplicationAdapter {
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("fightMusic.wav"));
 		backgroundMusic.setLooping(true);
 		backgroundMusic.play();
+
+		paused = false;
+		pauseToggleTime = System.currentTimeMillis();
 	}
 
 	//Render updates the game's frame with a frequency that depends on your hardware
@@ -45,6 +52,10 @@ public class PongGame extends ApplicationAdapter {
 
 		batch.begin();
 		batch.draw(backgroundImage, 0, 0); //Places the background in (x,y)
+		if (paused)
+		{
+			batch.draw(texturePause, (WIDTH / 2) - (texturePause.getWidth() / 2), (HEIGHT / 2) - (texturePause.getHeight()/2));
+		}
 		batch.end();
 
 		if(gameOver != true)
@@ -75,6 +86,7 @@ public class PongGame extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		backgroundImage.dispose();
+		texturePause.dispose();
 		ball.dispose();
 		player.dispose();
 		player1.dispose();
@@ -98,4 +110,18 @@ public class PongGame extends ApplicationAdapter {
 		return WIDTH;
 	}
 
+	public void pause()
+	{
+		if (System.currentTimeMillis() > (pauseToggleTime + 100))
+		{
+			paused = !paused;
+		}
+
+		pauseToggleTime = System.currentTimeMillis();
+	}
+
+	public boolean getPaused()
+	{
+		return paused;
+	}
 }

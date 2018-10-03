@@ -17,8 +17,7 @@ public class Player extends Control{
             paddle.yv = ( paddle.yv * settings.P2PaddleSpeed) / 100;
     }
 
-    public void render()
-    {
+    public void render() {
         character.render();
         if (character.getSide()) {
             xbox();

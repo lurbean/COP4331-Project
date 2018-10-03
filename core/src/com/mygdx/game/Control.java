@@ -39,6 +39,7 @@ public class Control {
         {
             paddle.zeroMomentum();
         }
+
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_1))
         {
             paddle.useAbilityOne();
@@ -48,6 +49,10 @@ public class Control {
             paddle.useAbilityTwo();
         }
 
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
+        {
+            paddle.pause();
+        }
     }
 
     public void  keyboard()
@@ -74,7 +79,6 @@ public class Control {
             paddle.useAbilityTwo();
         }
 
-
     }
 
     public void xbox()
@@ -88,6 +92,9 @@ public class Control {
 
             if (pad != null)
             {
+                if (pad.getButton(XBox.BUTTON_START))
+                    paddle.pause();
+
                 if (pad.getAxis(XBox.AXIS_LEFT_Y) > 0.15)
                     paddle.movePaddleDown();
 
@@ -98,6 +105,8 @@ public class Control {
                     paddle.useAbilityOne();
                 if (pad.getButton(XBox.BUTTON_B))
                     paddle.useAbilityTwo();
+
+
             }
         }
     }

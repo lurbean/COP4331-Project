@@ -38,6 +38,11 @@ public class Ball extends ApplicationAdapter {
         batch.draw(pingPong, pongBall.x, pongBall.y);
         batch.end();
 
+        if (game.getPaused())
+        {
+            return;
+        }
+
         pongBall.setPosition(pongBall.x + (xv * SpeedMultiplier) / 100, pongBall.y + (yv * SpeedMultiplier) / 100);
 
         //If the ball hits the top and bottom of the screen, it'll bounce off.

@@ -43,6 +43,11 @@ public class Paddle extends ApplicationAdapter {
 
     public void movePaddleUp()
     {
+        if (game.getPaused())
+        {
+            return;
+        }
+
         if(yv < 0)
             yv *= -1;
 
@@ -58,6 +63,11 @@ public class Paddle extends ApplicationAdapter {
 
     public void movePaddleDown()
     {
+        if (game.getPaused())
+        {
+            return;
+        }
+
         if(yv > 0)
             yv *= -1;
 
@@ -72,6 +82,10 @@ public class Paddle extends ApplicationAdapter {
 
     public void useAbilityOne()
     {
+        if (game.getPaused())
+        {
+            return;
+        }
         //Arbitrary system out ability
         System.out.println("Ability1 Used!");
 
@@ -79,6 +93,11 @@ public class Paddle extends ApplicationAdapter {
 
     public void useAbilityTwo()
     {
+        if (game.getPaused())
+        {
+            return;
+        }
+
         System.out.println("Ability2 Used!");
     }
 
@@ -86,6 +105,11 @@ public class Paddle extends ApplicationAdapter {
     public void zeroMomentum()
     {
         this.momentum = 0f;
+    }
+
+    public void pause()
+    {
+        game.pause();
     }
 
     @Override
@@ -99,5 +123,6 @@ public class Paddle extends ApplicationAdapter {
     {
         return paddle;
     }
+
 
 }
