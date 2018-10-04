@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 
 public class DesktopLauncher {
     private JButton settingsButton;
-    private JTextArea welcomeToMortalPongbatTextArea;
     private JPanel panel1;
     private JButton playButton;
     private JButton button2;

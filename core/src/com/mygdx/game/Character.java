@@ -104,5 +104,10 @@ public class Character {
         return damage;
     }
 
+    public int getHitPoints()
+    {
+        return hitPoints;
+    }
+
     public boolean getSide() { return side; }
 }

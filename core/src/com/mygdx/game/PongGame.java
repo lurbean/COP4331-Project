@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.audio.Music;
 
 public class PongGame extends ApplicationAdapter {
+	PongGame() {}
 	private final static int WIDTH = 800, HEIGHT = 580;
 	private SpriteBatch batch;
 	private Texture backgroundImage;
@@ -70,12 +71,20 @@ public class PongGame extends ApplicationAdapter {
 				//computerAI.getCharacter().gotHit(player.getCharacter().getDamage());
 				player1.getCharacter().gotHit(player1.getCharacter().getDamage());
 				ball.reset();
+				if (player.getCharacter().getHitPoints()==0) { //hit points=0 attempt to end game
+					dispose();
+					Player1WinWindow.lose_window(1);
+				}
 			}
 
 			//Right Player
 			if (ball.getRectangle().x > WIDTH - ball.getRectangle().width) {
 				player.getCharacter().gotHit(player1.getCharacter().getDamage());
 				ball.reset();
+				if (player.getCharacter().getHitPoints()==0) { //hit points=0 attempt to end game
+					dispose();
+					Player2WinWindow.lose_window(1);
+				}
 			}
 		}
 
@@ -88,7 +97,7 @@ public class PongGame extends ApplicationAdapter {
 			batch.end();
 		}
 	}
-	
+
 	@Override
 	public void dispose () {
 		batch.dispose();
