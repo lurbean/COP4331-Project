@@ -99,6 +99,27 @@ public class Character {
         }
     }
 
+    public void useAbilityOne()
+    {
+        if (game.getPaused())
+        {
+            return;
+        }
+        //Arbitrary system out ability
+        System.out.println("Ability1 Used!");
+    }
+
+    public void useAbilityTwo()
+    {
+        if (game.getPaused())
+        {
+            return;
+        }
+
+        System.out.println("Ability2 Used!");
+    }
+
+
     public int getDamage()
     {
         return damage;

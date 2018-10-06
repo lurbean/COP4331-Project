@@ -80,18 +80,56 @@ public class Paddle extends ApplicationAdapter {
             paddle.y += yv;
     }
 
-    public void useAbilityOne()
+    public void useAbilityOneP1()
     {
         if (game.getPaused())
         {
             return;
         }
         //Arbitrary system out ability
-        System.out.println("Ability1 Used!");
+
+        if (game.getBall().getY() < (paddle.getHeight()/2 + paddle.y) && game.getBall().getY() > (paddle.y - paddle.getHeight()/2))
+        {
+            if (game.getBall().getX() < 100)
+            {
+                game.getBall().powerShot();
+            }
+        }
+
 
     }
 
-    public void useAbilityTwo()
+    public void useAbilityOneP2()
+    {
+        if (game.getPaused())
+        {
+            return;
+        }
+        //Arbitrary system out ability
+
+        if (game.getBall().getY() < (paddle.getHeight()/2 + paddle.y) && game.getBall().getY() > (paddle.y - paddle.getHeight()/2))
+        {
+            if (game.getBall().getX() > (game.getWidth() - 100))
+            {
+               game.getBall().powerShot();
+            }
+        }
+
+
+    }
+
+    // Ability Two Under Construction: Patrick
+    public void useAbilityTwoP1()
+    {
+        if (game.getPaused())
+        {
+            return;
+        }
+
+        System.out.println("Ability2 Used!");
+    }
+
+    public void useAbilityTwoP2()
     {
         if (game.getPaused())
         {

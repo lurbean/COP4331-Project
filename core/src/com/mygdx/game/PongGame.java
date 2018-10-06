@@ -140,4 +140,5 @@ public class PongGame extends ApplicationAdapter {
 	{
 		return paused;
 	}
+	public Ball getBall() { return ball; }
 }

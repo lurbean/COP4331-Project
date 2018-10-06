@@ -9,7 +9,7 @@ import java.util.Random;
 public class Ball extends ApplicationAdapter {
 
     private final static int WIDTH = 25, HEIGHT = 25; //Dimensions of the Ball.
-    public int xv = 5, yv = 5; //The ball's default velocity.
+    public float xv = 5, yv = 5; //The ball's default velocity.
 
     private SpriteBatch batch;
     private PongGame game;
@@ -103,11 +103,37 @@ public class Ball extends ApplicationAdapter {
         }
     }
 
+    public void powerShot()
+    {
+        float x = game.getBall().getXSpeed();
+        float y = game.getBall().getYSpeed();
+
+        game.getBall().setXSpeed(x * 1.1f);
+        game.getBall().setYSpeed(y * 1.1f);
+
+    }
+    // Under Construction: Patrick
+    // Currently buggy as hell
+    public void directionChange()
+    {
+        //todo
+
+    }
+
+
+
 
     //Getters/Setters
     public Rectangle getRectangle()
     {
         return pongBall;
     }
+
+    public float getXSpeed() { return xv; }
+    public float getYSpeed() { return yv; }
+    public void setXSpeed(float speed) { xv = speed; }
+    public void setYSpeed(float speed) { yv = speed; }
+    public float getX() { return pongBall.x; }
+    public float getY() { return pongBall.y; }
 
 }

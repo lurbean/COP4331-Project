@@ -9,13 +9,10 @@ import com.badlogic.gdx.utils.Array;
 
 public class Control {
 
-    public Paddle paddle, paddle1;
+    public Paddle paddle;
 
 
-    Control()
-    {
 
-    }
 
     Control(PongGame game, boolean side)
     {
@@ -42,11 +39,11 @@ public class Control {
 
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_1))
         {
-            paddle.useAbilityOne();
+            paddle.useAbilityOneP2();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_2))
         {
-            paddle.useAbilityTwo();
+            paddle.useAbilityTwoP2();
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
@@ -72,11 +69,11 @@ public class Control {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.NUM_1))
         {
-            paddle.useAbilityOne();
+            paddle.useAbilityOneP1();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.NUM_2))
         {
-            paddle.useAbilityTwo();
+            paddle.useAbilityTwoP1();
         }
 
     }
@@ -102,9 +99,9 @@ public class Control {
                     paddle.movePaddleUp();
 
                 if (pad.getButton(XBox.BUTTON_A))
-                    paddle.useAbilityOne();
+                    paddle.useAbilityOneP1();
                 if (pad.getButton(XBox.BUTTON_B))
-                    paddle.useAbilityTwo();
+                    paddle.useAbilityTwoP2();
 
 
             }
@@ -133,9 +130,9 @@ public class Control {
                     paddle.movePaddleUp();
                 }
                 if (pad.getButton(XBox.BUTTON_A))
-                    paddle.useAbilityOne();
+                    paddle.useAbilityOneP2();
                 if (pad.getButton(XBox.BUTTON_B))
-                    paddle.useAbilityTwo();
+                    paddle.useAbilityTwoP2();
             }
         }
     }
