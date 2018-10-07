@@ -18,6 +18,7 @@ public class Ball extends ApplicationAdapter {
 
     private Random RNG = new Random();
     public int SpeedMultiplier;
+    public int additiveSpeed = 0;
 
     public Ball(PongGame game, SETTINGS settings)
     {
@@ -43,7 +44,22 @@ public class Ball extends ApplicationAdapter {
             return;
         }
 
-        pongBall.setPosition(pongBall.x + (xv * SpeedMultiplier) / 100, pongBall.y + (yv * SpeedMultiplier) / 100);
+        if (xv > 0) {
+            if (yv > 0)
+                pongBall.setPosition(pongBall.x + additiveSpeed + (xv * SpeedMultiplier) / 100,
+                                     pongBall.y + additiveSpeed + (yv * SpeedMultiplier) / 100);
+            else // yv < 0
+                pongBall.setPosition(pongBall.x + additiveSpeed + (xv * SpeedMultiplier) / 100,
+                                     pongBall.y - additiveSpeed + (yv * SpeedMultiplier) / 100);
+        }
+        else { // xv < 0
+            if (yv > 0)
+                pongBall.setPosition(pongBall.x - additiveSpeed + (xv * SpeedMultiplier) / 100,
+                                     pongBall.y + additiveSpeed + (yv * SpeedMultiplier) / 100);
+            else // yv < 0
+                pongBall.setPosition(pongBall.x - additiveSpeed + (xv * SpeedMultiplier) / 100,
+                                     pongBall.y - additiveSpeed + (yv * SpeedMultiplier) / 100);
+        }
 
         //If the ball hits the top and bottom of the screen, it'll bounce off.
         if(pongBall.y <= 0|| pongBall.y >= game.getHeight() - HEIGHT)

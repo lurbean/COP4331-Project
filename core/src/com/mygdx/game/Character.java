@@ -16,7 +16,7 @@ public class Character {
     private SpriteBatch batch;
     private int width = 270;
     private int hitPoints;
-    private int damage;
+    public int damage;
     private int speed;
     private boolean side;
     private float barX;

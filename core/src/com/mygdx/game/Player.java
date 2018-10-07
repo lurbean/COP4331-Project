@@ -3,7 +3,7 @@ package com.mygdx.game;
 
 public class Player extends Control{
 
-    private Character character;
+    public Character character;
     private Ball ball;
 
     public Player(PongGame game, boolean side, Ball ball, SETTINGS settings)
