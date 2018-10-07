@@ -14,4 +14,5 @@ public class SETTINGS {
     public int AllBallSpeed = 100;
     public int AllHealthMod = 100;
     public int AllCooldown = 100;
+    public int gameLength = 60;
 }

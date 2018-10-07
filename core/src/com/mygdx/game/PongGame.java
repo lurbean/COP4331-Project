@@ -51,7 +51,7 @@ public class PongGame extends ApplicationAdapter {
             textureDigitArray[i] = new Texture(String.valueOf(i) + ".png");
             textureRedDigitArray[i] = new Texture("red" + String.valueOf(i) + ".png");
         }
-		gameTimer = 60;
+		gameTimer = settings.gameLength;
         secondCountdown = 60;
         timerLocationLeftX = WIDTH/2 - textureDigitArray[0].getWidth() - 10;
         timerLocationRightX = WIDTH/2 + 10;
@@ -86,7 +86,8 @@ public class PongGame extends ApplicationAdapter {
             if (secondCountdown == 0) {
                 gameTimer--;
                 secondCountdown = 60;
-
+				if (gameTimer == -100)
+					gameTimer = 0;
                 // When the timers goes red and every 10 seconds after that
                 if (gameTimer < 0 && ( (-gameTimer) % 10 == 1))
 				{
