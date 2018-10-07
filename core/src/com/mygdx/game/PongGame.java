@@ -71,9 +71,9 @@ public class PongGame extends ApplicationAdapter {
 				//computerAI.getCharacter().gotHit(player.getCharacter().getDamage());
 				player1.getCharacter().gotHit(player1.getCharacter().getDamage());
 				ball.reset();
-				if (player.getCharacter().getHitPoints()==0) { //hit points=0 attempt to end game
-					dispose();
-					Player1WinWindow.lose_window(1);
+				if (player1.getCharacter().getHitPoints()==0) { //hit points=0 attempt to end game
+					//dispose(); see below
+					WinWindow.lose_window(0);
 				}
 			}
 
@@ -82,8 +82,8 @@ public class PongGame extends ApplicationAdapter {
 				player.getCharacter().gotHit(player1.getCharacter().getDamage());
 				ball.reset();
 				if (player.getCharacter().getHitPoints()==0) { //hit points=0 attempt to end game
-					dispose();
-					Player2WinWindow.lose_window(1);
+					//dispose(); TODO - this might be necessary for resetting, but it's currently a breaking change
+					WinWindow.lose_window(1);
 				}
 			}
 		}

@@ -73,8 +73,9 @@ public class Character {
 
         //If the ball hits the paddle, it will bounce back.
         if(Intersector.overlaps(paddle.getRectangle(), ball.getRectangle()))
-        {
-            if ((ball.xv > 0 && !side) || (ball.xv < 0 && side)) {
+        { // Don't code inside this if block unless you're very sure. Use the next if block
+            if ((ball.xv > 0 && !side) || (ball.xv < 0 && side))
+            {
                 ball.switchVelocity(speed, paddle.momentum);
                 sound.play(1.0f);
             }
