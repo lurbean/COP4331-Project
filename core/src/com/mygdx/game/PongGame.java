@@ -15,6 +15,7 @@ public class PongGame extends ApplicationAdapter {
 	private Texture texturePause;
 	private Texture textureShade;
 	private Texture textureControls;
+	private Texture textureGameOver;
 	private Ball ball;
 	private Player player, player1;
 	private ComputerAI computerAI;
@@ -35,6 +36,7 @@ public class PongGame extends ApplicationAdapter {
 		texturePause = new Texture("paused.png");
 		textureShade = new Texture("shade.png");
 		textureControls = new Texture("controls.png");
+		textureGameOver = new Texture("gameOver.png");
 
 		ball = new Ball(this, settings);
 		player = new Player(this, false, ball, settings);
@@ -56,7 +58,10 @@ public class PongGame extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		batch.draw(backgroundImage, 0, 0); //Places the background in (x,y)
+		if(gameOver == true)
+			batch.draw(textureGameOver, 0, 0);
+		else
+			batch.draw(backgroundImage, 0, 0);
 		batch.end();
 
 		if(gameOver != true)
@@ -103,6 +108,9 @@ public class PongGame extends ApplicationAdapter {
 		batch.dispose();
 		backgroundImage.dispose();
 		texturePause.dispose();
+		textureShade.dispose();
+		textureControls.dispose();
+		textureGameOver.dispose();
 		ball.dispose();
 		player.dispose();
 		player1.dispose();
