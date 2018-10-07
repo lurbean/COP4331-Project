@@ -50,18 +50,6 @@ public class Ball extends ApplicationAdapter {
         {
             yv = -yv; //Invert y when it does.
         }
-
-        /*if(pongBall.x < 0)
-        {
-            xv = -xv;
-        }*/
-
-        /*
-        //Every time the ball hits the sides, reset its position.
-        //if(pongBall.x > game.getWidth() - WIDTH || pongBall.x < 0)
-        //{
-            //reset();
-        }*/
     }
 
     @Override
