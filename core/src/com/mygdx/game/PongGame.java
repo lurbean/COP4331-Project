@@ -31,7 +31,7 @@ public class PongGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		backgroundImage = new Texture("background.jpg");
+		backgroundImage = new Texture("background.png");
 		texturePause = new Texture("paused.png");
 		textureShade = new Texture("shade.png");
 		textureControls = new Texture("controls.png");

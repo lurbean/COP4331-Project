@@ -24,7 +24,7 @@ public class Ball extends ApplicationAdapter {
         this.SpeedMultiplier = settings.AllBallSpeed;
         batch = new SpriteBatch();
         this.game = game;
-        pingPong = new Texture("pongBall.jpg");
+        pingPong = new Texture("pongBall.png");
 
         //Rectangle (float x, float y, float width, float height)
         pongBall = new Rectangle(game.getWidth()/2, game.getHeight()/2, WIDTH, HEIGHT);
