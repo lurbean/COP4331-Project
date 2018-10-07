@@ -21,7 +21,7 @@ public class Player1WinWindow extends PongGame{
         HELLNOGETMEButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "You are a bitch");
+                JOptionPane.showMessageDialog(null, "Game Over");
             }
         });
     }
