@@ -16,7 +16,9 @@ public class PongGame extends ApplicationAdapter {
 	private Texture textureShade;
 	private Texture textureControls;
 	private Texture textureGameOver;
-	private Ball ball;
+	private Texture[] textureDigitArray;
+    private Texture[] textureRedDigitArray;
+    private Ball ball;
 	private Player player, player1;
 	private ComputerAI computerAI;
 	boolean gameOver = false;
@@ -24,6 +26,11 @@ public class PongGame extends ApplicationAdapter {
 	public SETTINGS settings;
 	private boolean paused;
 	long pauseToggleTime;
+	int gameTimer;
+	int secondCountdown;
+	int timerLocationLeftX;
+	int timerLocationRightX;
+	int timerLocationY;
 
 	public PongGame(SETTINGS settings) {
 		this.settings = settings;
@@ -37,6 +44,18 @@ public class PongGame extends ApplicationAdapter {
 		textureShade = new Texture("shade.png");
 		textureControls = new Texture("controls.png");
 		textureGameOver = new Texture("gameOver.png");
+		textureDigitArray = new Texture[10];
+        textureRedDigitArray = new Texture[10];
+		for (int i=0; i<10; i++)
+        {
+            textureDigitArray[i] = new Texture(String.valueOf(i) + ".png");
+            textureRedDigitArray[i] = new Texture("red" + String.valueOf(i) + ".png");
+        }
+		gameTimer = 99;
+        secondCountdown = 60;
+        timerLocationLeftX = WIDTH/2 - textureDigitArray[0].getWidth() - 10;
+        timerLocationRightX = WIDTH/2 + 10;
+        timerLocationY = HEIGHT - textureDigitArray[0].getHeight() - 25;
 
 		ball = new Ball(this, settings);
 		player = new Player(this, false, ball, settings);
@@ -57,12 +76,27 @@ public class PongGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		batch.begin();
-		if(gameOver == true)
-			batch.draw(textureGameOver, 0, 0);
-		else
-			batch.draw(backgroundImage, 0, 0);
-		batch.end();
+        batch.begin();
+        if(gameOver == true)
+            batch.draw(textureGameOver, 0, 0);
+        else {
+            batch.draw(backgroundImage, 0, 0);
+
+            secondCountdown--;
+            if (secondCountdown == 0) {
+                gameTimer--;
+                secondCountdown = 60;
+            }
+            if (gameTimer >= 0) {
+                batch.draw(textureDigitArray[gameTimer / 10], timerLocationLeftX, timerLocationY);
+                batch.draw(textureDigitArray[gameTimer % 10], timerLocationRightX, timerLocationY);
+            }
+            else {
+                batch.draw(textureRedDigitArray[(-gameTimer) / 10], timerLocationLeftX, timerLocationY);
+                batch.draw(textureRedDigitArray[(-gameTimer) % 10], timerLocationRightX, timerLocationY);
+            }
+        }
+        batch.end();
 
 		if(gameOver != true)
 		{

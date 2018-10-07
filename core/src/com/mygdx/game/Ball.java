@@ -61,7 +61,7 @@ public class Ball extends ApplicationAdapter {
     public void reset()
     {
         // Center the ball
-        pongBall.setPosition(game.getWidth()/2, game.getWidth()/2);
+        pongBall.setPosition(game.getWidth()/2, game.getHeight()/2);
 
         // Randomize ball velocity
         // X velocity range of 5-6, Y velocity range of 3-7 for test purposes
