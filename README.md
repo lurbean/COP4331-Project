@@ -46,6 +46,16 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 |As a user, I want to have some control over the ball's direction when my paddle hits it, so I have more control|3|2.5|The ball has a reflection velocity corresponding to the velocity of the paddle|
 |As a user, I want to know when I score points, so I can know who is winning|2|3|Each player has a health bar, which is lowered when a ball is missed|
 |As a developer, I want to be able to change paddle damage and speed, so I can create different characters|4|4|Varying amounts of damage can be dealt; paddles can move with different speeds|
+### Sprint #2: October 7, 2018
+| Story ID    | Story                                                                                                                                                          | Priority | Effort | Validation                                                                                                                                                                                                                                                                                                                                                        | Status          | Assigned Member | Pending Requirements |
+|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|-----------------|----------------------|
+|  0001       | As a user, I want a timer to show me the duration of the game, and I want something to ensure a game doesn't go on for too long                                | 3        | 3      |                                                                                                                                                                                                                                                                                                                                                                   | Near completion | Adam            | Req 0001.3              |
+|  Req 0001.1 | Implement a visual count-down timer from 99 to 0                                                                                                               | N/A      | N/A    | In Step Five, watch the timer and ensure it counts down once per second for each transition. If it does, this test passes                                                                                                                                                                                                                                         | Done            | Adam            |                      |
+| Req 0001.2  | Extend the visual count-down to track back up to 99, this time in red, to indicate the increasing deadliness of the game                                       | N/A      | N/A    | As above, but watch the transistion from 00 time to red 01 time and continues to increment. If successful, this test passes                                                                                                                                                                                                                                       | Done            | Adam            |                      |
+| Req 0001.3  | When the countdown reaches zero, begin increasing the ball speed and damage to ensure the game ends soon                                                       | N/A      | N/A    | Unfinished                                                                                                                                                                                                                                                                                                                                                        | In Progress     | Adam            |                      |
+| 0002        | As a user, I want to be able to customize the setting of the game, so I can play stronger characters, longer games, deadlier modes, etc.                       | 3        | 3      | Between steps two and three, modify settings parameters and then advance to step 5, where damage, health, speed, cooldowns, and hit speed are to be monitored. If each is affected at approximately the modification specified (note that the game runs in the integer domain, so a .75 multiplier applied to a 3 speed gives you a speed of 2), this test passes | Near completion | Adam            | Req 0002.2            |
+| Req 0002.1  | Add a settings set in the code base that allow a drop-down based settings menu to easily modify player health, damage, speed, ability cooldowns, and hit speed | N/A      | 3      | N/A                                                                                                                                                                                                                                                                                                                                                               | Done            | Adam            |                      |
+| Req 0002.2  | Add a settings menu that connects drop-down boxes to the recommended set of values                                                                             | N/A      | 1      | N/A                                                                                                                                                                                                                                                                                                                                                               | Not Started     | Alex            |                      |
 
 ## Burndown Chart
 ### Sprint #1: September 16, 2018
@@ -60,7 +70,28 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 - [Main Source Files](https://github.com/lurbean/COP4331-Project/tree/master/core/src/com/mygdx/game)
 
 ## Software Tests
-### TBA
+### Test Procedure
+All test procedures use the following skeleton:
+Step One: Run the application
+Step Two: Press "Settings"
+Step Three: Close the Settings window or press "Back to Main Menu"
+Step Four: Press "Play"
+Step Five: Any tests to be made within the confines of one round
+Step Six: Reduce one player's health to zero by hitting the ball into their side of the screen, as needed
+Step Seven: Either exit the program by choosing not to play again, go to Step Five by pressing "Play Again", or go to Step Two by pressing "New Game"
+### Primary Acceptance and Functionality Tests
+#### Test 1 - Launch and Open
+After Step One, advance directly to Step Four. If the program opens and displays the main menu (after Step One) and the game screen (after Step Four), this test passes.
+#### Test 2 - Move and Hit
+After Step Four, use the WASD keys and arrow keys to attempt to move the left and right paddles, respectively. Verify neither can leave the boundary of the game screen.
+Then move the paddles in front of the ball and verify the ball returns (as expected in Pong), and that the speed and direction are suitable to each player hitting the ball in turn.
+Without failures, this test passes.
+#### Test 3 - Damage and Win
+During Step Five, using the movement controls established in Test 2, manipulate the paddles such that the ball hits one player's side, and confirm that their health is reduced.
+After their health bar is reduced to nothing (it will be invisible), verify the game-end screen displays per Step Six.
+Without failures, this test passes.
+#### Test 4 - Replaying a Game [unmet]
+During Step Seven, attempt any option. It should function per its name and there should be no errors. Currently this test will not pass unless trying to close the game.
 
 ## Build Instructions
 ### Required Programs
