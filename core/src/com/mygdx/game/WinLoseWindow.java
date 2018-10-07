@@ -13,6 +13,9 @@
 //    private JButton YESButton2;
 //    private JButton HELLNOGETMEButton1;
 //
+
+// Never name anything like that again. What you're doing putting slurs in a university project is beyond me
+
 //    public Player1WinWindow() {
 //        YESButton.addActionListener(new ActionListener() {
 //            @Override

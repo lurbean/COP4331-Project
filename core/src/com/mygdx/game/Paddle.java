@@ -92,7 +92,9 @@ public class Paddle extends ApplicationAdapter {
         {
             if (game.getBall().getX() < 100)
             {
+                System.out.println("POWERSHOT!");
                 game.getBall().powerShot();
+                // initiate cool down  todo
             }
         }
 
@@ -111,7 +113,9 @@ public class Paddle extends ApplicationAdapter {
         {
             if (game.getBall().getX() > (game.getWidth() - 100))
             {
+               System.out.println("POWERSHOT!");
                game.getBall().powerShot();
+
             }
         }
 
