@@ -62,11 +62,16 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 ![Sprint #1 Burndown Chart](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint1_burndown.png "Sprint #1 Burndown Chart")
 
 ## Design Documents
-### Sprint #1: September 16, 2018: UML Diagram
+### Sprint #1: September 16, 2018
+#### Class Diagram
 ![Sprint #1 UML Diagram](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint1_uml.jpg "Sprint #1 UML Diagram")
 
-### Sprint #2: October 7, 2018: Class Diagram
+### Sprint #2: October 7, 2018
+#### Class Diagram
 ![Sprint #2 Class Diagram](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint2_class_uml.jpg "Sprint #2 Class Diagram")
+
+### Sprint #2: October 7, 2018
+#### Architecture Diagram
 ![Sprint #2 Architecture Diagram](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint2_architecture.jpg "Sprint #2 Architecture Diagram")
 
 ## Source Code
