@@ -12,8 +12,9 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 ### [4. Design Documents](#design-documents)
 ### [5. Source Code](#source-code)
 ### [6. Software Tests](#software-tests)
-### [7. Build Instructions](#build-instructions)
-### [8. Appendix](#appendix)
+### [7. Demonstration](#demonstration)
+### [8. Build Instructions](#build-instructions)
+### [9. Appendix](#appendix)
 
 ## Product Backlog
 | Story 	| Priority 	| Effort 	| Validation 	| Pending Requirements 	|
@@ -100,6 +101,13 @@ After their health bar is reduced to nothing (it will be invisible), verify the 
 Without failures, this test passes.
 #### Test 4 - Replaying a Game [unmet]
 During Step Seven, attempt any option. It should function per its name and there should be no errors. Currently this test will not pass unless trying to close the game.
+
+## Demonstration
+### Sprint #2: October 7, 2018
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=NFM6kI9OJIo&feature=youtu.be
+" target="_blank"><img src="http://img.youtube.com/vi/NFM6kI9OJIo&feature=youtu.be/0.jpg" 
+alt="Sprint #2 Demonstration" width="240" height="180" border="10" /></a>
+#### WARNING: POOR AUDIO QUALITY (Turn your speakers down.)
 
 ## Build Instructions
 ### Required Programs
