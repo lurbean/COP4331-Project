@@ -107,6 +107,7 @@ During Step Seven, attempt any option. It should function per its name and there
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=NFM6kI9OJIo&feature=youtu.be
 " target="_blank"><img src="http://img.youtube.com/vi/NFM6kI9OJIo&feature=youtu.be/0.jpg" 
 alt="Sprint #2 Demonstration" width="240" height="180" border="10" /></a>
+#### WARNING: POOR AUDIO QUALITY (Turn your speakers down.)
 
 ## Build Instructions
 ### Required Programs
