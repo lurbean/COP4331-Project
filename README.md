@@ -67,6 +67,7 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 
 ### Sprint #2: October 7, 2018: Class Diagram
 ![Sprint #2 Class Diagram](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint2_class_uml.jpg "Sprint #2 Class Diagram")
+![Sprint #2 Architecture Diagram](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint2_architecture.jpg "Sprint #2 Architecture Diagram")
 
 ## Source Code
 - [Desktop Launcher](https://github.com/lurbean/COP4331-Project/tree/master/desktop/src/com/mygdx/game/desktop)
