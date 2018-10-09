@@ -29,7 +29,7 @@ public class WinWindow extends PongGame{
 
         JFrame frame = new JFrame("Player 1 Won!");
         frame.setSize(500, 500);
-        if (LorW==1)
+        if (LorW==0)
             frame.setTitle("Player 2 Won!");
         frame.setContentPane(W_or_L.panel1);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
