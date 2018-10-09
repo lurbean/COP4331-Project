@@ -19,7 +19,7 @@ public class PongGame extends ApplicationAdapter {
 	private Texture[] textureDigitArray;
     private Texture[] textureRedDigitArray;
     private Ball ball;
-	private Player player, player1;
+	private Player player2, player1;
 	private ComputerAI computerAI;
 	boolean gameOver = false;
 	private Music backgroundMusic;
@@ -58,7 +58,7 @@ public class PongGame extends ApplicationAdapter {
         timerLocationY = HEIGHT - textureDigitArray[0].getHeight() - 25;
 
 		ball = new Ball(this, settings);
-		player = new Player(this, false, ball, settings);
+		player2 = new Player(this, false, ball, settings);
 		player1 = new Player(this, true, ball, settings);
 		computerAI = new ComputerAI(this, true, ball);
 
@@ -92,8 +92,8 @@ public class PongGame extends ApplicationAdapter {
                 if (gameTimer < 0 && ( (-gameTimer) % 10 == 1))
 				{
 					ball.additiveSpeed += 1;
-					player.character.damage += 1;
 					player1.character.damage += 1;
+					player2.character.damage += 1;
 				}
 
             }
@@ -111,14 +111,15 @@ public class PongGame extends ApplicationAdapter {
 		if(gameOver != true)
 		{
 			ball.render();
-			player.render();
 			player1.render();
+			player2.render();
 			//computerAI.render();
 
 			//Left Player
 			if (ball.getRectangle().x < 0) {
 				//computerAI.getCharacter().gotHit(player.getCharacter().getDamage());
-				player1.getCharacter().gotHit(player1.getCharacter().getDamage());
+				player1.getCharacter().gotHit(player2.getCharacter().getDamage());
+				player1.setAbilityOneUsedP1(false);
 				ball.reset();
 				if (player1.getCharacter().getHitPoints()==0) { //hit points=0 attempt to end game
 					//dispose(); see below
@@ -126,13 +127,44 @@ public class PongGame extends ApplicationAdapter {
 				}
 			}
 
+			if (player1.getAbilityOneUsedP1())
+			{
+				if (ball.getRectangle().x < 50){
+					if (ball.getRectangle().y <= (player1.getPaddle().getRectangle().getHeight()/2 + player1.getPaddle().getRectangle().y))
+					{
+						if (ball.getRectangle().y >= (player1.getPaddle().getRectangle().y - player1.getPaddle().getRectangle().getHeight()/2)){
+							ball.powerShot();
+							player1.setAbilityOneUsedP1(false);
+							System.out.println("YASSS1");
+						}
+					}
+
+				}
+
+			}
+
 			//Right Player
 			if (ball.getRectangle().x > WIDTH - ball.getRectangle().width) {
 				player1.getCharacter().gotHit(player1.getCharacter().getDamage());
+				player2.setAbilityOneUsedP2(false);
 				ball.reset();
 				if (player1.getCharacter().getHitPoints()==0) { //hit points=0 attempt to end game
 					//dispose(); TODO - this might be necessary for resetting, but it's currently a breaking change
 					WinWindow.lose_window(1);
+				}
+			}
+
+			if (player2.getAbilityOneUsedP2())
+			{
+				if (ball.getRectangle().x > (WIDTH - 80)){
+					if (ball.getRectangle().y <= (player2.getPaddle().getRectangle().getHeight()/2 + player2.getPaddle().getRectangle().y))
+					{
+						if (ball.getRectangle().y >= (player2.getPaddle().getRectangle().y - player2.getPaddle().getRectangle().getHeight()/2)){
+							ball.powerShot();
+							player2.setAbilityOneUsedP2(false);
+						}
+					}
+
 				}
 			}
 		}
@@ -156,7 +188,7 @@ public class PongGame extends ApplicationAdapter {
 		textureControls.dispose();
 		textureGameOver.dispose();
 		ball.dispose();
-		player.dispose();
+		player2.dispose();
 		player1.dispose();
 		//computerAI.dispose();
 		backgroundMusic.dispose();
@@ -193,4 +225,6 @@ public class PongGame extends ApplicationAdapter {
 		return paused;
 	}
 	public Ball getBall() { return ball; }
+	public Player getPlayer2() {return player2;}
+	public Player getPlayer1() {return player1;}
 }

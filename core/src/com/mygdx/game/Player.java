@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
 
+import com.badlogic.gdx.math.Rectangle;
+
 public class Player extends Control{
 
     public Character character;
@@ -39,5 +41,6 @@ public class Player extends Control{
    {
        return character;
    }
+   public Paddle getPaddle() { return paddle;}
 }
 

@@ -10,6 +10,8 @@ import com.badlogic.gdx.utils.Array;
 public class Control {
 
     public Paddle paddle;
+    boolean abilityOneUsedP1 = false;
+    boolean abilityOneUsedP2 = false;
 
 
 
@@ -37,13 +39,15 @@ public class Control {
             paddle.zeroMomentum();
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_1))
+        if (Gdx.input.isKeyPressed(Input.Keys.SLASH))
         {
-            paddle.useAbilityOneP2();
+            //paddle.useAbilityOneP2();
+            abilityOneUsedP2 = true;
+            
         }
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_2))
         {
-            paddle.useAbilityTwoP2();
+            //todo
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
@@ -69,11 +73,12 @@ public class Control {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.NUM_1))
         {
-            paddle.useAbilityOneP1();
+            //paddle.useAbilityOneP1();
+            abilityOneUsedP1 = true;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.NUM_2))
         {
-            paddle.useAbilityTwoP1();
+            //todo
         }
 
     }
@@ -98,11 +103,13 @@ public class Control {
                 if (pad.getAxis(XBox.AXIS_LEFT_Y) < -0.15)
                     paddle.movePaddleUp();
 
-                if (pad.getButton(XBox.BUTTON_A))
-                    paddle.useAbilityOneP1();
-                if (pad.getButton(XBox.BUTTON_B))
-                    paddle.useAbilityTwoP2();
+                if (pad.getButton(XBox.BUTTON_A)) {
+                    abilityOneUsedP1 = true;
 
+                }
+                if (pad.getButton(XBox.BUTTON_B)) {
+                    //todo
+                }
 
             }
         }
@@ -130,10 +137,26 @@ public class Control {
                     paddle.movePaddleUp();
                 }
                 if (pad.getButton(XBox.BUTTON_A))
-                    paddle.useAbilityOneP2();
+                    abilityOneUsedP2 = true;
                 if (pad.getButton(XBox.BUTTON_B))
-                    paddle.useAbilityTwoP2();
+                {}
+
             }
         }
     }
+
+    // Getters and Setters
+
+    public void setAbilityOneUsedP1(boolean yesorno)
+    {
+        abilityOneUsedP1 = yesorno;
+    }
+    public boolean getAbilityOneUsedP1()
+    {
+        return abilityOneUsedP1;
+    }
+    public void setAbilityOneUsedP2(boolean yesorno) { abilityOneUsedP2 = yesorno; }
+    public boolean getAbilityOneUsedP2() { return abilityOneUsedP2; }
 }
+
+
