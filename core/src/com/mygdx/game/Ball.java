@@ -111,10 +111,10 @@ public class Ball extends ApplicationAdapter {
     {
         float x = game.getBall().getXSpeed();
         float y = game.getBall().getYSpeed();
-        float z = x/y;System.out.println("YASSS2");
+        float z = x/y;
 
-        game.getBall().setXSpeed(12);
-        game.getBall().setYSpeed(12/z);
+        game.getBall().setXSpeed(12f);
+        game.getBall().setYSpeed(12f/z);
 
     }
     // Under Construction: Patrick

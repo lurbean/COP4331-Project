@@ -41,7 +41,7 @@ public class Control {
 
         if (Gdx.input.isKeyPressed(Input.Keys.SLASH))
         {
-            //paddle.useAbilityOneP2();
+
             abilityOneUsedP2 = true;
             
         }
@@ -147,16 +147,15 @@ public class Control {
 
     // Getters and Setters
 
-    public void setAbilityOneUsedP1(boolean yesorno)
+    public void setAbilityOneUsed(boolean yesorno)
     {
         abilityOneUsedP1 = yesorno;
     }
-    public boolean getAbilityOneUsedP1()
+    public boolean getAbilityOneUsed()
     {
         return abilityOneUsedP1;
     }
-    public void setAbilityOneUsedP2(boolean yesorno) { abilityOneUsedP2 = yesorno; }
-    public boolean getAbilityOneUsedP2() { return abilityOneUsedP2; }
+
 }
 
 

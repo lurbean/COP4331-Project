@@ -31,6 +31,8 @@ public class PongGame extends ApplicationAdapter {
 	int timerLocationLeftX;
 	int timerLocationRightX;
 	int timerLocationY;
+	int coolDownTimerP1A1 = 0;
+	int coolDownTimerP2A1 = 0;
 
 	public PongGame(SETTINGS settings) {
 		this.settings = settings;
@@ -119,7 +121,9 @@ public class PongGame extends ApplicationAdapter {
 			if (ball.getRectangle().x < 0) {
 				//computerAI.getCharacter().gotHit(player.getCharacter().getDamage());
 				player1.getCharacter().gotHit(player2.getCharacter().getDamage());
-				player1.setAbilityOneUsedP1(false);
+				player1.setAbilityOneUsed(false);
+				coolDownTimerP1A1 = 0;
+				coolDownTimerP2A1 = 0;
 				ball.reset();
 				if (player1.getCharacter().getHitPoints()==0) { //hit points=0 attempt to end game
 					//dispose(); see below
@@ -127,15 +131,17 @@ public class PongGame extends ApplicationAdapter {
 				}
 			}
 
-			if (player1.getAbilityOneUsedP1())
+			if (player1.getAbilityOneUsed() && coolDownTimerP1A1 == 0)
 			{
 				if (ball.getRectangle().x < 50){
 					if (ball.getRectangle().y <= (player1.getPaddle().getRectangle().getHeight()/2 + player1.getPaddle().getRectangle().y))
 					{
 						if (ball.getRectangle().y >= (player1.getPaddle().getRectangle().y - player1.getPaddle().getRectangle().getHeight()/2)){
 							ball.powerShot();
-							player1.setAbilityOneUsedP1(false);
-							System.out.println("YASSS1");
+							player1.setAbilityOneUsed(false);
+							System.out.println("P1: Ability one successfully used!");
+							// Cooldown timer initiate here.
+							coolDownTimerP1A1 = 600;
 						}
 					}
 
@@ -146,7 +152,9 @@ public class PongGame extends ApplicationAdapter {
 			//Right Player
 			if (ball.getRectangle().x > WIDTH - ball.getRectangle().width) {
 				player1.getCharacter().gotHit(player1.getCharacter().getDamage());
-				player2.setAbilityOneUsedP2(false);
+				player2.setAbilityOneUsed(false);
+				coolDownTimerP1A1 = 0;
+				coolDownTimerP2A1 = 0;
 				ball.reset();
 				if (player1.getCharacter().getHitPoints()==0) { //hit points=0 attempt to end game
 					//dispose(); TODO - this might be necessary for resetting, but it's currently a breaking change
@@ -154,19 +162,35 @@ public class PongGame extends ApplicationAdapter {
 				}
 			}
 
-			if (player2.getAbilityOneUsedP2())
+			if (player2.getAbilityOneUsed() && coolDownTimerP2A1 == 0)
 			{
 				if (ball.getRectangle().x > (WIDTH - 80)){
 					if (ball.getRectangle().y <= (player2.getPaddle().getRectangle().getHeight()/2 + player2.getPaddle().getRectangle().y))
 					{
 						if (ball.getRectangle().y >= (player2.getPaddle().getRectangle().y - player2.getPaddle().getRectangle().getHeight()/2)){
 							ball.powerShot();
-							player2.setAbilityOneUsedP2(false);
+							player2.setAbilityOneUsed(false);
+							System.out.println("P2: Ability one successfully used!");
+							// Cooldown timer initiate here.
+							coolDownTimerP2A1 = 600;
 						}
 					}
 
 				}
 			}
+		}
+
+		if (coolDownTimerP1A1 > 0)
+		{
+			coolDownTimerP1A1--;
+			player1.setAbilityOneUsed(false);
+			player2.setAbilityOneUsed(false);
+		}
+		if (coolDownTimerP2A1 > 0)
+		{
+			coolDownTimerP2A1--;
+			player1.setAbilityOneUsed(false);
+			player2.setAbilityOneUsed(false);
 		}
 
 		if (paused)
