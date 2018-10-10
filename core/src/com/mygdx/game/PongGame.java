@@ -151,12 +151,12 @@ public class PongGame extends ApplicationAdapter {
 
 			//Right Player
 			if (ball.getRectangle().x > WIDTH - ball.getRectangle().width) {
-				player1.getCharacter().gotHit(player1.getCharacter().getDamage());
+				player2.getCharacter().gotHit(player1.getCharacter().getDamage());
 				player2.setAbilityOneUsed(false);
 				coolDownTimerP1A1 = 0;
 				coolDownTimerP2A1 = 0;
 				ball.reset();
-				if (player1.getCharacter().getHitPoints()==0) { //hit points=0 attempt to end game
+				if (player2.getCharacter().getHitPoints()==0) { //hit points=0 attempt to end game
 					//dispose(); TODO - this might be necessary for resetting, but it's currently a breaking change
 					WinWindow.lose_window(1);
 				}
