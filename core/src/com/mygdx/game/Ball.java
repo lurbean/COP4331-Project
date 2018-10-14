@@ -1,20 +1,28 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import java.util.Random;
 
 public class Ball extends ApplicationAdapter {
 
     private final static int WIDTH = 25, HEIGHT = 25; //Dimensions of the Ball.
+    private static final int FRAME_COLS = 4, FRAME_ROWS = 2;
     public float xv = 5, yv = 5; //The ball's default velocity.
 
     private SpriteBatch batch;
     private PongGame game;
     private Rectangle pongBall;
     private Texture pingPong;
+    Animation<TextureRegion> ballAnimation; // Must declare frame type (TextureRegion)
+    Texture ballSheet;
+    // A variable for tracking elapsed time for the animation
+    float stateTime;
 
     private Random RNG = new Random();
     public int SpeedMultiplier;
@@ -27,6 +35,23 @@ public class Ball extends ApplicationAdapter {
         this.game = game;
         pingPong = new Texture("pongBall.png");
 
+        //Animation
+        ballSheet = new Texture("ballSpriteSheet.png");
+        TextureRegion[][] tmp = TextureRegion.split(ballSheet,
+                ballSheet.getWidth() / FRAME_COLS,
+                ballSheet.getHeight() / FRAME_ROWS);
+
+        TextureRegion[] ballFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
+        int index = 0;
+        for (int i = 0; i < FRAME_ROWS; i++) {
+            for (int j = 0; j < FRAME_COLS; j++) {
+                ballFrames[index++] = tmp[i][j];
+            }
+        }
+
+        ballAnimation = new Animation<TextureRegion>(0.025f, ballFrames);
+        stateTime = 0f;
+
         //Rectangle (float x, float y, float width, float height)
         pongBall = new Rectangle(game.getWidth()/2, game.getHeight()/2, WIDTH, HEIGHT);
 
@@ -35,8 +60,14 @@ public class Ball extends ApplicationAdapter {
     @Override
     public void render()
     {
+        stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
+
+        // Get current frame of animation for the current stateTime
+        TextureRegion currentFrame = ballAnimation.getKeyFrame(stateTime, true);
+
         batch.begin();
-        batch.draw(pingPong, pongBall.x, pongBall.y);
+        //batch.draw(pingPong, pongBall.x, pongBall.y);
+        batch.draw(currentFrame, pongBall.x, pongBall.y); // Draw current frame at (50, 50)
         batch.end();
 
         if (game.getPaused())
@@ -72,6 +103,7 @@ public class Ball extends ApplicationAdapter {
     public void dispose ()
     {
         pingPong.dispose();
+        ballSheet.dispose();
     }
 
     public void reset()
