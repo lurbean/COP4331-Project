@@ -36,16 +36,29 @@ public class DesktopLauncher {
     private JComboBox P1AttackDamageMod;
     private JComboBox P1HitSpeedMod;
     private JComboBox P1CooldownMod;
+    private JLabel LeftCharacterImage;
+    private JComboBox CharOneSelect;
+    private JComboBox CharTwoSelect;
+    private JPanel CharacterSelect;
+    private JLabel LeftCharacterPassive;
+    private JLabel LeftCharacterAbility;
+    private JLabel LeftCharacterUltimate;
+    private JLabel RightCharacterPassive;
+    private JLabel RightCharacterAbility;
+    private JLabel RightCharacterUltimate;
+    private JLabel RightCharacterImage;
 
-    private int PlayerAttack[] = {50, 75, 100, 125, 150, 200, 300};
+    private ImageIcon CharSelect[] = {new ImageIcon("1.png"), new ImageIcon("2.png"), new ImageIcon("3.png"), new ImageIcon("4.png")};
+
+    private int PlayerAttack[] = {50, 75, 100, 125, 150, 200};
     private int PlayerHealth[] = {0, 25, 50, 100, 150, 200, 300, 500};
     private int PlayerPaddle[] = {50, 75, 100, 125, 150, 200};
     private int PlayerBallHit[] = {50, 75, 100, 125, 150, 175, 200};
     private int PlayerCooldown[] = {50, 75, 100, 125, 150, 0};
 
     private int GameDuration[] = {0, 30, 45, 60, 75, 99};
-    private int GlobalHealth[] = {0, 50, 100, 200, 300, 500};
-    private int GlobalBall[] = {50, 100, 150, 200};
+    private int GlobalHealth[] = {0, 50, 100, 150, 200, 300, 500};
+    private int GlobalBall[] = {50, 75, 100, 150, 200};
     private int GlobalCooldown[] = {50, 75, 100, 125, 150, 0};
     private int temp;
 
@@ -62,7 +75,7 @@ public class DesktopLauncher {
                 config.title = "Pong"; //Title of Window
                 config.width = 800;
                 config.height = 580;
-                settings.DisplaySettings();
+                // settings.DisplaySettings(); Settings test function
                 new LwjglApplication(new PongGame(settings), config);
             }
         });
@@ -177,6 +190,20 @@ public class DesktopLauncher {
                 temp = P2CooldownMod.getSelectedIndex();
                 temp = PlayerCooldown[temp];
                 settings.P2Cooldown = temp;
+            }
+        });
+        CharOneSelect.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                temp = CharOneSelect.getSelectedIndex();
+                LeftCharacterImage.setIcon(CharSelect[temp]);
+            }
+        });
+        CharTwoSelect.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                temp = CharTwoSelect.getSelectedIndex();
+                RightCharacterImage.setIcon(CharSelect[temp]);
             }
         });
     }
