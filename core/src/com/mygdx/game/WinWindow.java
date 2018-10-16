@@ -25,11 +25,11 @@ public class WinWindow extends PongGame{
         });
     }
 
-    public static void lose_window(int LorW) {
+    public static void lose_window(int playerOneWon) {
 
         JFrame frame = new JFrame("Player 1 Won!");
         frame.setSize(500, 500);
-        if (LorW==1)
+        if (playerOneWon==0)
             frame.setTitle("Player 2 Won!");
         frame.setContentPane(W_or_L.panel1);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

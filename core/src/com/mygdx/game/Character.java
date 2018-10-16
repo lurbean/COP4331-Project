@@ -4,42 +4,45 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Intersector;
 
-public class Character {
+abstract class Character {
 
-
-    private Ball ball;
-    private Paddle paddle;
-    private PongGame game;
-    private Texture healthBar;
-    private SpriteBatch batch;
-    private int width = 270;
-    private int hitPoints;
+    public Ball ball;
+    public Paddle paddle;
+    public PongGame game;
+    public Texture healthBar;
+    public SpriteBatch batch;
+    public Keyboard keyboard;
+    public XBoxController controller;
+    public int width = 270;
+    public int hitPoints;
     public int damage;
-    private int speed;
-    private boolean side;
-    private float barX;
-    private float barSize;
-    private float modifier;
+    public int speed;
+    public boolean side;
+    public float barX;
+    public float barSize;
+    public float modifier;
+    public int controlMode; // 0 = controller, 1 = keyboard, 2 = uncontrolled
     Sound sound;
 
-    Character(PongGame game, Ball ball, Paddle paddle, int hP, int damage, int speed, boolean side, SETTINGS settings)
+    Character(PongGame game, Ball ball, Paddle paddle, int hP, int damage, int speed, int paddleSpeed, boolean side, SETTINGS settings)
     {
         if (side)
         {
             this.hitPoints = (hP * settings.P1HealthMod) / 100;
             this.damage = (damage * settings.P1Damage) / 100;
             this.speed = (speed * settings.P1HitSpeed) / 100;
+            paddleSpeed = (paddleSpeed * settings.P1PaddleSpeed) / 100;
         }
         else
         {
             this.hitPoints = (hP * settings.P2HealthMod ) / 100;
             this.damage = (damage * settings.P2Damage) / 100;
             this.speed = (speed * settings.P2HitSpeed) / 100;
+            paddleSpeed = (paddleSpeed * settings.P2PaddleSpeed) / 100;
         }
         this.hitPoints = (this.hitPoints * settings.AllHealthMod) / 100;
-        this.paddle = paddle;
+        this.paddle = new Paddle(game, side, paddleSpeed);;
         this.game = game;
         this.ball = ball;
         this.side = side;
@@ -59,77 +62,23 @@ public class Character {
         {
             barX = game.getWidth() - 60 - barSize;
         }
-
-
     }
-
-    public void render()
+    public void drawHealth()
     {
         batch.begin();
         batch.draw(healthBar, barX, game.getHeight() + 20, barSize, 25);
         batch.end();
-
-        paddle.render();
-
-        //If the ball hits the paddle, it will bounce back.
-        if(Intersector.overlaps(paddle.getRectangle(), ball.getRectangle()))
-        { // Don't code inside this if block unless you're very sure. Use the next if block
-            if ((ball.xv > 0 && !side) || (ball.xv < 0 && side))
-            {
-                ball.switchVelocity(speed, paddle.momentum);
-                sound.play(1.0f);
-            }
-        }
-
-        //If a character dies, the game ends.
-        if(hitPoints <= 0)
-        {
-            game.endGame();
-        }
-
     }
 
-    public void gotHit(int dmg)
-    {
-        hitPoints -= dmg;
-        barSize -= dmg*modifier;
-
-        if(side == true)
-        {
-            barX += dmg*modifier; //Moves bar as it's getting smaller.
-        }
-    }
-
-    public void useAbilityOne()
-    {
-        if (game.getPaused())
-        {
-            return;
-        }
-        //Arbitrary system out ability
-        System.out.println("Ability1 Used!");
-    }
-
-    public void useAbilityTwo()
-    {
-        if (game.getPaused())
-        {
-            return;
-        }
-
-        System.out.println("Ability2 Used!");
-    }
-
-
-    public int getDamage()
-    {
-        return damage;
-    }
-
-    public int getHitPoints()
-    {
-        return hitPoints;
-    }
-
-    public boolean getSide() { return side; }
+    abstract boolean doUnpauseGame();
+    abstract void activeAbility();
+    abstract void passiveAbility();
+    abstract void ultimateAbility();
+    abstract void checkCollision();
+    abstract void characterAssetSetup();
+    abstract void render();
+    abstract void gotHit(int dmg);
+    abstract int getDamage();
+    abstract int getHitPoints();
+    abstract void checkPauseRequest();
 }

@@ -9,26 +9,27 @@ import com.badlogic.gdx.math.Rectangle;
 public class Paddle extends ApplicationAdapter {
 
     private final static int WIDTH = 25, HEIGHT = 100; //Dimensions of the Paddle.
-    public int yv = 8; //The paddle's velocity.
+    public int yv; //The paddle's velocity.
 
     private SpriteBatch batch;
     private PongGame game;
-    private Rectangle paddle;
+    private Rectangle paddlePosition;
     private Texture paddleTexture;
     // NOTE: Floats must be signed with "f" or they will be interpreted as a double
     public Float momentum = 0f;
 
-    public Paddle(PongGame game, boolean side)
+    public Paddle(PongGame game, boolean side, int paddleSpeed)
     {
+        yv = paddleSpeed;
         batch = new SpriteBatch();
         this.game = game;
         paddleTexture = new Texture("paddleOne.jpg");
 
         //Rectangle (float x, float y, float width, float height)
         if(side)
-            paddle = new Rectangle(WIDTH, (game.getHeight()/2 - HEIGHT/2), WIDTH, HEIGHT);
+            paddlePosition = new Rectangle(WIDTH, (game.getHeight()/2 - HEIGHT/2), WIDTH, HEIGHT);
         else
-            paddle = new Rectangle((game.getWidth() - 2*WIDTH), (game.getHeight()/2 - HEIGHT/2), WIDTH, HEIGHT);
+            paddlePosition = new Rectangle((game.getWidth() - 2*WIDTH), (game.getHeight()/2 - HEIGHT/2), WIDTH, HEIGHT);
 
 
     }
@@ -37,7 +38,7 @@ public class Paddle extends ApplicationAdapter {
     public void render()
     {
         batch.begin();
-        batch.draw(paddleTexture, paddle.x, paddle.y);
+        batch.draw(paddleTexture, paddlePosition.x, paddlePosition.y);
         batch.end();
     }
 
@@ -57,8 +58,8 @@ public class Paddle extends ApplicationAdapter {
             momentum = 1f + momentum * .9f;
 
         //Checks to see if the paddle will move out of bounds.
-        if((paddle.y + yv > 0) && paddle.y + yv < game.getHeight() - HEIGHT)
-            paddle.y += yv;
+        if((paddlePosition.y + yv > 0) && paddlePosition.y + yv < game.getHeight() - HEIGHT)
+            paddlePosition.y += yv;
     }
 
     public void movePaddleDown()
@@ -76,13 +77,8 @@ public class Paddle extends ApplicationAdapter {
         else
             momentum = -1f + momentum * .9f;
 
-        if(paddle.y + yv > 0 && paddle.y + yv < game.getHeight() - HEIGHT)
-            paddle.y += yv;
-    }
-
-    public void zeroMomentum()
-    {
-        this.momentum = 0f;
+        if(paddlePosition.y + yv > 0 && paddlePosition.y + yv < game.getHeight() - HEIGHT)
+            paddlePosition.y += yv;
     }
 
     public void pause()
@@ -96,10 +92,9 @@ public class Paddle extends ApplicationAdapter {
         paddleTexture.dispose();
     }
 
-    //Getters/Setters
     public Rectangle getRectangle()
     {
-        return paddle;
+        return paddlePosition;
     }
 
 

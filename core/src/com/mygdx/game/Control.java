@@ -1,161 +1,64 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.Controller;
-import com.badlogic.gdx.controllers.*;
 import com.badlogic.gdx.utils.Array;
 
+// Notes:
+// Keyboard supports keys QWE - ASD - ZXC - RF - SPACE - ARROW KEYS
+// and the modifiers left control and right control
+// Controller supports all but the back button and D-Pad
 public class Control {
-
-    public Paddle paddle;
-    boolean abilityOneUsedP1 = false;
-    boolean abilityOneUsedP2 = false;
-
-
-
-
-    Control(PongGame game, boolean side)
-    {
-        this.paddle = new Paddle(game, side);
-
-    }
-
-    public void  keyboard2()
-    {
-        //Paddle only moves up and down, so we only need to update the y value.
-        if(Gdx.input.isKeyPressed(Input.Keys.UP))
-        {
-            paddle.movePaddleUp();
-        }
-        else if(Gdx.input.isKeyPressed(Input.Keys.DOWN))
-        {
-            paddle.movePaddleDown();
-        }
-
-        if(!Gdx.input.isKeyPressed(Input.Keys.UP) && !Gdx.input.isKeyPressed(Input.Keys.DOWN))
-        {
-            paddle.zeroMomentum();
-        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.SLASH))
-        {
-
-            abilityOneUsedP2 = true;
-            
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_2))
-        {
-            //todo
-        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
-        {
-            paddle.pause();
-        }
-    }
-
-    public void  keyboard()
-    {
-        //Paddle only moves up and down, so we only need to update the y value.
-        if(Gdx.input.isKeyPressed(Input.Keys.W))
-        {
-            paddle.movePaddleUp();
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.S))
-        {
-            paddle.movePaddleDown();
-        }
-        if(!Gdx.input.isKeyPressed(Input.Keys.W) && !Gdx.input.isKeyPressed(Input.Keys.S))
-        {
-            paddle.zeroMomentum();
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.NUM_1))
-        {
-            //paddle.useAbilityOneP1();
-            abilityOneUsedP1 = true;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.NUM_2))
-        {
-            //todo
-        }
-
-    }
-
-    public void xbox()
-    {
-
+    // state 0 -> two controllers, 1 -> left player using keyboard, 2 -> right player using keyboard, 3 -> left using keyboard right inactive
+    Control(int state, Player player1, Player player2) {
         Array<Controller> controllers = Controllers.getControllers();
-        if(controllers.size==0){
-            //there are no controllers...
-        } else {
-            Controller pad = Controllers.getControllers().get(0);
-
-            if (pad != null)
-            {
-                if (pad.getButton(XBox.BUTTON_START))
-                    paddle.pause();
-
-                if (pad.getAxis(XBox.AXIS_LEFT_Y) > 0.15)
-                    paddle.movePaddleDown();
-
-                if (pad.getAxis(XBox.AXIS_LEFT_Y) < -0.15)
-                    paddle.movePaddleUp();
-
-                if (pad.getButton(XBox.BUTTON_A)) {
-                    abilityOneUsedP1 = true;
-
-                }
-                if (pad.getButton(XBox.BUTTON_B)) {
-                    //todo
-                }
-
+        System.out.println(controllers.size);
+        if (state == 3)
+        {
+            player1.character.controlMode = 1;
+            player2.character.controlMode = 9;
+            player1.character.keyboard = new Keyboard();
+        }
+        else if (controllers.size == 0) {
+            System.out.println("Not enough controllers - Entering player one only mode");
+            player1.character.controlMode = 1;
+            player2.character.controlMode = 9;
+            player1.character.keyboard = new Keyboard();
+        }
+        else {
+            switch (state) {
+                case 0: //two controllers
+                    if (controllers.size == 1) {
+                        System.out.println("There are not enough controllers. Player two will play with the keyboard.");
+                        state = 1;
+                    } else {
+                        player1.character.controller = new XBoxController(controllers.get(0));
+                        player2.character.controller = new XBoxController(controllers.get(1));
+                        player1.character.controlMode = 0;
+                        player2.character.controlMode = 0;
+                        break;
+                    }
+                case 1:
+                    player1.character.keyboard = new Keyboard();
+                    player2.character.controller = new XBoxController(controllers.get(0));
+                    player1.character.controlMode = 1;
+                    player2.character.controlMode = 0;
+                    break;
+                case 2:
+                    player1.character.controller = new XBoxController(controllers.get(0));
+                    player2.character.keyboard = new Keyboard();
+                    player1.character.controlMode = 0;
+                    player2.character.controlMode = 1;
+                    break;
             }
         }
     }
-
-    public void xbox2()
-    {
-        Array<Controller> controllers = Controllers.getControllers();
-        if(controllers.size==0){
-            //there are no controllers...
-        } else if (controllers.size == 2){
-            Controller pad = Controllers.getControllers().get(1);
-
-            if (pad != null)
-            {
-                if (pad.getButton(XBox.BUTTON_START))
-                    paddle.pause();
-
-                if (pad.getAxis(XBox.AXIS_LEFT_Y) > 0.15)
-                {
-                    paddle.movePaddleDown();
-                }
-                if (pad.getAxis(XBox.AXIS_LEFT_Y) < -0.15)
-                {
-                    paddle.movePaddleUp();
-                }
-                if (pad.getButton(XBox.BUTTON_A))
-                    abilityOneUsedP2 = true;
-                if (pad.getButton(XBox.BUTTON_B))
-                {}
-
-            }
-        }
-    }
-
-    // Getters and Setters
-
-    public void setAbilityOneUsed(boolean yesorno)
-    {
-        abilityOneUsedP1 = yesorno;
-    }
-    public boolean getAbilityOneUsed()
-    {
-        return abilityOneUsedP1;
-    }
-
 }
+    /*
+            paddle.movePaddleUp();
+            paddle.movePaddleDown();
+        if(!Gdx.input.isKeyPressed(Input.Keys.UP) && !Gdx.input.isKeyPressed(Input.Keys.DOWN))
+            paddle.zeroMomentum();
 
-
+            paddle.pause();
+    */

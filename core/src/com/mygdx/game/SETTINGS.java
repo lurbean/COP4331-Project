@@ -1,6 +1,10 @@
 package com.mygdx.game;
 
+import java.lang.reflect.Field;
+
 public class SETTINGS {
+    public int P1Character = 0;
+    public int P2Character = 0;
     public int P1HealthMod = 100;
     public int P1PaddleSpeed = 100;
     public int P1Damage = 100;
@@ -15,11 +19,14 @@ public class SETTINGS {
     public int AllBallSpeed = 100;
     public int AllHealthMod = 100;
     public int AllCooldown = 100;
+    public int State = 0;
 
 
     public void DisplaySettings()
     {
-        System.out.println("The set of settings selected are below, in the order found in the SETTINGS class");
+        System.out.println("The set of settings selected are below, in the order shown");
+        System.out.println(P1Character);
+        System.out.println(P2Character);
         System.out.println(P1HealthMod);
         System.out.println(P1PaddleSpeed);
         System.out.println(P1Damage);
@@ -34,5 +41,6 @@ public class SETTINGS {
         System.out.println(AllBallSpeed);
         System.out.println(AllHealthMod);
         System.out.println(AllCooldown);
+        System.out.println(State);
     }
 }

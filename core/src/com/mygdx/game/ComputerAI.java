@@ -1,17 +1,18 @@
 package com.mygdx.game;
 
-public class ComputerAI extends Control{
+public class ComputerAI{
 
 
     private Ball ball;
     private Character character;
     private MiniPID pid;
+    private Paddle paddle;
 
-    public ComputerAI(PongGame game, boolean side, Ball ball)
+    public ComputerAI(PongGame game, boolean side, Ball ball, SETTINGS settings)
     {
-        super(game, side);
+        //super(game, side);
 
-        this.character = new Character(game, ball, paddle,15, 5, 5, side, new SETTINGS());
+        //this.character = new BasicCharacter(game, ball, paddle, side, settings, 15, 5, 5, side);
         this.ball = ball;
         this.pid = new MiniPID(0.7, 0.04, 0.5);
     }

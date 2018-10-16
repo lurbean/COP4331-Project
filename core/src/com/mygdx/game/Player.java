@@ -1,46 +1,56 @@
 package com.mygdx.game;
 
-
-import com.badlogic.gdx.math.Rectangle;
-
-public class Player extends Control{
+public class Player{
 
     public Character character;
-    private Ball ball;
+    public Ball ball;
+    private int charSelect;
+    public Paddle paddle;
 
     public Player(PongGame game, boolean side, Ball ball, SETTINGS settings)
     {
-        super(game, side);
         this.ball = ball;
-        this.character = new Character(game, ball, paddle,15, 5, 7, side, settings);
+        selectCharacter(side, settings, game);
+        this.paddle = character.paddle;
+
         if (side)
-            paddle.yv = ( paddle.yv * settings.P1PaddleSpeed) / 100;
+            paddle.yv = (paddle.yv * settings.P1PaddleSpeed) / 100;
         else
-            paddle.yv = ( paddle.yv * settings.P2PaddleSpeed) / 100;
+            paddle.yv = (paddle.yv * settings.P2PaddleSpeed) / 100;
     }
 
-    public void render() {
+    public void render()
+    {
         character.render();
-        if (character.getSide()) {
-            xbox();
-            keyboard();
-        }
-        if (!character.getSide()) {
-            xbox2();
-            keyboard2();
+    }
+
+    private void selectCharacter(boolean side, SETTINGS settings, PongGame game)
+    {
+        if (side)
+            charSelect = settings.P1Character;
+        else
+            charSelect = settings.P2Character;
+        switch (charSelect)
+        {
+            case (0):
+                this.character = new BasicCharacter(game, ball, paddle, side, settings);
+                break;
+            case (1):    //Unimplemented
+                break;
+            case (2):
+                break;
+            case (3):
+                break;
         }
     }
 
-
+    public boolean doUnpause()
+    {
+        return this.character.doUnpauseGame();
+    }
     public void dispose()
     {
         paddle.dispose();
     }
-
-   public Character getCharacter()
-   {
-       return character;
-   }
-   public Paddle getPaddle() { return paddle;}
 }
 
