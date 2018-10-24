@@ -83,7 +83,7 @@ abstract class Character {
     public int getNewCooldownInFrames(int baseCooldownInSeconds)
     {
         if (abilityCooldownModifier == 0)
-
+            return -100;
         return baseCooldownInSeconds * abilityCooldownModifier / 100;
     }
 
