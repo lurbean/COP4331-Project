@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.mygdx.game.desktop.DesktopLauncher">
   <tabbedpane id="eb88" binding="Tabbed">
     <constraints>
-      <xy x="129" y="156" width="856" height="612"/>
+      <xy x="129" y="156" width="860" height="612"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -628,7 +628,7 @@
               <model>
                 <item value="Basic Character"/>
                 <item value="Adam Character"/>
-                <item value="TODO"/>
+                <item value="Magician Character"/>
                 <item value="TODO"/>
               </model>
             </properties>

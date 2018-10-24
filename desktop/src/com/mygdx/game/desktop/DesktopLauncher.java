@@ -56,11 +56,21 @@ public class DesktopLauncher {
     private BufferedImage mainMenuImage;
 
     private ImageIcon CharSelect[] = {new ImageIcon("1.png"), new ImageIcon("2.png"), new ImageIcon("3.png"), new ImageIcon("4.png")};
-    private String abilities[] = {"The basic character has no ability", "Press 'E/right trigger' to deploy your shield; control it with 'arrow keys/right thumb stick'"};
-    private String passives[] = {"And no passive", "No passive yet"};
-    private String ultimates[] = {"And no ultimate", "Press 'R'/left trigger' to summon two companions"};
-    private String KBControls[] = {"Keyboard controls: WS to move, Spacebar to pause", "Keyboard controls: WS to move, Spacebar to pause"};
-    private String XBoxControls[] = {"XBox controls: Left stick up and down to move, Start to pause", "XBox controls: Left stick up and down to move, Start to pause"};
+    private String abilities[] = {"The basic character has no ability",
+            "Press 'E/right trigger' to deploy your shield; control it with 'arrow keys/right thumb stick'",
+            "Press 'E/right trigger' to create a fake ball the next time the paddle hits the ball."};
+    private String passives[] = {"And no passive",
+            "No passive yet",
+            "The Magician has no passives."};
+    private String ultimates[] = {"And no ultimate",
+            "Press 'R'/left trigger' to summon two companions",
+            "When it's implemented, the magician will summon up to 10 fake balls as decoys."};
+    private String KBControls[] = {"Keyboard controls: WS to move, Spacebar to pause",
+            "Keyboard controls: WS to move, Spacebar to pause",
+            "Keyboard controls: WS to move, Spacebar to pause"};
+    private String XBoxControls[] = {"XBox controls: Left stick up and down to move, Start to pause",
+            "XBox controls: Left stick up and down to move, Start to pause",
+            "XBox controls: Left stick up and down to move, Start to pause"};
 
     private int PlayerAttack[] = {50, 75, 100, 125, 150, 200};
     private int PlayerHealth[] = {0, 25, 50, 100, 150, 200, 300, 500};
@@ -250,7 +260,7 @@ public class DesktopLauncher {
             @Override
             public void actionPerformed(ActionEvent e) {
                 temp = CharOneSelect.getSelectedIndex();
-                if (temp > 1) //TODO: once you implement a character, add your portrait and ability descriptions and then add " || temp != 1", etc.
+                if (temp > 2) //TODO: once you implement a character, add your portrait and ability descriptions and then add " || temp != 1", etc.
                     return;
                 LeftCharacterImage.setIcon(CharSelect[temp]);
                 LeftCharacterAbility.setText(abilities[temp]);
