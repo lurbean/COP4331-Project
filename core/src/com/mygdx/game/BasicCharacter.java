@@ -70,13 +70,13 @@ public class BasicCharacter extends Character{
 
     public void checkCollision()
     {
+        // If the ball is moving away from you, don't hit it again
+        if ( !( (ball.xv > 0 && !side) || (ball.xv < 0 && side) ) )
+            return;
         if(Intersector.overlaps(paddle.getRectangle(), ball.getRectangle()))
-        { // Don't code inside this if block unless you're very sure. Use the next if block
-            if ((ball.xv > 0 && !side) || (ball.xv < 0 && side))
-            {
-                ball.switchVelocity(speed, paddle.momentum);
-                sound.play(1.0f);
-            }
+        {
+            ball.switchVelocity(hitSpeed, paddle.momentum);
+            paddleHitSound.play(1.0f);
         }
     }
 

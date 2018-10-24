@@ -17,13 +17,20 @@ abstract class Character {
     public int width = 270;
     public int hitPoints;
     public int damage;
-    public int speed;
+    public int hitSpeed;
     public boolean side;
     public float barX;
     public float barSize;
     public float modifier;
     public int controlMode; // 0 = controller, 1 = keyboard, 2 = uncontrolled
-    Sound sound;
+    public int abilityCooldownModifier = 6000; // (100 = base 100%, 60 = frames)
+    private int passiveCooldown;
+    private int activeCooldown;
+    private int ultimateCooldown;
+    private boolean passiveOn;
+    private boolean activeOn;
+    private boolean ultimateOn;
+    Sound paddleHitSound;
 
     Character(PongGame game, Ball ball, Paddle paddle, int hP, int damage, int speed, int paddleSpeed, boolean side, SETTINGS settings)
     {
@@ -31,18 +38,21 @@ abstract class Character {
         {
             this.hitPoints = (hP * settings.P1HealthMod) / 100;
             this.damage = (damage * settings.P1Damage) / 100;
-            this.speed = (speed * settings.P1HitSpeed) / 100;
+            this.hitSpeed = (speed * settings.P1HitSpeed) / 100;
+            this.abilityCooldownModifier *= settings.P1Cooldown / 100;
             paddleSpeed = (paddleSpeed * settings.P1PaddleSpeed) / 100;
         }
         else
         {
             this.hitPoints = (hP * settings.P2HealthMod ) / 100;
             this.damage = (damage * settings.P2Damage) / 100;
-            this.speed = (speed * settings.P2HitSpeed) / 100;
+            this.hitSpeed = (speed * settings.P2HitSpeed) / 100;
+            this.abilityCooldownModifier *= settings.P2Cooldown / 100;
             paddleSpeed = (paddleSpeed * settings.P2PaddleSpeed) / 100;
         }
         this.hitPoints = (this.hitPoints * settings.AllHealthMod) / 100;
-        this.paddle = new Paddle(game, side, paddleSpeed);;
+        this.paddle = new Paddle(game, side, paddleSpeed);
+        this.abilityCooldownModifier *= settings.AllCooldown / 100;
         this.game = game;
         this.ball = ball;
         this.side = side;
@@ -51,7 +61,7 @@ abstract class Character {
 
         batch = new SpriteBatch();
         healthBar = new Texture("healthBar.jpg");
-        sound = Gdx.audio.newSound(Gdx.files.internal("pongHit.wav"));
+        paddleHitSound = Gdx.audio.newSound(Gdx.files.internal("pongHit.wav"));
         modifier = width/hP;
 
         if(side)
@@ -68,6 +78,11 @@ abstract class Character {
         batch.begin();
         batch.draw(healthBar, barX, game.getHeight() + 20, barSize, 25);
         batch.end();
+    }
+
+    public int getNewCooldownInFrames(int baseCooldownInSeconds)
+    {
+        return baseCooldownInSeconds * abilityCooldownModifier / 100;
     }
 
     abstract boolean doUnpauseGame();
