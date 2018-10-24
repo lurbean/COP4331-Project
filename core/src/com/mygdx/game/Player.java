@@ -35,7 +35,8 @@ public class Player{
             case (0):
                 this.character = new BasicCharacter(game, ball, paddle, side, settings);
                 break;
-            case (1):    //Unimplemented
+            case (1):
+                this.character = new AdamCharacter(game, ball, paddle, side, settings);
                 break;
             case (2):
                 break;

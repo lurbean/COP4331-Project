@@ -176,13 +176,13 @@ public class AdamCharacter extends Character{
             else if (controlMode==1) // Keybaord-controlled
             {
                 if (keyboard.isUpPressed())
-                    activeChildRectangle.setY(activeChildRectangle.getY() + paddle.yv);
+                    activeChildRectangle.setY(activeChildRectangle.getY() + Math.abs(paddle.yv));
                 else if (keyboard.isDownPressed())
-                    activeChildRectangle.setY(activeChildRectangle.getY() - paddle.yv);
+                    activeChildRectangle.setY(activeChildRectangle.getY() - Math.abs(paddle.yv));
                 if (keyboard.isLeftPressed())
-                    activeChildRectangle.setX(activeChildRectangle.getX() - paddle.yv);
+                    activeChildRectangle.setX(activeChildRectangle.getX() - Math.abs(paddle.yv));
                 else if (keyboard.isRightPressed())
-                    activeChildRectangle.setX(activeChildRectangle.getX() + paddle.yv);
+                    activeChildRectangle.setX(activeChildRectangle.getX() + Math.abs(paddle.yv));
                 if (keyboard.isEPressed())
                 {
                     activeOn = true;
@@ -204,18 +204,27 @@ public class AdamCharacter extends Character{
     void passiveAbility() // Basic character has none of these
     {}
     void ultimateAbility()
-    {}
+    {
+        if (ultimateOn)
+        {
+            ultimateTimer--;
+            if (ultimateTimer == 0)
+                ultimateOn = false;
+        }
+        if (ultimateCooldown > 0)
+            ultimateCooldown--;
+    }
     void ultimateUpdate(boolean movedUp, boolean movedDown)
     {
         // First, adjust companion speeds if appropriate
         if (paddle.getRectangle().y + paddle.getRectangle().height > topChild.rectangle.y)
-            topChild.speed = paddle.yv * 1.4f;
+            topChild.speed = Math.abs(paddle.yv) * 1.4f;
         if (topChild.rectangle.y - (paddle.getRectangle().y + paddle.getRectangle().height) >= 50f)
-            topChild.speed = paddle.yv * -1.4f;
+            topChild.speed = Math.abs(paddle.yv) * -1.4f;
         if (botChild.rectangle.y + botChild.rectangle.height > paddle.getRectangle().y)
-            botChild.speed = paddle.yv * -1.4f;
+            botChild.speed = Math.abs(paddle.yv) * -1.4f;
         if (paddle.getRectangle().y - (botChild.rectangle.y + botChild.rectangle.height) >= 50f)
-            botChild.speed = paddle.yv * 1.4f;
+            botChild.speed = Math.abs(paddle.yv) * 1.4f;
 
 
         // If the paddle would occupy the same space as its companion, move it away

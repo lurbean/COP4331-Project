@@ -58,9 +58,9 @@ public class BasicCharacter extends Character{
                     paddle.movePaddleDown();
                 break;
             case 1: //Keyboard
-                if (keyboard.isUpPressed() || keyboard.isWPressed())
+                if (keyboard.isWPressed())
                     paddle.movePaddleUp();
-                else if (keyboard.isDownPressed() || keyboard.isSPressed())
+                else if (keyboard.isSPressed())
                     paddle.movePaddleDown();
                 break;
             case 9:
