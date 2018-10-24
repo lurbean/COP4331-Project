@@ -14,7 +14,7 @@ public class Paddle extends ApplicationAdapter {
     private SpriteBatch batch;
     private PongGame game;
     private Rectangle paddlePosition;
-    private Texture paddleTexture;
+    public Texture paddleTexture;
     // NOTE: Floats must be signed with "f" or they will be interpreted as a double
     public Float momentum = 0f;
 

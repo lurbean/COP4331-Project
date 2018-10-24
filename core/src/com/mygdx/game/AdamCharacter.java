@@ -154,7 +154,7 @@ public class AdamCharacter extends Character{
         if (activeCooldown > 0)
             activeCooldown--;
 
-        else if (activeCooldown==0)
+        if (activeCooldown==0)
         {
             if (controlMode==0) // Controller-controlled
             {
@@ -203,30 +203,49 @@ public class AdamCharacter extends Character{
     }
     void passiveAbility() // Basic character has none of these
     {}
-    void ultimateAbility()
-    {
-        if (ultimateOn)
-        {
+    void ultimateAbility() {
+        if (ultimateOn) {
             ultimateTimer--;
             if (ultimateTimer == 0)
                 ultimateOn = false;
         }
         if (ultimateCooldown > 0)
             ultimateCooldown--;
+        else if (ultimateCooldown == 0) {
+            if (controlMode == 0) // Controller-controlled
+            {
+                if (controller.isLeftTriggerPressed()) {
+                    ultimateOn = true;
+                    ultimateTimer = 15 * 60;
+                    ultimateCooldown = getNewCooldownInFrames(30);
+                    topChild = new TopChild();
+                    botChild = new BotChild();
+                }
+            } else if (controlMode == 1) // Keybaord-controlled
+            {
+                if (keyboard.isRPressed()) {
+                    ultimateOn = true;
+                    ultimateTimer = 15 * 60;
+                    ultimateCooldown = getNewCooldownInFrames(30);
+                    topChild = new TopChild();
+                    botChild = new BotChild();
+                }
+            }
+        }
     }
     void ultimateUpdate(boolean movedUp, boolean movedDown)
     {
         // First, adjust companion speeds if appropriate
         if (paddle.getRectangle().y + paddle.getRectangle().height > topChild.rectangle.y)
-            topChild.speed = Math.abs(paddle.yv) * 1.4f;
+            topChild.speed += Math.abs(paddle.yv) * 1.4f;
         if (topChild.rectangle.y - (paddle.getRectangle().y + paddle.getRectangle().height) >= 50f)
-            topChild.speed = Math.abs(paddle.yv) * -1.4f;
+            topChild.speed += Math.abs(paddle.yv) * -1.4f;
         if (botChild.rectangle.y + botChild.rectangle.height > paddle.getRectangle().y)
-            botChild.speed = Math.abs(paddle.yv) * -1.4f;
+            botChild.speed += Math.abs(paddle.yv) * -1.4f;
         if (paddle.getRectangle().y - (botChild.rectangle.y + botChild.rectangle.height) >= 50f)
-            botChild.speed = Math.abs(paddle.yv) * 1.4f;
+            botChild.speed += Math.abs(paddle.yv) * 1.4f;
 
-
+        TODO
         // If the paddle would occupy the same space as its companion, move it away
         if (paddle.getRectangle().getY() < botChild.rectangle.height)
             paddle.getRectangle().setY(botChild.rectangle.height + 1);
@@ -241,10 +260,10 @@ public class AdamCharacter extends Character{
             batch.draw(shield, activeChildRectangle.getX(), activeChildRectangle.getY(), activeChildRectangle.width, activeChildRectangle.height);
         else
         {
-            batch.draw(shield, activeChildRectangle.x, activeChildRectangle.y, 5f, activeChildRectangle.height);
-            batch.draw(shield, activeChildRectangle.x + activeChildRectangle.width - 5, activeChildRectangle.y, 5f, activeChildRectangle.height);
-            batch.draw(shield, activeChildRectangle.x, activeChildRectangle.y, activeChildRectangle.width, 5f);
-            batch.draw(shield, activeChildRectangle.x, activeChildRectangle.y + activeChildRectangle.height - 5, activeChildRectangle.width, 5f);
+            batch.draw(paddle.paddleTexture, activeChildRectangle.x, activeChildRectangle.y, 5f, activeChildRectangle.height);
+            batch.draw(paddle.paddleTexture, activeChildRectangle.x + activeChildRectangle.width - 5, activeChildRectangle.y, 5f, activeChildRectangle.height);
+            batch.draw(paddle.paddleTexture, activeChildRectangle.x, activeChildRectangle.y, activeChildRectangle.width, 5f);
+            batch.draw(paddle.paddleTexture, activeChildRectangle.x, activeChildRectangle.y + activeChildRectangle.height - 5, activeChildRectangle.width, 5f);
         }
         if (ultimateOn)
         {
@@ -309,11 +328,11 @@ public class AdamCharacter extends Character{
     class TopChild
     {
         float speed = 0;
-        Rectangle rectangle = new Rectangle(0f, 0f, 25f, 80f);
+        Rectangle rectangle = new Rectangle(paddle.getRectangle().x, paddle.getRectangle().y + paddle.getRectangle().height + 25, 25f, 80f);
     }
     class BotChild
     {
         float speed = 0;
-        Rectangle rectangle = new Rectangle(0f, 0f, 25f, 80f);
+        Rectangle rectangle = new Rectangle(paddle.getRectangle().x, paddle.getRectangle().y - 25, 25f, 80f);
     }
 }
