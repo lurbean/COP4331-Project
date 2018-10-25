@@ -70,35 +70,25 @@ public class AdamCharacter extends Character{
 
     private void controlPaddle()
     {
-        boolean movedUp = false;
-        boolean movedDown = false;
         switch(controlMode)
         {
             case 0: //Controller
-                if (controller.isLeftStickUp()) {
+                if (controller.isLeftStickUp())
                     paddle.movePaddleUp();
-                    movedUp = true;
-                }
-                else if (controller.isLeftStickDown()) {
+                else if (controller.isLeftStickDown())
                     paddle.movePaddleDown();
-                    movedDown = true;
-                }
                 break;
             case 1: //Keyboard
-                if (keyboard.isUpPressed() || keyboard.isWPressed()) {
+                if (keyboard.isUpPressed() || keyboard.isWPressed())
                     paddle.movePaddleUp();
-                    movedUp = true;
-                }
-                else if (keyboard.isDownPressed() || keyboard.isSPressed()) {
+                else if (keyboard.isDownPressed() || keyboard.isSPressed())
                     paddle.movePaddleDown();
-                    movedDown = true;
-                }
                 break;
             case 9:
                 break;
         }
         if (ultimateOn)
-            ultimateUpdate(movedUp, movedDown);
+            ultimateUpdate();
     }
 
     public boolean checkIndividualCollision(Rectangle paddleRect, float momentum)
@@ -233,19 +223,29 @@ public class AdamCharacter extends Character{
             }
         }
     }
-    void ultimateUpdate(boolean movedUp, boolean movedDown)
+    void ultimateUpdate()
     {
+        topChild.speed *= .93f;
+        botChild.speed *= .93f;
         // First, adjust companion speeds if appropriate
         if (paddle.getRectangle().y + paddle.getRectangle().height > topChild.rectangle.y)
-            topChild.speed += Math.abs(paddle.yv) * 1.4f;
-        if (topChild.rectangle.y - (paddle.getRectangle().y + paddle.getRectangle().height) >= 50f)
-            topChild.speed += Math.abs(paddle.yv) * -1.4f;
+            topChild.speed += Math.abs(paddle.yv) * .5;
+        if (topChild.rectangle.y - (paddle.getRectangle().y + paddle.getRectangle().height) >= 60f)
+            topChild.speed = Math.abs(paddle.yv) * -.45f;
         if (botChild.rectangle.y + botChild.rectangle.height > paddle.getRectangle().y)
-            botChild.speed += Math.abs(paddle.yv) * -1.4f;
-        if (paddle.getRectangle().y - (botChild.rectangle.y + botChild.rectangle.height) >= 50f)
-            botChild.speed += Math.abs(paddle.yv) * 1.4f;
+            botChild.speed += Math.abs(paddle.yv) * -.5f;
+        if (paddle.getRectangle().y - (botChild.rectangle.y + botChild.rectangle.height) >= 60f)
+            botChild.speed = Math.abs(paddle.yv) * .45f;
 
-        TODO
+        topChild.rectangle.y += topChild.speed;
+        botChild.rectangle.y += botChild.speed;
+
+        // If the companion paddles would hit a wall, stop them there. Rebound is too complicated to be worth
+        if (topChild.rectangle.y + topChild.rectangle.height> game.getHeight())
+            topChild.rectangle.y = game.getHeight()-topChild.rectangle.height;
+        if (botChild.rectangle.y < 0)
+            botChild.rectangle.y = 0;
+
         // If the paddle would occupy the same space as its companion, move it away
         if (paddle.getRectangle().getY() < botChild.rectangle.height)
             paddle.getRectangle().setY(botChild.rectangle.height + 1);

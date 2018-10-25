@@ -701,7 +701,7 @@
               <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Keyboard controls: WS or Up and Down arrow keys to move, Spacebar to pause"/>
+              <text value="Keyboard controls: WS to move, Spacebar to pause"/>
             </properties>
           </component>
           <component id="3d51b" class="javax.swing.JLabel" binding="RightKeyboardControls">
@@ -709,7 +709,7 @@
               <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Keyboard controls: WS or Up and Down arrow keys to move, Spacebar to pause"/>
+              <text value="Keyboard controls: WS to move, Spacebar to pause"/>
             </properties>
           </component>
           <component id="c4ac5" class="javax.swing.JLabel" binding="LeftXBoxControls">
