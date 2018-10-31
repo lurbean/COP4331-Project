@@ -16,8 +16,8 @@ public class PongGame extends ApplicationAdapter {
 	private Texture textureShade;
 	private Texture textureControls;
 	private Texture textureGameOver;
-	private Texture[] textureDigitArray;
-    private Texture[] textureRedDigitArray;
+	public Texture[] textureDigitArray;
+    public Texture[] textureRedDigitArray;
     private Ball ball;
     private Control control;
 	public Player player2, player1;

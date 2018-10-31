@@ -60,7 +60,7 @@ public class AdamCharacter extends Character{
         paddle.render();
         renderExtraPaddles();
         checkCollision();
-
+        renderCooldowns();
         if(hitPoints <= 0) {
             game.endGame();
         }
@@ -206,7 +206,7 @@ public class AdamCharacter extends Character{
             {
                 if (controller.isLeftTriggerPressed()) {
                     ultimateOn = true;
-                    ultimateTimer = 15 * 60;
+                    ultimateTimer = 12 * 60;
                     ultimateCooldown = getNewCooldownInFrames(30);
                     topChild = new TopChild();
                     botChild = new BotChild();
@@ -215,7 +215,7 @@ public class AdamCharacter extends Character{
             {
                 if (keyboard.isRPressed()) {
                     ultimateOn = true;
-                    ultimateTimer = 15 * 60;
+                    ultimateTimer = 12 * 60;
                     ultimateCooldown = getNewCooldownInFrames(30);
                     topChild = new TopChild();
                     botChild = new BotChild();
@@ -282,6 +282,45 @@ public class AdamCharacter extends Character{
             batch.draw(companionPaddles, botChild.rectangle.getX(), botChild.rectangle.getY(), 25f, 80f);
         }
 
+        batch.end();
+    }
+
+    void renderCooldowns()
+    {
+        batch.begin();
+        int baseY = game.getHeight() + 50;
+        int activeLocation = side?75:game.getWidth()-160;
+        int ultimateLocation = side?210:game.getWidth() - 165;
+        int leftNum;
+        int rightNum;
+        if (activeOn)
+        TODO draw ability icons for active at (activelocation, basey, 40, 40)
+        {
+            leftNum = activeTimer / 600;
+            rightNum = (activeTimer / 60)%10;
+            batch.draw(game.textureDigitArray[leftNum], activeLocation, baseY, 40, 40);
+            batch.draw(game.textureDigitArray[rightNum], activeLocation+45, baseY, 40, 40);
+        }
+        else if (activeCooldown == 0)
+        {
+
+        }
+        else
+        {
+
+        }
+        if (ultimateOn)
+        {
+
+        }
+        else if (ultimateCooldown == 0)
+        {
+
+        }
+        else
+        {
+
+        }
         batch.end();
     }
 
