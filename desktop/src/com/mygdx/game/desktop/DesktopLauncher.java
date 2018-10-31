@@ -275,7 +275,7 @@ public class DesktopLauncher {
             @Override
             public void actionPerformed(ActionEvent e) {
                 temp = CharTwoSelect.getSelectedIndex();
-                if (temp > 1) //TODO: once you implement a character, add your portrait and ability descriptions and then add " || temp != 1", etc.
+                if (temp > 2) //TODO: once you implement a character, add your portrait and ability descriptions and then add " || temp != 1", etc.
                     return;
                 RightCharacterImage.setIcon(CharSelect[temp]);
                 RightCharacterAbility.setText(abilities[temp]);

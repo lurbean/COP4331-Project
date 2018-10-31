@@ -5,6 +5,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+
+// To make a new character, create a new class extending this one. Existing AdamCharacter supplies a good model.
+// The Render method will be called each frame, so anything that needs updates each frame can be contained within,
+// but your abilities will be managed by the abstract methods displayed below - _Ability
+// This can be extended as needed.
+// To add a new character in the UI, you need to add an element to the String arrays in DesktopLaucnher.Java,
+// Strings "CharSelect" through "XBoxControls" - their meanings are obvious.
+// Then, edit "Temp > [number]", also in DesktopLauncher, to be "Temp > [number]+1"
+// Finally, let Adam know (or go into the character select UI element) to include your character's name in the dropdown boxes.
 abstract class Character {
 
     public Ball ball;

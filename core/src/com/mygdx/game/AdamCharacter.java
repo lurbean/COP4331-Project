@@ -294,7 +294,7 @@ public class AdamCharacter extends Character{
         int leftNum;
         int rightNum;
         if (activeOn)
-        TODO draw ability icons for active at (activelocation, basey, 40, 40)
+        // TODO draw ability icons for active at (activelocation, basey, 40, 40)
         {
             leftNum = activeTimer / 600;
             rightNum = (activeTimer / 60)%10;
