@@ -13,6 +13,7 @@ public class MagicianCharacter extends Character{
     private int numFakeBalls = 0;
     private int maxFakeBalls = 3;
     private int activeCooldown;
+    private int ultimateCooldown;
     boolean createABall = false;
 
     MagicianCharacter(PongGame game, Ball ball, Paddle paddle, boolean side, SETTINGS settings)
@@ -117,6 +118,8 @@ public class MagicianCharacter extends Character{
         {
             barX += dmg*modifier; //Moves bar as it's getting smaller.
         }
+
+        numFakeBalls = 0;
     }
 
     void activeAbility()
@@ -127,7 +130,7 @@ public class MagicianCharacter extends Character{
 
         if(controlMode == 0)
         {
-            if(controller.isRightTriggerPressed() == true && activeCooldown == 0)
+            if(controller.isRightTriggerPressed() == true && activeCooldown == 0 && numFakeBalls < maxFakeBalls)
             {
                 createABall = true;
 
@@ -137,7 +140,7 @@ public class MagicianCharacter extends Character{
 
         if(controlMode == 1)
         {
-            if(keyboard.isEPressed() == true && activeCooldown == 0)
+            if(keyboard.isEPressed() == true && activeCooldown == 0 && numFakeBalls < maxFakeBalls)
             {
                 createABall = true;
 
@@ -149,7 +152,29 @@ public class MagicianCharacter extends Character{
     void passiveAbility() // Basic character has none of these
     {}
     void ultimateAbility()
-    {}
+    {
+        if (ultimateCooldown > 0)
+            ultimateCooldown--;
+
+        if(controlMode == 0)
+        {
+            if(controller.isLeftTriggerPressed() == true && ultimateCooldown == 0)
+            {
+                numFakeBalls = 10;
+                ultimateCooldown = getNewCooldownInFrames(3);
+            }
+        }
+
+        if(controlMode == 1)
+        {
+            if(keyboard.isRPressed() == true && ultimateCooldown == 0)
+            {
+                numFakeBalls = 10;
+                ultimateCooldown = getNewCooldownInFrames(3);
+            }
+        }
+
+    }
 
     public void checkPauseRequest()
     {

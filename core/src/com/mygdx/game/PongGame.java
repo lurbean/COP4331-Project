@@ -60,8 +60,8 @@ public class PongGame extends ApplicationAdapter {
 	private void initializeTimer() {
 		gameTimer = settings.gameLength;
 		secondCountdown = 60;
-		timerLocationLeftX = WIDTH/2 - textureDigitArray[0].getWidth() - 10;
-		timerLocationRightX = WIDTH/2 + 10;
+		timerLocationLeftX = WIDTH/2 - textureDigitArray[0].getWidth() - 5;
+		timerLocationRightX = WIDTH/2 + 5;
 		timerLocationY = HEIGHT - textureDigitArray[0].getHeight() - 25;
 	}
 

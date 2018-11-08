@@ -75,17 +75,17 @@ abstract class Character {
 
         if(side)
         {
-            barX = 60;
+            barX = 50;
         }
         else
         {
-            barX = game.getWidth() - 60 - barSize;
+            barX = game.getWidth() - 50 - barSize;
         }
     }
     public void drawHealth()
     {
         batch.begin();
-        batch.draw(healthBar, barX, game.getHeight() + 20, barSize, 25);
+        batch.draw(healthBar, barX, game.getHeight() + 30, barSize, 25);
         batch.end();
     }
 
