@@ -9,12 +9,15 @@ import com.badlogic.gdx.math.Intersector;
 
 public class MagicianCharacter extends Character{
 
-    private FakeBall fakeBalls[] = new FakeBall[10];
+    private FakeBall fakeBalls[] = new FakeBall[3];
+    private Texture magicianUlt;
     private int numFakeBalls = 0;
     private int maxFakeBalls = 3;
     private int activeCooldown;
     private int ultimateCooldown;
+    private int ultDuration;
     boolean createABall = false;
+    boolean ult = false;
 
     MagicianCharacter(PongGame game, Ball ball, Paddle paddle, boolean side, SETTINGS settings)
     {
@@ -26,7 +29,7 @@ public class MagicianCharacter extends Character{
         super(game, ball, paddle, 15, 5, 7, 8, side, settings);
         characterAssetSetup();
 
-        for(int i = 0; i<10; i++)
+        for(int i = 0; i<3; i++)
         {
             fakeBalls[i] = new FakeBall(game, settings);
         }
@@ -36,6 +39,7 @@ public class MagicianCharacter extends Character{
 
     public void characterAssetSetup()
     {
+        magicianUlt = new Texture("magUlt.png");
         // healthBar = new Texture("healthBar.jpg");
         // sound = Gdx.audio.newSound(Gdx.files.internal("pongHit.wav"));
     }
@@ -54,6 +58,13 @@ public class MagicianCharacter extends Character{
             {
                 fakeBalls[i].render();
             }
+        }
+
+        if(ult == true)
+        {
+            batch.begin();
+            batch.draw(magicianUlt, 0, 0);
+            batch.end();
         }
 
         controlPaddle();
@@ -156,12 +167,20 @@ public class MagicianCharacter extends Character{
         if (ultimateCooldown > 0)
             ultimateCooldown--;
 
+        if(ult == true && ultDuration > 0)
+        {
+            ultDuration--;
+            if(ultDuration == 0)
+                ult = false;
+        }
+
         if(controlMode == 0)
         {
             if(controller.isLeftTriggerPressed() == true && ultimateCooldown == 0)
             {
-                numFakeBalls = 10;
+                ult = true;
                 ultimateCooldown = getNewCooldownInFrames(3);
+                ultDuration = getNewCooldownInFrames(5);
             }
         }
 
@@ -169,8 +188,9 @@ public class MagicianCharacter extends Character{
         {
             if(keyboard.isRPressed() == true && ultimateCooldown == 0)
             {
-                numFakeBalls = 10;
+                ult = true;
                 ultimateCooldown = getNewCooldownInFrames(3);
+                ultDuration = getNewCooldownInFrames(5);
             }
         }
 
