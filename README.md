@@ -92,6 +92,9 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 ### Sprint #2: October 7, 2018
 ![Sprint #2 Burndown Chart](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint2_burndown.png "Sprint #2 Burndown Chart")
 
+### Sprint #2: October 7, 2018
+![Sprint #3 Burndown Chart](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint3_burndown.png "Sprint #3 Burndown Chart")
+
 ## Design Documents
 ### Sprint #1: September 16, 2018
 #### Class Diagram
