@@ -28,7 +28,6 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 | As a user, I want to return to the menu after a game ends, so a new game can be started and configured 	| 5 	| 1 	| Verification that the menu opens after a victory in either player's favor or a manual quit 	| NONE 	|
 | As a user, I want to be able to quit a game and return to the main menu, so I can change any settings or restart any matches I no longer want 	| 5 	| 1 	| Verify quit button returns to the menu from all control schemes 	| A pause screen 	|
 | As a user, I want the option to replay or quit the game when one of the players lose|3 |3 |Verification that when one of the players loses, the respective win/lose screen pops up|Win/lose screen|
-|As a user, I want to be able to customize the setting of the game, so I can play stronger characters, longer games, deadlier modes, etc.|3|4|Multiple|Selection screen|
 
 ## Sprint Backlog
 ### Sprint #1: September 16, 2018
