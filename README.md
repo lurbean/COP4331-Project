@@ -72,6 +72,18 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 | 18 | As a user, I want to be able to quit a game and return to the main menu, so I can change any settings or restart any matches I no longer want | 5 | 1 | Verify quit button returns to the menu from all control schemes | In Progress | Brandon | A pause screen |
 | 19 | As a user, I want the option to replay or quit the game when one of the player loses | 3 | 3 | Verification that when one of the players loses, the respective win/lose screen pops up | In Progress | Alex | Win/lose screen |
 
+### Sprint #3: November 11, 2018
+| Story ID | Story | Priority | Effort | Validation | Status | Assigned Member | Pending Requirements |
+|:--------:|------------------------------------------------------------------------------------------------|:--------:|:------:|------------------------------------------------------------------------------------------|:------:|:---------------:|:--------------------:|
+| 3.1 | As a user, I want to see a display of the winner after a game ends | 3 | 2 | An end game screen is shown after a game wins, with the winner displayed | 8-Oct | Alex | None |
+| 3.2 | As a developer, I want to be able to set the cooldown for an ability | 3 | 2 | Abilities can only be used after a certain amount of time has passed since the first use | 9-Oct | Patrick | None |
+| 3.3 | As a user, I want to see an animated ball | 4 | 3 | The ball is animated during play (not a static image) | 14-Oct | Lavine | None |
+| 3.4 | As a user, I want a complete menu screen with a way to controls, characters, and game settings | 1 | 5 | A complete menu screen is shown with character, control, and setting options | 16-Oct | Adam | None |
+| 3.5 | As a developer, I want a framework for adding a new character to the game | 2 | 4 | New characters can be created based on a parent Character class | 24-Oct | Adam | None |
+| 3.6 | As a user, I want to be able to play as Adam's character | 3 | 4 | Adam's character can be selected and is fully playable | 24-Oct | Adam | None |
+| 3.7 | As a developer, I want to have updated assets and graphics for better gameplay and testing | 4 | 4 | Graphics and sounds are functional and match gameplay | 7-Nov | Lavine | None |
+| 3.8 | As a user, I want to be able to play as a magician character | 3 | 3 | A magician character can be selected and is fully playable | 9-Nov | Lavine | None |
+
 ## Burndown Chart
 ### Sprint #1: September 16, 2018
 ![Sprint #1 Burndown Chart](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint1_burndown.png "Sprint #1 Burndown Chart")
