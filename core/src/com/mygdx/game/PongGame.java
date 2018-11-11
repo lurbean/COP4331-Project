@@ -16,6 +16,9 @@ public class PongGame extends ApplicationAdapter {
 	private Texture textureShade;
 	private Texture textureControls;
 	private Texture textureGameOver;
+	private Texture texture1wins;
+	private Texture texture2wins;
+	private Texture textureRematch;
 	public Texture[] textureDigitArray;
     public Texture[] textureRedDigitArray;
     private Ball ball;
@@ -72,6 +75,9 @@ public class PongGame extends ApplicationAdapter {
 		textureShade = new Texture("shade.png");
 		textureControls = new Texture("controls.png");
 		textureGameOver = new Texture("gameOver.png");
+		texture1wins = new Texture("player1wins.png");
+		texture2wins = new Texture("player2wins.png");
+		textureRematch = new Texture("rematch.png");
 		textureDigitArray = new Texture[10];
 		textureRedDigitArray = new Texture[10];
 		for (int i=0; i<10; i++)
@@ -89,7 +95,24 @@ public class PongGame extends ApplicationAdapter {
 		batch.begin();
 		if (gameOver) {
 			batch.draw(textureGameOver, 0, 0);
+			batch.draw(textureRematch, (WIDTH/2) - (textureRematch.getWidth()/2), 128);
+
+			if (player1.character.getHitPoints() <= 0)
+			{
+				batch.draw(texture2wins, (WIDTH/2) - (texture2wins.getWidth()/2), 416);
+			}
+			else
+			{
+				batch.draw(texture1wins,(WIDTH/2) - (texture1wins.getWidth()/2),416);
+			}
 			batch.end();
+
+			Keyboard masterKey = new Keyboard();
+			if (masterKey.isEnterPressed())
+			{
+				gameOver = false;
+				create();
+			}
 		}
 			/*
 			String str;

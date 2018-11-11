@@ -76,4 +76,5 @@ class Keyboard {
     {
         return Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT);
     }
+    public boolean isEnterPressed() { return Gdx.input.isKeyPressed(Input.Keys.ENTER);}
 }
