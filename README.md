@@ -84,11 +84,6 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 | 3.06 | As a user, I want to be able to play as Adam's character | 3 | 4 | Adam's character can be selected and is fully playable | 24-Oct | Adam | None |
 | 3.07 | As a developer, I want to have updated assets and graphics for better gameplay and testing | 4 | 4 | Graphics and sounds are functional and match gameplay | 7-Nov | Lavine | None |
 | 3.08 | As a user, I want to be able to play as a magician character | 3 | 3 | A magician character can be selected and is fully playable | 9-Nov | Lavine | None |
-| 3.09 | As a user, I want to be able to select an AI as my opponent so I can explore functionality | 2 | 1 | Select vs. AI, try to start a game | In Progress | Brandon |  |
-| 3.10 | As a user, I want to see game-relevant information such as ability status prominently on the game screen | 3 | 4.5 | Test that each player's hitpoints and abilities reflect changes, and check in-game timers against out-of-game timers | In Progress | Lavine |  |
-| 3.11 | As a user, I want to return to the menu after a game ends, so a new game can be started and configured | 5 | 1 | Verification that the menu opens after a victory in either player's favor or a manual quit | In Progress | Alex | NONE |
-| 3.12 | As a user, I want to be able to quit a game and return to the main menu, so I can change any settings or restart any matches I no longer want | 5 | 1 | Verify quit button returns to the menu from all control schemes | In Progress | Brandon | A pause screen |
-| 3.13 | As a user, I want the option to replay or quit the game when one of the player loses | 3 | 3 | Verification that when one of the players loses, the respective win/lose screen pops up | In Progress | Alex | Win/lose screen |
 
 ## Burndown Chart
 ### Sprint #1: September 16, 2018
