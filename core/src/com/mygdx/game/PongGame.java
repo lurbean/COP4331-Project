@@ -19,8 +19,10 @@ public class PongGame extends ApplicationAdapter {
 	private Texture texture1wins;
 	private Texture texture2wins;
 	private Texture textureRematch;
-	public Texture[] textureDigitArray;
+	public Texture[] textureBlackDigitArray;
     public Texture[] textureRedDigitArray;
+    public Texture[] textureDeepRedDigitArray;
+    public Texture[] textureWhiteDigitArray;
     private Ball ball;
     private Control control;
 	public Player player2, player1;
@@ -65,9 +67,9 @@ public class PongGame extends ApplicationAdapter {
 	private void initializeTimer() {
 		gameTimer = settings.gameLength;
 		secondCountdown = 60;
-		timerLocationLeftX = WIDTH/2 - textureDigitArray[0].getWidth() - 5;
+		timerLocationLeftX = WIDTH/2 - textureBlackDigitArray[0].getWidth() - 5;
 		timerLocationRightX = WIDTH/2 + 5;
-		timerLocationY = HEIGHT - textureDigitArray[0].getHeight() - 25;
+		timerLocationY = HEIGHT - textureBlackDigitArray[0].getHeight() - 25;
 	}
 
 	private void createTextures() {
@@ -80,12 +82,16 @@ public class PongGame extends ApplicationAdapter {
 		texture1wins = new Texture("player1wins.png");
 		texture2wins = new Texture("player2wins.png");
 		textureRematch = new Texture("rematch.png");
-		textureDigitArray = new Texture[10];
+		textureBlackDigitArray = new Texture[10];
+        textureWhiteDigitArray = new Texture[10];
 		textureRedDigitArray = new Texture[10];
+        textureDeepRedDigitArray = new Texture[10];
 		for (int i=0; i<10; i++)
         {
-            textureDigitArray[i] = new Texture(String.valueOf(i) + ".png");
-            textureRedDigitArray[i] = new Texture("red" + String.valueOf(i) + ".png");
+            textureBlackDigitArray[i] = new Texture(String.valueOf(i) + ".png");
+            textureRedDigitArray[i] = new Texture("red" + String.valueOf(i) + ".png");;
+            textureDeepRedDigitArray[i] = new Texture("deepRed" + String.valueOf(i) + ".png");
+            textureWhiteDigitArray[i] = new Texture("white" + String.valueOf(i) + ".png");
         }
 	}
 
@@ -191,8 +197,8 @@ public class PongGame extends ApplicationAdapter {
 
 			}
 			if (gameTimer >= 0) {
-				batch.draw(textureDigitArray[gameTimer / 10], timerLocationLeftX, timerLocationY);
-				batch.draw(textureDigitArray[gameTimer % 10], timerLocationRightX, timerLocationY);
+				batch.draw(textureBlackDigitArray[gameTimer / 10], timerLocationLeftX, timerLocationY);
+				batch.draw(textureBlackDigitArray[gameTimer % 10], timerLocationRightX, timerLocationY);
 			} else {
 				batch.draw(textureRedDigitArray[(-gameTimer) / 10], timerLocationLeftX, timerLocationY);
 				batch.draw(textureRedDigitArray[(-gameTimer) % 10], timerLocationRightX, timerLocationY);

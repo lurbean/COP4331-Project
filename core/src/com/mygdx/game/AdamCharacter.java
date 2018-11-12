@@ -25,18 +25,21 @@ public class AdamCharacter extends Character{
     private boolean activeOn;
     private boolean ultimateOn;
 
-    private Rectangle activeChildRectangle = new Rectangle(game.getWidth()/2-12.5f, game.getHeight()/2-50f, 25f, 100f);
+    private Rectangle activeChildRectangle = new Rectangle(game.getWidth()/2-12.5f + (side?-100f:100f), game.getHeight()/2-50f, 25f, 100f);
     private TopChild topChild = new TopChild();
     private BotChild botChild = new BotChild();
 
     // Ability cooldown display textures are here @Lavine - these are drawn at 40 x 40
     private Texture abilityTexture;
+    private Texture abilityTextureFaded;
     private Texture ultimateTexture;
+    private Texture ultimateTextureFaded;
 
     AdamCharacter(PongGame game, Ball ball, Paddle paddle, boolean side, SETTINGS settings)
     {
         super(game, ball, paddle, 20, 7, 7, 7, side, settings);
         characterAssetSetup();
+        ultimateCooldown = getNewCooldownInFrames(10);
     }
 
     public void characterAssetSetup()
@@ -54,6 +57,10 @@ public class AdamCharacter extends Character{
             shield = new Texture("AdamPaddleRight.png");
             shieldOutline = new Texture("ShieldOutlineRight.png");
         }
+        abilityTexture = new Texture("GuardianActive.png");
+        abilityTextureFaded = new Texture("GuardianActiveFaded.png");
+        ultimateTexture = new Texture("GuardianUltimate.png");
+        ultimateTextureFaded = new Texture("GuardianUltimateFaded.png");
         //bonk = Gdx.audio.newSound(Gdx.files.internal(""));
         //chainRecoil = Gdx.audio.newSound(Gdx.files.internal(""));
         // healthBar = new Texture("healthBar.jpg");
@@ -117,7 +124,7 @@ public class AdamCharacter extends Character{
     public void checkCollision()
     {
         // If the ball is moving away from you, don't hit it again
-        if ( !( (ball.xv > 0 && !side) || (ball.xv < 0 && side) ) )
+        if ( (ball.xv > 0 && side) || (ball.xv < 0 && !side) )
             return;
         boolean hit = false;
 
@@ -209,7 +216,7 @@ public class AdamCharacter extends Character{
             {
                 if (controller.isLeftTriggerPressed()) {
                     ultimateOn = true;
-                    ultimateTimer = 12 * 60;
+                    ultimateTimer = 10 * 60;
                     ultimateCooldown = getNewCooldownInFrames(30);
                     topChild = new TopChild();
                     botChild = new BotChild();
@@ -286,38 +293,45 @@ public class AdamCharacter extends Character{
     void renderCooldowns()
     {
         batch.begin();
-        int baseY = game.getHeight() + 50;
-        int activeLocation = side?75:game.getWidth()-160;
-        int ultimateLocation = side?210:game.getWidth() - 165;
+        int baseY = game.getHeight() + 35;
+        int activeLocation = side?75:game.getWidth() - 160;
+        int ultimateLocation = side?150:game.getWidth() - 160 - 75;
         int leftNum;
         int rightNum;
-        if (activeOn)
-        // TODO draw ability icons for active at (activelocation, basey, 40, 40)
-        {
-            leftNum = activeTimer / 600;
-            rightNum = (activeTimer / 60)%10;
-            batch.draw(game.textureDigitArray[leftNum], activeLocation, baseY, 40, 40);
-            batch.draw(game.textureDigitArray[rightNum], activeLocation+45, baseY, 40, 40);
-        }
-        else if (activeCooldown == 0)
-        {
 
-        }
+        // Draw ability icons
+        if (activeCooldown == 0 || activeOn)
+            batch.draw(abilityTexture, activeLocation, baseY, 52, 52);
         else
-        {
-
-        }
-        if (ultimateOn)
-        {
-
-        }
-        else if (ultimateCooldown == 0)
-        {
-
-        }
+            batch.draw(abilityTextureFaded, activeLocation, baseY, 52, 52);
+        if (ultimateCooldown == 0 || ultimateOn)
+            batch.draw(ultimateTexture, ultimateLocation, baseY, 52, 52);
         else
-        {
+            batch.draw(ultimateTextureFaded, ultimateLocation, baseY, 52, 52);
 
+        if (activeCooldown != 0) {
+            if (activeOn) {
+                leftNum = (activeTimer + 59) / 600;
+                rightNum = ((activeTimer + 59) / 60) % 10;
+            } else // on cooldown
+            {
+                leftNum = (activeCooldown + 59) / 600;
+                rightNum = ((activeCooldown + 59) / 60) % 10;
+            }
+            batch.draw(game.textureWhiteDigitArray[leftNum], activeLocation + 6, baseY + 10, 18, 32);
+            batch.draw(game.textureWhiteDigitArray[rightNum], activeLocation + 24 + 4, baseY + 10, 18, 32);
+        }
+        if (ultimateCooldown != 0) {
+            if (ultimateOn) {
+                leftNum = (ultimateTimer + 59) / 600;
+                rightNum = ((ultimateTimer + 59) / 60) % 10;
+            } else // on cooldown
+            {
+                leftNum = (ultimateCooldown + 59) / 600;
+                rightNum = ((ultimateCooldown + 59) / 60) % 10;
+            }
+            batch.draw(game.textureWhiteDigitArray[leftNum], ultimateLocation + 6, baseY + 10, 18, 32);
+            batch.draw(game.textureWhiteDigitArray[rightNum], ultimateLocation + 24 + 4, baseY + 10, 18, 32);
         }
         batch.end();
     }

@@ -89,7 +89,7 @@ abstract class Character {
     public void drawHealth()
     {
         batch.begin();
-        batch.draw(healthBar, barX, game.getHeight() + 15, barSize, 25);
+        batch.draw(healthBar, barX, game.getHeight() + 5, barSize, 25);
         batch.end();
     }
 

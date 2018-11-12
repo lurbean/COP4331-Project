@@ -63,7 +63,7 @@ public class DesktopLauncher {
             "No passive yet",
             "The Magician has no passives."};
     private String ultimates[] = {"And no ultimate",
-            "Press 'R'/left trigger' to summon two companions",
+            "Press 'R'/left trigger' to summon two companion paddles",
             "When it's implemented, the magician will summon up to 10 fake balls as decoys."};
     private String KBControls[] = {"Keyboard controls: WS to move, Spacebar to pause",
             "Keyboard controls: WS to move, Spacebar to pause",
