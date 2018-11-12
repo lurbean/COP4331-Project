@@ -50,10 +50,8 @@ public class MagicianCharacter extends Character{
         abilityTexture = new Texture("MagicianActive.png");
         abilityTextureFaded = new Texture("MagicianActiveFaded.png");
         abilityTextureHighlight = new Texture("MagicianActiveHighlight.png");
-        //ultimateTexture = new Texture("MagicianUltimate.png");
-        //ultimateTextureFaded = new Texture("MagicianUltimateFaded.png");
-        ultimateTexture = new Texture("healthBar.jpg");
-        ultimateTextureFaded = new Texture("healthBar.jpg");
+        ultimateTexture = new Texture("MagicianUltimate.png");
+        ultimateTextureFaded = new Texture("MagicianUltimateFaded.png");
 
         // healthBar = new Texture("healthBar.jpg");
         // sound = Gdx.audio.newSound(Gdx.files.internal("pongHit.wav"));
