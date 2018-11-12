@@ -116,7 +116,7 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 - [Main Source Files](https://github.com/lurbean/COP4331-Project/tree/master/core/src/com/mygdx/game)
 
 ## Software Tests
-### Test Procedure
+### General Test Procedure
 All test procedures use the following skeleton:
 - Step One: Run the application
 - Step Two: Switch between each tab of the main menu and modify options and settings as desired
@@ -157,7 +157,7 @@ Various stages of the standard test procedures may have to be reached to perform
 | 3.02 | Change the source code for each character's ability cooldown; verify that in-game cooldowns match the expected cooldown timers by attempting to repeatedly use each ability | Abilities can only be used after a certain amount of time has passed since the first use | Pass |
 | 3.03 | During a game, observe if the ball is animated rather than a static image | The ball is animated during play (not a static image) | Pass |
 | 3.04 | Using the opening menu, click and change all available controls and settings; verify each by starting a game and observing if changes match selected options | A complete menu screen is shown with character, control, and setting options | Pass |
-| 3.05 | As a developer, I want a framework for adding a new character to the game; extend Character class to develop a new character; verify that all required functionality for new characters is built-in, with changes easily added | New characters can be created based on a parent Character class | Pass |
+| 3.05 | Extend Character class to develop a new character; verify that all required functionality for new characters is built-in, with changes easily added | New characters can be created based on a parent Character class | Pass |
 | 3.06 | Observe if Adam's character can be chosen from main menu; during a game, use all abilities and observe for expected behavior | Adam's character can be selected and is fully playable | Pass |
 | 3.07 | Inspect all graphics and trigger all available sounds; inspect quality of each asset available in project resources | Graphics and sounds are functional and match gameplay | Pass |
 | 3.08 | Observe if magician character can be chosen from main menu; during a game, use all abilities and observe for expected behavior | A magician character can be selected and is fully playable | Pass |
