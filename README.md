@@ -80,10 +80,10 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 | 3.02 | As a developer, I want to be able to set the cooldown for an ability | 3 | 2 | Abilities can only be used after a certain amount of time has passed since the first use | 9-Oct | Patrick | None |
 | 3.03 | As a user, I want to see an animated ball | 4 | 3 | The ball is animated during play (not a static image) | 14-Oct | Lavine | None |
 | 3.04 | As a user, I want a complete menu screen with a way to controls, characters, and game settings | 1 | 5 | A complete menu screen is shown with character, control, and setting options | 16-Oct | Adam | None |
-| 3.05 | As a developer, I want a framework for adding a new character to the game | 2 | 4 | New characters can be created based on a parent Character class | 24-Oct | Adam | None |
-| 3.06 | As a user, I want to be able to play as Adam's character | 3 | 4 | Adam's character can be selected and is fully playable | 24-Oct | Adam | None |
-| 3.07 | As a developer, I want to have updated assets and graphics for better gameplay and testing | 4 | 4 | Graphics and sounds are functional and match gameplay | 7-Nov | Lavine | None |
-| 3.08 | As a user, I want to be able to play as a magician character | 3 | 3 | A magician character can be selected and is fully playable | 9-Nov | Lavine | None |
+| 3.05 | As a developer, I want a framework for adding a new character to the game | 2 | 4 | New characters can be created based on a parent Character class. Regression testing will show whether all aspects of Character are still functional. | 24-Oct | Adam | None |
+| 3.06 | As a user, I want to be able to play as different characters (partial - implemented Shield Guardian) | 3 | 4 | Shield Guardian can be selected and is fully playable. | 24-Oct | Adam | None |
+| 3.07 | As a user, I want the game to feature appealing assets and graphics | 4 | 4 | Graphics and sounds are functional and match gameplay | 7-Nov | Lavine | None |
+| 3.08 | As a user, I want to be able to play as different characters (partial - implemented the Magician) | 3 | 3 | A magician character can be selected and is fully playable | 9-Nov | Lavine | None |
 
 ## Burndown Chart
 ### Sprint #1: September 16, 2018
@@ -158,9 +158,9 @@ Various stages of the standard test procedures may have to be reached to perform
 | 3.03 | During a game, observe if the ball is animated rather than a static image | The ball is animated during play (not a static image) | Pass |
 | 3.04 | Using the opening menu, click and change all available controls and settings; verify each by starting a game and observing if changes match selected options | A complete menu screen is shown with character, control, and setting options | Pass |
 | 3.05 | Extend Character class to develop a new character; verify that all required functionality for new characters is built-in, with changes easily added | New characters can be created based on a parent Character class | Pass |
-| 3.06 | Observe if Adam's character can be chosen from main menu; during a game, use all abilities and observe for expected behavior | Adam's character can be selected and is fully playable | Pass |
+| 3.06 | Observe if the Shield Guardian can be chosen from main menu; during a game, use all abilities and observe for expected behavior | Shield Guardian can be selected and is fully playable | Pass |
 | 3.07 | Inspect all graphics and trigger all available sounds; inspect quality of each asset available in project resources | Graphics and sounds are functional and match gameplay | Pass |
-| 3.08 | Observe if magician character can be chosen from main menu; during a game, use all abilities and observe for expected behavior | A magician character can be selected and is fully playable | Pass |
+| 3.08 | Observe if the Magician can be chosen from main menu; during a game, use all abilities and observe for expected behavior | A magician character can be selected and is fully playable | Pass |
 
 ## Demonstration
 ### Sprint #2: October 7, 2018
