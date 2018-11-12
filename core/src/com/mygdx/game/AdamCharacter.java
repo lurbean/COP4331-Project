@@ -39,7 +39,7 @@ public class AdamCharacter extends Character{
     {
         super(game, ball, paddle, 20, 7, 7, 7, side, settings);
         characterAssetSetup();
-        ultimateCooldown = getNewCooldownInFrames(10);
+        ultimateCooldown = 10 * 60;
     }
 
     public void characterAssetSetup()
@@ -151,10 +151,9 @@ public class AdamCharacter extends Character{
             if (activeTimer == 0)
                 activeOn = false;
         }
-        if (activeCooldown > 0)
+        else if (activeCooldown > 0)
             activeCooldown--;
-
-        if (activeCooldown==0)
+        else if (activeCooldown==0)
         {
             if (controlMode==0) // Controller-controlled
             {
@@ -170,7 +169,7 @@ public class AdamCharacter extends Character{
                 {
                     activeOn = true;
                     activeTimer = 10 * 60;
-                    activeCooldown = getNewCooldownInFrames(20);
+                    activeCooldown = getNewCooldownInFrames(10);
                 }
             }
             else if (controlMode==1) // Keybaord-controlled
@@ -187,7 +186,7 @@ public class AdamCharacter extends Character{
                 {
                     activeOn = true;
                     activeTimer = 10 * 60;
-                    activeCooldown = getNewCooldownInFrames(20);
+                    activeCooldown = getNewCooldownInFrames(10);
                 }
             }
             if (activeChildRectangle.getY() > game.getHeight()-activeChildRectangle.getHeight())
@@ -209,7 +208,7 @@ public class AdamCharacter extends Character{
             if (ultimateTimer == 0)
                 ultimateOn = false;
         }
-        if (ultimateCooldown > 0)
+        else if (ultimateCooldown > 0)
             ultimateCooldown--;
         else if (ultimateCooldown == 0) {
             if (controlMode == 0) // Controller-controlled
@@ -217,7 +216,7 @@ public class AdamCharacter extends Character{
                 if (controller.isLeftTriggerPressed()) {
                     ultimateOn = true;
                     ultimateTimer = 10 * 60;
-                    ultimateCooldown = getNewCooldownInFrames(30);
+                    ultimateCooldown = getNewCooldownInFrames(20);
                     topChild = new TopChild();
                     botChild = new BotChild();
                 }
@@ -226,7 +225,7 @@ public class AdamCharacter extends Character{
                 if (keyboard.isRPressed()) {
                     ultimateOn = true;
                     ultimateTimer = 12 * 60;
-                    ultimateCooldown = getNewCooldownInFrames(30);
+                    ultimateCooldown = getNewCooldownInFrames(20);
                     topChild = new TopChild();
                     botChild = new BotChild();
                 }
@@ -309,7 +308,7 @@ public class AdamCharacter extends Character{
         else
             batch.draw(ultimateTextureFaded, ultimateLocation, baseY, 52, 52);
 
-        if (activeCooldown != 0) {
+        if (activeCooldown > 0) {
             if (activeOn) {
                 leftNum = (activeTimer + 59) / 600;
                 rightNum = ((activeTimer + 59) / 60) % 10;
@@ -321,7 +320,7 @@ public class AdamCharacter extends Character{
             batch.draw(game.textureWhiteDigitArray[leftNum], activeLocation + 6, baseY + 10, 18, 32);
             batch.draw(game.textureWhiteDigitArray[rightNum], activeLocation + 24 + 4, baseY + 10, 18, 32);
         }
-        if (ultimateCooldown != 0) {
+        if (ultimateCooldown > 0) {
             if (ultimateOn) {
                 leftNum = (ultimateTimer + 59) / 600;
                 rightNum = ((ultimateTimer + 59) / 60) % 10;

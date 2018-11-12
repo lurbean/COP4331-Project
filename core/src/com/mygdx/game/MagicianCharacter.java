@@ -19,6 +19,13 @@ public class MagicianCharacter extends Character{
     boolean createABall = false;
     boolean ult = false;
 
+    // Coding some in your character - Adam
+    private Texture abilityTexture;
+    private Texture abilityTextureFaded;
+    private Texture abilityTextureHighlight;
+    private Texture ultimateTexture;
+    private Texture ultimateTextureFaded;
+
     MagicianCharacter(PongGame game, Ball ball, Paddle paddle, boolean side, SETTINGS settings)
     {
         // Change stats INSIDE the super call:
@@ -28,7 +35,7 @@ public class MagicianCharacter extends Character{
         // paddleSpeed = 8
         super(game, ball, paddle, 15, 5, 7, 8, side, settings);
         characterAssetSetup();
-
+        ultimateCooldown = 5 * 60;
         for(int i = 0; i<3; i++)
         {
             fakeBalls[i] = new FakeBall(game, settings);
@@ -40,6 +47,14 @@ public class MagicianCharacter extends Character{
     public void characterAssetSetup()
     {
         magicianUlt = new Texture("magUlt.png");
+        abilityTexture = new Texture("MagicianActive.png");
+        abilityTextureFaded = new Texture("MagicianActiveFaded.png");
+        abilityTextureHighlight = new Texture("MagicianActiveHighlight.png");
+        //ultimateTexture = new Texture("MagicianUltimate.png");
+        //ultimateTextureFaded = new Texture("MagicianUltimateFaded.png");
+        ultimateTexture = new Texture("healthBar.jpg");
+        ultimateTextureFaded = new Texture("healthBar.jpg");
+
         // healthBar = new Texture("healthBar.jpg");
         // sound = Gdx.audio.newSound(Gdx.files.internal("pongHit.wav"));
     }
@@ -78,6 +93,8 @@ public class MagicianCharacter extends Character{
         }
 
         checkPauseRequest();
+
+        renderCooldowns();
     }
 
     private void controlPaddle()
@@ -124,7 +141,7 @@ public class MagicianCharacter extends Character{
     void activeAbility()
     {
 
-        if (activeCooldown > 0)
+        if (activeCooldown > 0 && !createABall)
             activeCooldown--;
 
         if(controlMode == 0)
@@ -133,7 +150,7 @@ public class MagicianCharacter extends Character{
             {
                 createABall = true;
 
-                activeCooldown = getNewCooldownInFrames(3);
+                activeCooldown = getNewCooldownInFrames(5);
             }
         }
 
@@ -143,7 +160,7 @@ public class MagicianCharacter extends Character{
             {
                 createABall = true;
 
-                activeCooldown = getNewCooldownInFrames(3);
+                activeCooldown = getNewCooldownInFrames(5);
             }
         }
 
@@ -152,7 +169,7 @@ public class MagicianCharacter extends Character{
     {}
     void ultimateAbility()
     {
-        if (ultimateCooldown > 0)
+        if (ultimateCooldown > 0 && ultDuration==0)
             ultimateCooldown--;
 
         if(ult == true && ultDuration > 0)
@@ -168,7 +185,7 @@ public class MagicianCharacter extends Character{
             {
                 ult = true;
                 ultimateCooldown = getNewCooldownInFrames(3);
-                ultDuration = getNewCooldownInFrames(5);
+                ultDuration = 5 * 60;
             }
         }
 
@@ -178,7 +195,7 @@ public class MagicianCharacter extends Character{
             {
                 ult = true;
                 ultimateCooldown = getNewCooldownInFrames(3);
-                ultDuration = getNewCooldownInFrames(5);
+                ultDuration = 5 * 60;
             }
         }
 
@@ -220,5 +237,48 @@ public class MagicianCharacter extends Character{
     public int getHitPoints()
     {
         return hitPoints;
+    }
+
+    void renderCooldowns()
+    {
+        batch.begin();
+        int baseY = game.getHeight() + 35;
+        int activeLocation = side?75:game.getWidth() - 160;
+        int ultimateLocation = side?150:game.getWidth() - 160 - 75;
+        int leftNum;
+        int rightNum;
+
+        // Draw ability icons
+        if (activeCooldown == 0)
+            batch.draw(abilityTexture, activeLocation, baseY, 52, 52);
+        else if (createABall)
+            batch.draw(abilityTextureHighlight, activeLocation, baseY, 52, 52);
+        else // On cooldown
+            batch.draw(abilityTextureFaded, activeLocation, baseY, 52, 52);
+        if (ultimateCooldown == 0 || ult)
+            batch.draw(ultimateTexture, ultimateLocation, baseY, 52, 52);
+        else
+            batch.draw(ultimateTextureFaded, ultimateLocation, baseY, 52, 52);
+
+        if (activeCooldown > 0 && !createABall)
+        {
+            leftNum = (activeCooldown + 59) / 600;
+            rightNum = ((activeCooldown + 59) / 60) % 10;
+            batch.draw(game.textureWhiteDigitArray[leftNum], activeLocation + 6, baseY + 10, 18, 32);
+            batch.draw(game.textureWhiteDigitArray[rightNum], activeLocation + 24 + 4, baseY + 10, 18, 32);
+        }
+        if (ultimateCooldown > 0) {
+            if (ult) {
+                leftNum = (ultDuration + 59) / 600;
+                rightNum = ((ultDuration + 59) / 60) % 10;
+            } else // on cooldown
+            {
+                leftNum = (ultimateCooldown + 59) / 600;
+                rightNum = ((ultimateCooldown + 59) / 60) % 10;
+            }
+            batch.draw(game.textureWhiteDigitArray[leftNum], ultimateLocation + 6, baseY + 10, 18, 32);
+            batch.draw(game.textureWhiteDigitArray[rightNum], ultimateLocation + 24 + 4, baseY + 10, 18, 32);
+        }
+        batch.end();
     }
 }
