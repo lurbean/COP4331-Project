@@ -28,50 +28,62 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 | As a user, I want to return to the menu after a game ends, so a new game can be started and configured 	| 5 	| 1 	| Verification that the menu opens after a victory in either player's favor or a manual quit 	| NONE 	|
 | As a user, I want to be able to quit a game and return to the main menu, so I can change any settings or restart any matches I no longer want 	| 5 	| 1 	| Verify quit button returns to the menu from all control schemes 	| A pause screen 	|
 | As a user, I want the option to replay or quit the game when one of the players lose|3 |3 |Verification that when one of the players loses, the respective win/lose screen pops up|Win/lose screen|
-|As a user, I want to be able to customize the setting of the game, so I can play stronger characters, longer games, deadlier modes, etc.|3|4|Multiple|Selection screen|
 
 ## Sprint Backlog
 ### Sprint #1: September 16, 2018
-| Story                                                  | Priority|Effort|Validation                                        |
-| ------------------------------------------------------ |:-------:|:----:| ------------------------------------------------ |
-|As a user, I want to start the game, so I can play|1|1|The main menu is shown on program start|
-|As a user, I want to have a menu, so I can choose to start a match|5|3|The main menu has a button to start a match|
-|As a user, I want to see the ball move, so I can try to play with it|1|2|The ball moves across the playing field|
-|As a user, I want to use the keyboard, so I can move my paddle up and down|1|3|The paddle moves up and down, depending on keyboard input|
-|As a user, I want to use an Xbox controller, so I can move my paddle up and down|3|4|The paddle moves up and down, corresponding to input from an Xbox controller|
-|As a user, I want to be able to hit the ball with my paddle, so I can try to keep the ball in play|1|3|The ball bounces back when it hits a paddle|
-|As a user, I want the ball to stay in play when it can't be hit, so the game can continue|1|2|The ball bounces back when it hits a boundary wall|
-|As a user, I want to have some control over the ball's direction when my paddle hits it, so I have more control|3|2.5|The ball has a reflection velocity corresponding to the velocity of the paddle|
-|As a user, I want to know when I score points, so I can know who is winning|2|3|Each player has a health bar, which is lowered when a ball is missed|
-|As a developer, I want to be able to change paddle damage and speed, so I can create different characters|4|4|Varying amounts of damage can be dealt; paddles can move with different speeds|
+| Story ID | Story                                                  | Priority|Effort|Validation                                        |
+|:-:| ------------------------------------------------------ |:-------:|:----:| ------------------------------------------------ |
+|1.01|As a user, I want to start the game, so I can play|1|1|The main menu is shown on program start|
+|1.02|As a user, I want to have a menu, so I can choose to start a match|5|3|The main menu has a button to start a match|
+|1.03|As a user, I want to see the ball move, so I can try to play with it|1|2|The ball moves across the playing field|
+|1.04|As a user, I want to use the keyboard, so I can move my paddle up and down|1|3|The paddle moves up and down, depending on keyboard input|
+|1.05|As a user, I want to use an Xbox controller, so I can move my paddle up and down|3|4|The paddle moves up and down, corresponding to input from an Xbox controller|
+|1.06|As a user, I want to be able to hit the ball with my paddle, so I can try to keep the ball in play|1|3|The ball bounces back when it hits a paddle|
+|1.07|As a user, I want the ball to stay in play when it can't be hit, so the game can continue|1|2|The ball bounces back when it hits a boundary wall|
+|1.08|As a user, I want to have some control over the ball's direction when my paddle hits it, so I have more control|3|2.5|The ball has a reflection velocity corresponding to the velocity of the paddle|
+|1.09|As a user, I want to know when I score points, so I can know who is winning|2|3|Each player has a health bar, which is lowered when a ball is missed|
+|1.10|As a developer, I want to be able to change paddle damage and speed, so I can create different characters|4|4|Varying amounts of damage can be dealt; paddles can move with different speeds|
+
 ### Sprint #2: October 7, 2018
 | Story ID | Story | Priority | Effort | Validation | Status | Assigned Member | Pending Requirements |
 |:--------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------:|:------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------:|:---------------:|---------------------------------------------------------------------------------------------|
-| 1 | As a user, I want a timer to show me the duration of the game, and I want something to ensure a game doesn't go on for too long | 3 | 3 | See individual requirements | 7-Oct | Adam | N/A |
-| 1.1 | Acquire images of all digits in two colors to support the two following requirements | N/A | N/A | Self-evident | 7-Oct | Adam | N/A |
-| 1.2 | Implement a visual count-down timer from 99 to 0 | N/A | N/A | In Step Five, watch the timer and ensure it counts down once per second for each transition. If it does, this test passes | 7-Oct | Adam | N/A |
-| 1.3 | Extend the visual count-down to track back up to 99, this time in red, to indicate the increasing deadliness of the game | N/A | N/A | As above, but watch the transistion from 00 time to red 01 time and continues to increment. If successful, this test passes | 7-Oct | Adam | N/A |
-| 1.4 | After the countdown reaches zero, begin increasing the ball speed and damage to ensure the game ends soon | N/A | N/A | As above, but watch as the ball speed begins to increase at each timer value with a 1 in the ones place. Also observe the damage taken upon a hit afterthe countdown has ticked far back up. This should increase also. Optionally, test with increased player health if you're note capable of keeping up. | 7-Oct | Adam | N/A |
-| 2 | As a user, I want to be able to customize the setting of the game, so I can play stronger characters, longer games, deadlier modes, etc. | 3 | 4 | Between steps two and three, modify settings parameters and then advance to step 5, where damage, health, speed, cooldowns, and hit speed are to be monitored. If each is affected at approximately the modification specified (note that the game runs in the integer domain, so a .75 multiplier applied to a 3 speed gives you a speed of 2), this test passes | 7-Oct | Adam | N/A |
-| 2.1 | Add a settings set in the code base that allow a drop-down based settings menu to easily modify player health, damage, speed, ability cooldowns, and hit speed | N/A | 3 | N/A | 7-Oct | Adam | N/A |
-| 2.2 | Add a settings menu that connects drop-down boxes to the recommended set of values | N/A | 3 | N/A | 7-Oct | Adam | N/A |
-| 3 | As a user, I want to see game-relevant information such as hit points and timers prominently on the game screen | 3 | 4.5 | Test that each player's hitpoint displays reflect changes, and check in-game timers against out-of-game timers | 20-Sep | Lavine | NONE |
-| 4 | As a developer, I want to be able to select an AI as my opponent so I can test functionality | 2 | 1 | Playing against a beatable AI is an option | 26-Sep | Brandon | Requires multiplayer to be the default mode of the game |
-| 5 | As a user, I want to play against other people, not just an AI | 1 | 5 | Try all control schemes and selecting the same character - realistically, this will test itself | 28-Sep | Patrick | Character set, multi-input distinction |
-| 6 | As a user, I want to be able to choose my control scheme, either keyboard or gamepad | 3 | 1.5 | Ensure both work - routine gameplay will provide regression testing | 28-Sep | Patrick | NONE |
-| 7 | As a user, I want to hear sound effects when I hit the ball, damage my opponent, use an ability, win the game, etc. | 4 | 5 | Test each sound immediately after implementation | 1-Oct | Lavine | NONE - treating asset gathering as a programmer task, as we are the entire development team |
-| 8 | As a user, I want to be able to pause an ongoing game | 3 | 2 | Ensure both keyboard and mouse users have a functioning button-press that pauses the game | 3-Oct | Brandon | Extra control keys |
-| 9 | As a user, I want to view a list of controls, so I can learn how to play and discover useful features | 3 | 2 | Verify controls are displayed on pause | 3-Oct | Brandon | A comprehensive list of supported user controls |
-| 10 | As a developer, I want to have indications of various end-game states, so I can offer options to the user later | 3 | 4 | When a game end, win/lose windows and options are shown | 4-Oct | Alex |  |
-| 11 | As a developer, I want a framework for adding and using special abilities | 3 | 2 | Special abilities are witnessed in-game when the corresponding buttons are pressed | 6-Oct | Patrick |  |
-| 12 | As a user, I want a timer to show me the duration of the game, and I want something to ensure a game doesn't go on for too long | 3 | 3 | Accurate visual countdown timer is shown, game enters "sudden death"" mode after time runs out" | 7-Oct | Adam | Done |
-| 13 | As a developer, I want to be able to customize the settings of the game, so I can modify parameters like speed, health, and damage | 3 | 2 | When settings are modified, corresponding changes are reflected in-game | 7-Oct | Adam | Done |
-| 14 | As a user/developer, I want graphics that make the game look more visually appealing | 4 | 4 | Graphics are visually appleaing and fit a common theme | 7-Oct | Lavine |  |
-| 15 | As a user, I want to be able to select an AI as my opponent so I can explore functionality | 2 | 1 | Select vs. AI, try to start a game | In Progress | Brandon |  |
-| 16 | As a user, I want to see game-relevant information such as ability status prominently on the game screen | 3 | 4.5 | Test that each player's hitpoints and abilities reflect changes, and check in-game timers against out-of-game timers | In Progress | Lavine |  |
-| 17 | As a user, I want to return to the menu after a game ends, so a new game can be started and configured | 5 | 1 | Verification that the menu opens after a victory in either player's favor or a manual quit | In Progress | Alex | NONE |
-| 18 | As a user, I want to be able to quit a game and return to the main menu, so I can change any settings or restart any matches I no longer want | 5 | 1 | Verify quit button returns to the menu from all control schemes | In Progress | Brandon | A pause screen |
-| 19 | As a user, I want the option to replay or quit the game when one of the player loses | 3 | 3 | Verification that when one of the players loses, the respective win/lose screen pops up | In Progress | Alex | Win/lose screen |
+| 2.01 | As a user, I want a timer to show me the duration of the game, and I want something to ensure a game doesn't go on for too long | 3 | 3 | See individual requirements | 7-Oct | Adam | N/A |
+| 2.01.1 | Acquire images of all digits in two colors to support the two following requirements | N/A | N/A | Self-evident | 7-Oct | Adam | N/A |
+| 2.01.2 | Implement a visual count-down timer from 99 to 0 | N/A | N/A | In Step Five, watch the timer and ensure it counts down once per second for each transition. If it does, this test passes | 7-Oct | Adam | N/A |
+| 2.01.3 | Extend the visual count-down to track back up to 99, this time in red, to indicate the increasing deadliness of the game | N/A | N/A | As above, but watch the transistion from 00 time to red 01 time and continues to increment. If successful, this test passes | 7-Oct | Adam | N/A |
+| 2.01.4 | After the countdown reaches zero, begin increasing the ball speed and damage to ensure the game ends soon | N/A | N/A | As above, but watch as the ball speed begins to increase at each timer value with a 1 in the ones place. Also observe the damage taken upon a hit afterthe countdown has ticked far back up. This should increase also. Optionally, test with increased player health if you're note capable of keeping up. | 7-Oct | Adam | N/A |
+| 2.02 | As a user, I want to be able to customize the setting of the game, so I can play stronger characters, longer games, deadlier modes, etc. | 3 | 4 | Between steps two and three, modify settings parameters and then advance to step 5, where damage, health, speed, cooldowns, and hit speed are to be monitored. If each is affected at approximately the modification specified (note that the game runs in the integer domain, so a .75 multiplier applied to a 3 speed gives you a speed of 2), this test passes | 7-Oct | Adam | N/A |
+| 2.02.1 | Add a settings set in the code base that allow a drop-down based settings menu to easily modify player health, damage, speed, ability cooldowns, and hit speed | N/A | 3 | N/A | 7-Oct | Adam | N/A |
+| 2.02.2 | Add a settings menu that connects drop-down boxes to the recommended set of values | N/A | 3 | N/A | 7-Oct | Adam | N/A |
+| 2.03 | As a user, I want to see game-relevant information such as hit points and timers prominently on the game screen | 3 | 4.5 | Test that each player's hitpoint displays reflect changes, and check in-game timers against out-of-game timers | 20-Sep | Lavine | NONE |
+| 2.04 | As a developer, I want to be able to select an AI as my opponent so I can test functionality | 2 | 1 | Playing against a beatable AI is an option | 26-Sep | Brandon | Requires multiplayer to be the default mode of the game |
+| 2.05 | As a user, I want to play against other people, not just an AI | 1 | 5 | Try all control schemes and selecting the same character - realistically, this will test itself | 28-Sep | Patrick | Character set, multi-input distinction |
+| 2.06 | As a user, I want to be able to choose my control scheme, either keyboard or gamepad | 3 | 1.5 | Ensure both work - routine gameplay will provide regression testing | 28-Sep | Patrick | NONE |
+| 2.07 | As a user, I want to hear sound effects when I hit the ball, damage my opponent, use an ability, win the game, etc. | 4 | 5 | Test each sound immediately after implementation | 1-Oct | Lavine | NONE - treating asset gathering as a programmer task, as we are the entire development team |
+| 2.08 | As a user, I want to be able to pause an ongoing game | 3 | 2 | Ensure both keyboard and mouse users have a functioning button-press that pauses the game | 3-Oct | Brandon | Extra control keys |
+| 2.09 | As a user, I want to view a list of controls, so I can learn how to play and discover useful features | 3 | 2 | Verify controls are displayed on pause | 3-Oct | Brandon | A comprehensive list of supported user controls |
+| 2.10 | As a developer, I want to have indications of various end-game states, so I can offer options to the user later | 3 | 4 | When a game end, win/lose windows and options are shown | 4-Oct | Alex |  |
+| 2.11 | As a developer, I want a framework for adding and using special abilities | 3 | 2 | Special abilities are witnessed in-game when the corresponding buttons are pressed | 6-Oct | Patrick |  |
+| 2.12 | As a user, I want a timer to show me the duration of the game, and I want something to ensure a game doesn't go on for too long | 3 | 3 | Accurate visual countdown timer is shown, game enters "sudden death"" mode after time runs out" | 7-Oct | Adam | Done |
+| 2.13 | As a developer, I want to be able to customize the settings of the game, so I can modify parameters like speed, health, and damage | 3 | 2 | When settings are modified, corresponding changes are reflected in-game | 7-Oct | Adam | Done |
+| 2.14 | As a user/developer, I want graphics that make the game look more visually appealing | 4 | 4 | Graphics are visually appleaing and fit a common theme | 7-Oct | Lavine |  |
+| 2.15 | As a user, I want to be able to select an AI as my opponent so I can explore functionality | 2 | 1 | Select vs. AI, try to start a game | In Progress | Brandon |  |
+| 2.16 | As a user, I want to see game-relevant information such as ability status prominently on the game screen | 3 | 4.5 | Test that each player's hitpoints and abilities reflect changes, and check in-game timers against out-of-game timers | In Progress | Lavine |  |
+| 2.17 | As a user, I want to return to the menu after a game ends, so a new game can be started and configured | 5 | 1 | Verification that the menu opens after a victory in either player's favor or a manual quit | In Progress | Alex | NONE |
+| 2.18 | As a user, I want to be able to quit a game and return to the main menu, so I can change any settings or restart any matches I no longer want | 5 | 1 | Verify quit button returns to the menu from all control schemes | In Progress | Brandon | A pause screen |
+| 2.19 | As a user, I want the option to replay or quit the game when one of the player loses | 3 | 3 | Verification that when one of the players loses, the respective win/lose screen pops up | In Progress | Alex | Win/lose screen |
+
+### Sprint #3: November 11, 2018
+| Story ID | Story | Priority | Effort | Validation | Status | Assigned Member | Pending Requirements |
+|:--------:|------------------------------------------------------------------------------------------------|:--------:|:------:|------------------------------------------------------------------------------------------|:------:|:---------------:|:--------------------:|
+| 3.01 | As a user, I want to see a display of the winner after a game ends | 3 | 2 | An end game screen is shown after a game wins, with the winner displayed | 8-Oct | Alex | None |
+| 3.02 | As a developer, I want to be able to set the cooldown for an ability | 3 | 2 | Abilities can only be used after a certain amount of time has passed since the first use | 9-Oct | Patrick | None |
+| 3.03 | As a user, I want to see an animated ball | 4 | 3 | The ball is animated during play (not a static image) | 14-Oct | Lavine | None |
+| 3.04 | As a user, I want a complete menu screen with a way to controls, characters, and game settings | 1 | 5 | A complete menu screen is shown with character, control, and setting options | 16-Oct | Adam | None |
+| 3.05 | As a developer, I want a framework for adding a new character to the game | 2 | 4 | New characters can be created based on a parent Character class | 24-Oct | Adam | None |
+| 3.06 | As a user, I want to be able to play as Adam's character | 3 | 4 | Adam's character can be selected and is fully playable | 24-Oct | Adam | None |
+| 3.07 | As a developer, I want to have updated assets and graphics for better gameplay and testing | 4 | 4 | Graphics and sounds are functional and match gameplay | 7-Nov | Lavine | None |
+| 3.08 | As a user, I want to be able to play as a magician character | 3 | 3 | A magician character can be selected and is fully playable | 9-Nov | Lavine | None |
 
 ## Burndown Chart
 ### Sprint #1: September 16, 2018
@@ -79,6 +91,9 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 
 ### Sprint #2: October 7, 2018
 ![Sprint #2 Burndown Chart](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint2_burndown.png "Sprint #2 Burndown Chart")
+
+### Sprint #2: October 7, 2018
+![Sprint #3 Burndown Chart](https://github.com/lurbean/COP4331-Project/blob/master/figures/sprint3_burndown.png "Sprint #3 Burndown Chart")
 
 ## Design Documents
 ### Sprint #1: September 16, 2018
