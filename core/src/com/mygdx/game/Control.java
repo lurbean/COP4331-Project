@@ -20,7 +20,7 @@ public class Control {
             player1.character.keyboard = new Keyboard();
         }
         else if (controllers.size == 0) {
-            System.out.println("Not enough controllers - Entering player one only mode");
+            //System.out.println("Not enough controllers - Entering player one only mode");
             player1.character.controlMode = 1;
             player2.character.controlMode = 9;
             player1.character.keyboard = new Keyboard();
@@ -29,7 +29,7 @@ public class Control {
             switch (state) {
                 case 0: //two controllers
                     if (controllers.size == 1) {
-                        System.out.println("There are not enough controllers. Player two will play with the keyboard.");
+                        //System.out.println("There are not enough controllers. Player two will play with the keyboard.");
                         state = 1;
                     } else {
                         player1.character.controller = new XBoxController(controllers.get(0));
@@ -54,11 +54,3 @@ public class Control {
         }
     }
 }
-    /*
-            paddle.movePaddleUp();
-            paddle.movePaddleDown();
-        if(!Gdx.input.isKeyPressed(Input.Keys.UP) && !Gdx.input.isKeyPressed(Input.Keys.DOWN))
-            paddle.zeroMomentum();
-
-            paddle.pause();
-    */

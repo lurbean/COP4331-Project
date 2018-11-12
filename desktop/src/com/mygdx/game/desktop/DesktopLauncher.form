@@ -627,8 +627,8 @@
             <properties>
               <model>
                 <item value="Basic Character"/>
-                <item value="Adam Character"/>
-                <item value="Magician Character"/>
+                <item value="Shield Guardian"/>
+                <item value="Magician"/>
                 <item value="TODO"/>
               </model>
             </properties>
@@ -640,8 +640,8 @@
             <properties>
               <model>
                 <item value="Basic Character"/>
-                <item value="Adam Character"/>
-                <item value="TODO"/>
+                <item value="Shield Guardian"/>
+                <item value="Magician"/>
                 <item value="TODO"/>
               </model>
             </properties>

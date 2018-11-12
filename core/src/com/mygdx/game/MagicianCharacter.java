@@ -121,18 +121,6 @@ public class MagicianCharacter extends Character{
         }
     }
 
-    public void gotHit(int dmg)
-    {
-        hitPoints -= dmg;
-        barSize -= dmg*modifier;
-        if(side == true)
-        {
-            barX += dmg*modifier; //Moves bar as it's getting smaller.
-        }
-
-        numFakeBalls = 0;
-    }
-
     void activeAbility()
     {
 

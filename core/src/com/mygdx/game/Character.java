@@ -25,12 +25,14 @@ abstract class Character {
     public XBoxController controller;
     public int width = 270;
     public int hitPoints;
+    public int maxHitPoints;
     public int damage;
     public int hitSpeed;
     public boolean side;
     public float barX;
+    public float barXInitial;
     public float barSize;
-    public float modifier;
+    public float barSizeInitial;
     public int controlMode; // 0 = controller, 1 = keyboard, 2 = uncontrolled
     public int abilityCooldownModifier = 6000; // (100 = base 100%, 60 = frames)
     private int passiveCooldown;
@@ -66,12 +68,13 @@ abstract class Character {
         this.ball = ball;
         this.side = side;
 
+        maxHitPoints = hitPoints;
         barSize = width;
+        barSizeInitial = barSize;
 
         batch = new SpriteBatch();
         healthBar = new Texture("healthBar.jpg");
         paddleHitSound = Gdx.audio.newSound(Gdx.files.internal("pongHit.wav"));
-        modifier = width/hP;
 
         if(side)
         {
@@ -81,11 +84,12 @@ abstract class Character {
         {
             barX = game.getWidth() - 50 - barSize;
         }
+        barXInitial = barX;
     }
     public void drawHealth()
     {
         batch.begin();
-        batch.draw(healthBar, barX, game.getHeight() + 30, barSize, 25);
+        batch.draw(healthBar, barX, game.getHeight() + 15, barSize, 25);
         batch.end();
     }
 
@@ -96,6 +100,17 @@ abstract class Character {
         return baseCooldownInSeconds * abilityCooldownModifier / 100;
     }
 
+    public void gotHit(int dmg)
+    {
+        hitPoints = hitPoints - dmg;
+        float HPfraction = 1f - ((float)maxHitPoints - (float)hitPoints) / (float)maxHitPoints;
+        barSize = barSizeInitial * HPfraction;
+        if(side)
+        {
+            barX = barXInitial + (barSizeInitial - barSize); //Moves bar as it's getting smaller.
+        }
+    }
+
     abstract boolean doUnpauseGame();
     abstract void activeAbility();
     abstract void passiveAbility();
@@ -103,7 +118,6 @@ abstract class Character {
     abstract void checkCollision();
     abstract void characterAssetSetup();
     abstract void render();
-    abstract void gotHit(int dmg);
     abstract int getDamage();
     abstract int getHitPoints();
     abstract void checkPauseRequest();

@@ -12,6 +12,7 @@ public class AdamCharacter extends Character{
     private Texture companionPaddles;
     private Texture chainTexture;
     private Texture shield;
+    private Texture shieldOutline;
     private Sound bonk;
     private Sound chainRecoil;
 
@@ -28,6 +29,10 @@ public class AdamCharacter extends Character{
     private TopChild topChild = new TopChild();
     private BotChild botChild = new BotChild();
 
+    // Ability cooldown display textures are here @Lavine - these are drawn at 40 x 40
+    private Texture abilityTexture;
+    private Texture ultimateTexture;
+
     AdamCharacter(PongGame game, Ball ball, Paddle paddle, boolean side, SETTINGS settings)
     {
         super(game, ball, paddle, 20, 7, 7, 7, side, settings);
@@ -39,7 +44,16 @@ public class AdamCharacter extends Character{
         batch = new SpriteBatch();
         companionPaddles = new Texture("paddleOne.jpg");
         chainTexture = new Texture("chain.png");
-        shield = new Texture("paddleOne.jpg");
+        if (side)
+        {
+            shield = new Texture("AdamPaddleLeft.png");
+            shieldOutline = new Texture("ShieldOutlineLeft.png");
+        }
+        else
+        {
+            shield = new Texture("AdamPaddleRight.png");
+            shieldOutline = new Texture("ShieldOutlineRight.png");
+        }
         //bonk = Gdx.audio.newSound(Gdx.files.internal(""));
         //chainRecoil = Gdx.audio.newSound(Gdx.files.internal(""));
         // healthBar = new Texture("healthBar.jpg");
@@ -78,9 +92,9 @@ public class AdamCharacter extends Character{
                     paddle.movePaddleDown();
                 break;
             case 1: //Keyboard
-                if (keyboard.isUpPressed() || keyboard.isWPressed())
+                if (keyboard.isWPressed())
                     paddle.movePaddleUp();
-                else if (keyboard.isDownPressed() || keyboard.isSPressed())
+                else if (keyboard.isSPressed())
                     paddle.movePaddleDown();
                 break;
             case 9:
@@ -120,16 +134,6 @@ public class AdamCharacter extends Character{
         }
         if (activeOn)
             checkIndividualCollision(activeChildRectangle, 0f);
-    }
-
-    public void gotHit(int dmg)
-    {
-        hitPoints -= dmg;
-        barSize -= dmg*modifier;
-        if(side == true)
-        {
-            barX += dmg*modifier; //Moves bar as it's getting smaller.
-        }
     }
 
     void activeAbility()
@@ -258,12 +262,7 @@ public class AdamCharacter extends Character{
         if (activeOn)
             batch.draw(shield, activeChildRectangle.getX(), activeChildRectangle.getY(), activeChildRectangle.width, activeChildRectangle.height);
         else
-        {
-            batch.draw(paddle.paddleTexture, activeChildRectangle.x, activeChildRectangle.y, 5f, activeChildRectangle.height);
-            batch.draw(paddle.paddleTexture, activeChildRectangle.x + activeChildRectangle.width - 5, activeChildRectangle.y, 5f, activeChildRectangle.height);
-            batch.draw(paddle.paddleTexture, activeChildRectangle.x, activeChildRectangle.y, activeChildRectangle.width, 5f);
-            batch.draw(paddle.paddleTexture, activeChildRectangle.x, activeChildRectangle.y + activeChildRectangle.height - 5, activeChildRectangle.width, 5f);
-        }
+            batch.draw(shieldOutline, activeChildRectangle.getX(), activeChildRectangle.getY(), activeChildRectangle.width, activeChildRectangle.height);
         if (ultimateOn)
         {
             //batch.draw(healthBar, barX, game.getHeight() + 20, barSize, 25);

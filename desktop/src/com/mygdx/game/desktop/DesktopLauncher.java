@@ -82,6 +82,8 @@ public class DesktopLauncher {
     private int GlobalHealth[] = {0, 50, 100, 150, 200, 300, 500};
     private int GlobalBall[] = {50, 75, 100, 150, 200};
     private int GlobalCooldown[] = {50, 75, 100, 125, 150, 0};
+    private int leftControlSelect;
+    private int rightControlSelect;
     private int temp;
 
     public SETTINGS settings = new SETTINGS();
@@ -107,6 +109,7 @@ public class DesktopLauncher {
                 config.width = 800;
                 config.height = 580;
                 //settings.DisplaySettings(); // Settings test function
+                settings.State = leftControlSelect + rightControlSelect;
                 new LwjglApplication(new PongGame(settings), config);
             }
         });
@@ -213,7 +216,7 @@ public class DesktopLauncher {
             public void actionPerformed(ActionEvent e) {
                 temp = GlobalCooldownMod.getSelectedIndex();
                 temp = GlobalCooldown[temp];
-                settings.AllCooldown = temp; //TODO: cooldowns need to be modifiable values and this needs to be applied to them. If settings.AllCooldown==0, Cooldown takes forever. Otherwise, Cooldown takes normalCooldown * settings.AllCooldown / 100. Same for P1Cooldown and P2Cooldown, for their respective sides
+                settings.AllCooldown = temp;
             }
         });
         P2HealthMultiplier.addActionListener(new ActionListener() {
@@ -292,7 +295,7 @@ public class DesktopLauncher {
                 if (LeftRBKeyboard.isSelected() && RightRBKeyboard.isSelected())
                     KeyboardOverlap();
                 else
-                    settings.P1Character = LeftRBKeyboard.isSelected()?1:0;
+                    leftControlSelect = LeftRBKeyboard.isSelected()?1:0;
             }
         };
         LeftRBXBox.addActionListener(LeftRadio);
@@ -303,7 +306,7 @@ public class DesktopLauncher {
                 if (LeftRBKeyboard.isSelected() && RightRBKeyboard.isSelected())
                     KeyboardOverlap();
                 else
-                    settings.P2Character = RightRBKeyboard.isSelected()?2:0;
+                    rightControlSelect = RightRBKeyboard.isSelected()?2:0;
             }
         };
         RightRBXBox.addActionListener(RightRadio);
