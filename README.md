@@ -118,26 +118,49 @@ Mortal Pongbat will be a unique twist to the classic Pong game by incorporating 
 ## Software Tests
 ### Test Procedure
 All test procedures use the following skeleton:
-Step One: Run the application
-Step Two: Press "Settings"
-Step Three: Close the Settings window or press "Back to Main Menu"
-Step Four: Press "Play"
-Step Five: Any tests to be made within the confines of one round
-Step Six: Reduce one player's health to zero by hitting the ball into their side of the screen, as needed
-Step Seven: Either exit the program by choosing not to play again, go to Step Five by pressing "Play Again", or go to Step Two by pressing "New Game"
-### Primary Acceptance and Functionality Tests
-#### Test 1 - Launch and Open
-After Step One, advance directly to Step Four. If the program opens and displays the main menu (after Step One) and the game screen (after Step Four), this test passes.
-#### Test 2 - Move and Hit
-After Step Four, use the WASD keys and arrow keys to attempt to move the left and right paddles, respectively. Verify neither can leave the boundary of the game screen.
-Then move the paddles in front of the ball and verify the ball returns (as expected in Pong), and that the speed and direction are suitable to each player hitting the ball in turn.
-Without failures, this test passes.
-#### Test 3 - Damage and Win
-During Step Five, using the movement controls established in Test 2, manipulate the paddles such that the ball hits one player's side, and confirm that their health is reduced.
-After their health bar is reduced to nothing (it will be invisible), verify the game-end screen displays per Step Six.
-Without failures, this test passes.
-#### Test 4 - Replaying a Game [unmet]
-During Step Seven, attempt any option. It should function per its name and there should be no errors. Currently this test will not pass unless trying to close the game.
+- Step One: Run the application
+- Step Two: Switch between each tab of the main menu and modify options and settings as desired
+- Step Three: Press "Play"
+- Step Four: Follow test procedures within each round
+- Step Five: Reduce one player's health to zero by hitting the ball into their side of the screen, as needed, to trigger end-game screen
+
+Various stages of the standard test procedures may have to be reached to perform each test. Test procedures, validation requirements, and statuses are displayed in the table below. Each test is matched to its associated user story ID.
+
+### Test Procedures, Validation, and Status
+| ﻿Story ID | Test Procedures | Validation | Status |
+|:--------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------:|
+| 1.01 | Start game; verify that game starts and is playable | The main menu is shown on program start | Pass |
+| 1.02 | Observe menu elements an options upon start of game; verify that all are available and useable | The main menu has a button to start a match | Pass |
+| 1.03 | During a game, observe that the ball moves across the playing field | The ball moves across the playing field | Pass |
+| 1.04 | During a game, press the up and down arrow keys for each player, and observe if the paddle moves in response to each input | The paddle moves up and down, depending on keyboard input | Pass |
+| 1.05 | During a game, use the analog stick and directional keypad of the Xbox controller for each player, and observe if the paddle moves in response to each input | The paddle moves up and down, corresponding to input from an Xbox controller | Pass |
+| 1.06 | During a game, make contact with the ball with each players paddle and observe if the ball bounces away from the side of each paddle to stay in play | The ball bounces back when it hits a paddle | Pass |
+| 1.07 | During a game, allow the ball to hit the bottom and top (boundary walls) of the field of play and observe if the ball bounces back towards the center | The ball bounces back when it hits a boundary wall | Pass |
+| 1.08 | During a game, hit the ball with  upwards, downwards, and zero velocity, and observe the reaction of the ball | The ball has a reflection velocity corresponding to the velocity of the paddle | Pass |
+| 1.09 | During a game, allow the ball to go past each player (off-screen to either the left or right) and observe if thea health indicators on the top of the screen change | Each player has a health bar, which is lowered when a ball is missed | Pass |
+| 1.10 | Change various attributes and characteristics of a class that extends the main Character class, and verify each changed attribute of the character in-game | Varying amounts of damage can be dealt; paddles can move with different speeds | Pass |
+| 2.01 | During a game, observe the timer, ensure the game continues until the timer approaches and passes zero, observe changes in the ball velocity after transition | The timer counts down once per second for each transition, there is a transistion from 00 time to red 01 time and increment reversal, the ball speed begins to increase at each timer value with a 1 in the ones place, the increased damage taken upon a hit after the countdown has ticked far back up | Pass |
+| 2.02 | Using the opening menu, click on the settings tab, ensure that settings  are available for change, select each option for each setting, observe in-game changes | Damage, health, speed, cooldowns, hit speed, etc. is affected at approximately the modification specified during game | Pass |
+| 2.03 | During a game, observe if health and timer indicators are visually prominent and match in-game events | Each player's hitpoint displays reflect changes; in-game timers match out-of-game timers | Pass |
+| 2.04 | Make appropriate changes in the game to enable an AI opponent; Play against AI as necessary to test functionality | Playing against a beatable AI is an option | Pass |
+| 2.05 | Modify settings and select two humans as players; start a game with the "Play" button, and ensure each player can play against the other | Two different human players are able to play the game against each other | Pass |
+| 2.06 | Modify settings and select each control scheme for each player, start a game, and observe if selected control inputs match in-game actions | Each control scheme can be chosen for each character, and gameplay is confirmed in-game | Pass |
+| 2.07 | Enumerate all sounds and expected mappings to various events; cause each event to occur and observe if sounds play | Enumerated sounds play at expected moments | Pass |
+| 2.08 | During a game, press the appropriate control input for each control scheme and determine if the game and all gameplay pauses until pause is toggled off by same option | Both keyboard and mouse users have a functioning button-press that pauses the game | Pass |
+| 2.09 | Press pause and observe if controls are displayed for each control option | Controls are displayed on pause | Pass |
+| 2.10 | When a game ends (by either player's health points being reduced to zero), verify if end-game options are displayed to the user | When a game end, win/lose windows and options are shown | Pass |
+| 2.11 | Observe that code base is modularized for adding abilities as necessary, test ability control inputs and observe if abilities occur in response to each appropriate input | Special abilities are witnessed in-game when the corresponding buttons are pressed | Pass |
+| 2.12 | During a game, observe the timer and ensure the game continues until timer approaches, reaches, and passes zero | Accurate visual countdown timer is shown, game enters "sudden death"" mode after time runs out""" | Pass |
+| 2.13 | Customize settings in the source code of the game; start games with various settings enabled, and observe if changes are reflected in game | When settings are modified, corresponding changes are reflected in-game | Pass |
+| 2.14 | Observe and inspect all graphics for each part of gameplay, from start to finish | Graphics are visually appleaing and fit a common theme | Pass |
+| 3.01 | Play games until both player 1 and player 2 win/lose; observe if the ending screen for each scenario matches as expected | An end game screen is shown after a game wins, with the winner displayed | Pass |
+| 3.02 | Change the source code for each character's ability cooldown; verify that in-game cooldowns match the expected cooldown timers by attempting to repeatedly use each ability | Abilities can only be used after a certain amount of time has passed since the first use | Pass |
+| 3.03 | During a game, observe if the ball is animated rather than a static image | The ball is animated during play (not a static image) | Pass |
+| 3.04 | Using the opening menu, click and change all available controls and settings; verify each by starting a game and observing if changes match selected options | A complete menu screen is shown with character, control, and setting options | Pass |
+| 3.05 | As a developer, I want a framework for adding a new character to the game; extend Character class to develop a new character; verify that all required functionality for new characters is built-in, with changes easily added | New characters can be created based on a parent Character class | Pass |
+| 3.06 | Observe if Adam's character can be chosen from main menu; during a game, use all abilities and observe for expected behavior | Adam's character can be selected and is fully playable | Pass |
+| 3.07 | Inspect all graphics and trigger all available sounds; inspect quality of each asset available in project resources | Graphics and sounds are functional and match gameplay | Pass |
+| 3.08 | Observe if magician character can be chosen from main menu; during a game, use all abilities and observe for expected behavior | A magician character can be selected and is fully playable | Pass |
 
 ## Demonstration
 ### Sprint #2: October 7, 2018
