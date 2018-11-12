@@ -41,10 +41,12 @@ public class PongGame extends ApplicationAdapter {
 
 	@Override
 	public void create () {
-		createTextures();
+		if (backgroundImage == null)
+			createTextures();
 		initializeTimer();
 		createGameObjects();
-		setupMusic();
+		if (backgroundMusic == null)
+			setupMusic();
 	}
 
 	private void createGameObjects() {
@@ -242,52 +244,3 @@ public class PongGame extends ApplicationAdapter {
 
 	public Ball getBall() { return ball; }
 }
-/* TODO: reincorporate abilities
-			if (player1.getAbilityOneUsed() && coolDownTimerP1A1 == 0)
-			{
-				if (ball.getRectangle().x < 50){
-					if (ball.getRectangle().y <= (player1.getPaddle().getRectangle().getHeight()/2 + player1.getPaddle().getRectangle().y))
-					{
-						if (ball.getRectangle().y >= (player1.getPaddle().getRectangle().y - player1.getPaddle().getRectangle().getHeight()/2)){
-							ball.powerShot();
-							player1.setAbilityOneUsed(false);
-							System.out.println("P1: Ability one successfully used!");
-							// Cooldown timer initiate here.
-							coolDownTimerP1A1 = 600;
-						}
-					}
-
-				}
-
-			}
-
-			if (player2.getAbilityOneUsed() && coolDownTimerP2A1 == 0)
-			{
-				if (ball.getRectangle().x > (WIDTH - 80)){
-					if (ball.getRectangle().y <= (player2.getPaddle().getRectangle().getHeight()/2 + player2.getPaddle().getRectangle().y))
-					{
-						if (ball.getRectangle().y >= (player2.getPaddle().getRectangle().y - player2.getPaddle().getRectangle().getHeight()/2)){
-							ball.powerShot();
-							player2.setAbilityOneUsed(false);
-							System.out.println("P2: Ability one successfully used!");
-							// Cooldown timer initiate here.
-							coolDownTimerP2A1 = 600;
-						}
-					}
-
-				}
-			}*/
-		/*
-		if (coolDownTimerP1A1 > 0)
-		{
-			coolDownTimerP1A1--;
-			player1.setAbilityOneUsed(false);
-			player2.setAbilityOneUsed(false);
-		}
-		if (coolDownTimerP2A1 > 0)
-		{
-			coolDownTimerP2A1--;
-			player1.setAbilityOneUsed(false);
-			player2.setAbilityOneUsed(false);
-		}
-		*/
