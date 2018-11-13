@@ -35,13 +35,11 @@ abstract class Character {
     public float barSizeInitial;
     public int controlMode; // 0 = controller, 1 = keyboard, 2 = uncontrolled
     public int abilityCooldownModifier = 6000; // (100 = base 100%, 60 = frames)
-    private int passiveCooldown;
     private int activeCooldown;
     private int ultimateCooldown;
-    private boolean passiveOn;
     private boolean activeOn;
     private boolean ultimateOn;
-    Sound paddleHitSound;
+    public Sound paddleHitSound;
 
     Character(PongGame game, Ball ball, Paddle paddle, int hP, int damage, int speed, int paddleSpeed, boolean side, SETTINGS settings)
     {
@@ -113,7 +111,6 @@ abstract class Character {
 
     abstract boolean doUnpauseGame();
     abstract void activeAbility();
-    abstract void passiveAbility();
     abstract void ultimateAbility();
     abstract void checkCollision();
     abstract void characterAssetSetup();

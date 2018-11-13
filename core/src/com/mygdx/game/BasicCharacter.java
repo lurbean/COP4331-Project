@@ -31,8 +31,7 @@ public class BasicCharacter extends Character{
         drawHealth();
 
         activeAbility();
-        passiveAbility(); // note: these may need to happen after paddle.render(); for your character!
-        ultimateAbility(); // but they probably come first
+        ultimateAbility();
 
         controlPaddle();
 
@@ -81,8 +80,6 @@ public class BasicCharacter extends Character{
     }
 
     void activeAbility()
-    {}
-    void passiveAbility() // Basic character has none of these
     {}
     void ultimateAbility()
     {}

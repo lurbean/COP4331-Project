@@ -60,16 +60,6 @@ public class Ball extends ApplicationAdapter {
     @Override
     public void render()
     {
-        stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
-
-        // Get current frame of animation for the current stateTime
-        TextureRegion currentFrame = ballAnimation.getKeyFrame(stateTime, true);
-
-        batch.begin();
-        //batch.draw(pingPong, pongBall.x, pongBall.y);
-        batch.draw(currentFrame, pongBall.x, pongBall.y); // Draw current frame at (50, 50)
-        batch.end();
-
         if (game.getPaused())
         {
             return;
@@ -92,11 +82,28 @@ public class Ball extends ApplicationAdapter {
                                      pongBall.y - additiveSpeed + (yv * SpeedMultiplier) / 100);
         }
 
-        //If the ball hits the top and bottom of the screen, it'll bounce off.
-        if(pongBall.y <= 0|| pongBall.y >= game.getHeight() - HEIGHT)
+        //If the ball hits the top or bottom of the screen, it'll bounce off.
+        if (pongBall.y < 0)
         {
-            yv = -yv; //Invert y when it does.
+            pongBall.y = 0 - pongBall.y; // Conservation of kinetic energy - it bounces back at the same speed
+            yv = Math.abs(yv); // Invert y. abs() used here to ensure a ball at the bottom always goes up
+            game.player1.character.paddleHitSound.play(.35f, 1.5f, 0f); // Play a quieter hit sound
         }
+        if (pongBall.y > game.getHeight() - HEIGHT)
+        {
+            float distanceOutOfBounds = (float)HEIGHT - ((float)game.getHeight() - pongBall.y);
+            pongBall.y = (float)game.getHeight() - distanceOutOfBounds - (float)HEIGHT;
+            yv = - Math.abs(yv);
+            game.player1.character.paddleHitSound.play(.35f, 1.5f, 0f);
+        }
+
+        stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
+        // Get current frame of animation for the current stateTime
+        TextureRegion currentFrame = ballAnimation.getKeyFrame(stateTime, true);
+        batch.begin();
+        //batch.draw(pingPong, pongBall.x, pongBall.y);
+        batch.draw(currentFrame, pongBall.x, pongBall.y); // Draw current frame at (50, 50)
+        batch.end();
     }
 
     @Override

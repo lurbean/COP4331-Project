@@ -580,7 +580,7 @@
           </grid>
         </children>
       </grid>
-      <grid id="26af6" binding="CharacterSelect" layout-manager="GridLayoutManager" row-count="8" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="26af6" binding="CharacterSelect" layout-manager="GridLayoutManager" row-count="9" column-count="2" same-size-horizontally="true" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <tabbedpane title="Character Select"/>
@@ -606,7 +606,7 @@
           </component>
           <component id="e8c61" class="javax.swing.JLabel" binding="LeftCharacterImage">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value=""/>
@@ -614,7 +614,7 @@
           </component>
           <component id="776f4" class="javax.swing.JLabel" binding="RightCharacterImage">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value=""/>
@@ -655,12 +655,14 @@
               <text value="The basic character has no ability"/>
             </properties>
           </component>
-          <component id="f2008" class="javax.swing.JLabel" binding="LeftCharacterPassive">
+          <component id="f2008" class="javax.swing.JLabel" binding="LeftCharacterAbilityExtended">
             <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="And no passive"/>
+              <text value=" "/>
+              <verticalAlignment value="1"/>
+              <verticalTextPosition value="1"/>
             </properties>
           </component>
           <component id="8f6ee" class="javax.swing.JLabel" binding="LeftCharacterUltimate">
@@ -679,13 +681,15 @@
               <text value="The basic character has no ability"/>
             </properties>
           </component>
-          <component id="3913c" class="javax.swing.JLabel" binding="RightCharacterPassive">
+          <component id="3913c" class="javax.swing.JLabel" binding="RightCharacterAbilityExtended">
             <constraints>
-              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <enabled value="true"/>
-              <text value="And no passive"/>
+              <text value=" "/>
+              <verticalAlignment value="1"/>
+              <verticalTextPosition value="1"/>
             </properties>
           </component>
           <component id="ec258" class="javax.swing.JLabel" binding="RightCharacterUltimate">
@@ -698,7 +702,7 @@
           </component>
           <component id="d6c92" class="javax.swing.JLabel" binding="LeftKeyboardControls">
             <constraints>
-              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Keyboard controls: WS to move, Spacebar to pause"/>
@@ -706,7 +710,7 @@
           </component>
           <component id="3d51b" class="javax.swing.JLabel" binding="RightKeyboardControls">
             <constraints>
-              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Keyboard controls: WS to move, Spacebar to pause"/>
@@ -714,7 +718,7 @@
           </component>
           <component id="c4ac5" class="javax.swing.JLabel" binding="LeftXBoxControls">
             <constraints>
-              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="XBox controls: Left stick up and down to move, Start to pause"/>
@@ -722,10 +726,30 @@
           </component>
           <component id="356a4" class="javax.swing.JLabel" binding="RightXBoxControls">
             <constraints>
-              <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="XBox controls: Left stick up and down to move, Start to pause"/>
+            </properties>
+          </component>
+          <component id="bffb" class="javax.swing.JLabel" binding="LeftCharacterUltimateExtended">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value=" "/>
+              <verticalAlignment value="1"/>
+              <verticalTextPosition value="1"/>
+            </properties>
+          </component>
+          <component id="afde8" class="javax.swing.JLabel" binding="RightCharacterUltimateExtended">
+            <constraints>
+              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value=" "/>
+              <verticalAlignment value="1"/>
+              <verticalTextPosition value="1"/>
             </properties>
           </component>
         </children>

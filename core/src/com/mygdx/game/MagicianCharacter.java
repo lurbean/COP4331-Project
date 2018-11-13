@@ -62,8 +62,7 @@ public class MagicianCharacter extends Character{
         drawHealth();
 
         activeAbility();
-        passiveAbility(); // note: these may need to happen after paddle.render(); for your character!
-        ultimateAbility(); // but they probably come first
+        ultimateAbility();
 
         if(numFakeBalls != 0)
         {
@@ -163,8 +162,7 @@ public class MagicianCharacter extends Character{
         }
 
     }
-    void passiveAbility() // Basic character has none of these
-    {}
+
     void ultimateAbility()
     {
         if (ultimateCooldown > 0 && ultDuration==0)

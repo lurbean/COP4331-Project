@@ -36,10 +36,10 @@ public class DesktopLauncher {
     private JComboBox CharOneSelect;
     private JComboBox CharTwoSelect;
     private JPanel CharacterSelect;
-    private JLabel LeftCharacterPassive;
+    private JLabel LeftCharacterAbilityExtended;
     private JLabel LeftCharacterAbility;
     private JLabel LeftCharacterUltimate;
-    private JLabel RightCharacterPassive;
+    private JLabel RightCharacterAbilityExtended;
     private JLabel RightCharacterAbility;
     private JLabel RightCharacterUltimate;
     private JLabel RightCharacterImage;
@@ -53,18 +53,23 @@ public class DesktopLauncher {
     private JRadioButton RightRBKeyboard;
     private JLabel MenuImageBox;
     private JPanel MenuHouse;
+    private JLabel LeftCharacterUltimateExtended;
+    private JLabel RightCharacterUltimateExtended;
     private BufferedImage mainMenuImage;
 
-    private ImageIcon CharSelect[] = {new ImageIcon("1.png"), new ImageIcon("2.png"), new ImageIcon("3.png"), new ImageIcon("4.png")};
+    private ImageIcon CharSelect[] = {new ImageIcon("BasicCharacter.png"), new ImageIcon("AdamPaddleLeft.png"), new ImageIcon("3.png"), new ImageIcon("4.png")};
     private String abilities[] = {"The basic character has no ability",
-            "Press 'E/right trigger' to deploy your shield; control it with 'arrow keys/right thumb stick'",
-            "Press 'E/right trigger' to create a fake ball the next time the paddle hits the ball."};
-    private String passives[] = {"And no passive",
-            "No passive yet",
-            "The Magician has no passives."};
+            "Press 'E'/right trigger to deploy your shield;",
+            "Press 'E'/right trigger to create a fake ball the next time the paddle hits the ball."};
+    private String abilitiesLineTwo[] = {" ",
+            "control it with the arrow keys/right thumb stick",
+            " "};
     private String ultimates[] = {"And no ultimate",
-            "Press 'R'/left trigger' to summon two companion paddles",
-            "When it's implemented, the magician will summon up to 10 fake balls as decoys."};
+            "Press 'R'/left trigger to summon two companion paddles",
+            "Press 'R'/left trigger to cover your opponent's side of the field with fog"};
+    private String ultimatesLineTwo[] = {" ",
+            " ",
+            " "};
     private String KBControls[] = {"Keyboard controls: WS to move, Spacebar to pause",
             "Keyboard controls: WS to move, Spacebar to pause",
             "Keyboard controls: WS to move, Spacebar to pause"};
@@ -124,6 +129,8 @@ public class DesktopLauncher {
         Image img = mainMenuImage.getScaledInstance(mainMenuImage.getWidth()/2, mainMenuImage.getHeight()/2, Image.SCALE_SMOOTH);
         ImageIcon imgIcon = new ImageIcon(img);
         MenuImageBox.setIcon(imgIcon);
+        LeftCharacterImage.setIcon(CharSelect[0]);
+        RightCharacterImage.setIcon(CharSelect[0]);
     }
 
     public void KeyboardOverlap()
@@ -267,8 +274,9 @@ public class DesktopLauncher {
                     return;
                 LeftCharacterImage.setIcon(CharSelect[temp]);
                 LeftCharacterAbility.setText(abilities[temp]);
-                LeftCharacterPassive.setText(passives[temp]);
+                LeftCharacterAbilityExtended.setText(abilitiesLineTwo[temp]);
                 LeftCharacterUltimate.setText(ultimates[temp]);
+                LeftCharacterUltimateExtended.setText(ultimatesLineTwo[temp]);
                 LeftKeyboardControls.setText(KBControls[temp]);
                 LeftXBoxControls.setText(XBoxControls[temp]);
                 settings.P1Character = temp;
@@ -282,8 +290,9 @@ public class DesktopLauncher {
                     return;
                 RightCharacterImage.setIcon(CharSelect[temp]);
                 RightCharacterAbility.setText(abilities[temp]);
-                RightCharacterPassive.setText(passives[temp]);
+                RightCharacterAbilityExtended.setText(abilitiesLineTwo[temp]);
                 RightCharacterUltimate.setText(ultimates[temp]);
+                RightCharacterUltimateExtended.setText(ultimatesLineTwo[temp]);
                 RightKeyboardControls.setText(KBControls[temp]);
                 RightXBoxControls.setText(XBoxControls[temp]);
                 settings.P2Character = temp;

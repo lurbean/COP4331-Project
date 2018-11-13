@@ -16,12 +16,10 @@ public class AdamCharacter extends Character{
     private Sound bonk;
     private Sound chainRecoil;
 
-    private int passiveCooldown;
     private int activeCooldown;
     private int ultimateCooldown;
     private int activeTimer;
     private int ultimateTimer;
-    private boolean passiveOn;
     private boolean activeOn;
     private boolean ultimateOn;
 
@@ -71,8 +69,7 @@ public class AdamCharacter extends Character{
     {
         drawHealth();
 
-        passiveAbility(); // note: these may need to happen after paddle.render(); for your character!
-        ultimateAbility(); // but they probably come first
+        ultimateAbility();
         activeAbility();
 
         controlPaddle();
@@ -200,8 +197,7 @@ public class AdamCharacter extends Character{
                 activeChildRectangle.setX(game.getWidth() / 5f);
         }
     }
-    void passiveAbility() // Basic character has none of these
-    {}
+
     void ultimateAbility() {
         if (ultimateOn) {
             ultimateTimer--;
