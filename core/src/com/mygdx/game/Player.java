@@ -42,6 +42,7 @@ public class Player{
                 this.character = new MagicianCharacter(game, ball, paddle, side, settings);
                 break;
             case (3):
+                this.character = new AlexCharacter(game, ball, paddle, side, settings);
                 break;
         }
     }

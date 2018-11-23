@@ -629,7 +629,7 @@
                 <item value="Basic Character"/>
                 <item value="Shield Guardian"/>
                 <item value="Magician"/>
-                <item value="TODO"/>
+                <item value="Originator"/>
               </model>
             </properties>
           </component>
@@ -642,7 +642,7 @@
                 <item value="Basic Character"/>
                 <item value="Shield Guardian"/>
                 <item value="Magician"/>
-                <item value="TODO"/>
+                <item value="Originator"/>
               </model>
             </properties>
           </component>

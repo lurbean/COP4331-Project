@@ -60,20 +60,26 @@ public class DesktopLauncher {
     private ImageIcon CharSelect[] = {new ImageIcon("BasicCharacter.png"), new ImageIcon("AdamPaddleLeft.png"), new ImageIcon("3.png"), new ImageIcon("4.png")};
     private String abilities[] = {"The basic character has no ability",
             "Press 'E'/right trigger to deploy your shield;",
-            "Press 'E'/right trigger to create a fake ball the next time the paddle hits the ball."};
+            "Press 'E'/right trigger to create a fake ball the next time the paddle hits the ball.",
+            "Press 'E'/right trigger to reset the real ball's position"};
     private String abilitiesLineTwo[] = {" ",
             "control it with the arrow keys/right thumb stick",
+            " ",
             " "};
     private String ultimates[] = {"And no ultimate",
             "Press 'R'/left trigger to summon two companion paddles",
-            "Press 'R'/left trigger to cover your opponent's side of the field with fog"};
+            "Press 'R'/left trigger to cover your opponent's side of the field with fog",
+            "Press 'R'/left trigger to refresh opponent's cooldowns"};
     private String ultimatesLineTwo[] = {" ",
+            " ",
             " ",
             " "};
     private String KBControls[] = {"Keyboard controls: WS to move, Spacebar to pause",
             "Keyboard controls: WS to move, Spacebar to pause",
+            "Keyboard controls: WS to move, Spacebar to pause",
             "Keyboard controls: WS to move, Spacebar to pause"};
     private String XBoxControls[] = {"XBox controls: Left stick up and down to move, Start to pause",
+            "XBox controls: Left stick up and down to move, Start to pause",
             "XBox controls: Left stick up and down to move, Start to pause",
             "XBox controls: Left stick up and down to move, Start to pause"};
 
@@ -270,7 +276,7 @@ public class DesktopLauncher {
             @Override
             public void actionPerformed(ActionEvent e) {
                 temp = CharOneSelect.getSelectedIndex();
-                if (temp > 2) //TODO: once you implement a character, add your portrait and ability descriptions and then add " || temp != 1", etc.
+                if (temp > 3) //TODO: once you implement a character, add your portrait and ability descriptions and then add " || temp != 1", etc.
                     return;
                 LeftCharacterImage.setIcon(CharSelect[temp]);
                 LeftCharacterAbility.setText(abilities[temp]);
@@ -286,7 +292,7 @@ public class DesktopLauncher {
             @Override
             public void actionPerformed(ActionEvent e) {
                 temp = CharTwoSelect.getSelectedIndex();
-                if (temp > 2) //TODO: once you implement a character, add your portrait and ability descriptions and then add " || temp != 1", etc.
+                if (temp > 3) //TODO: once you implement a character, add your portrait and ability descriptions and then add " || temp != 1", etc.
                     return;
                 RightCharacterImage.setIcon(CharSelect[temp]);
                 RightCharacterAbility.setText(abilities[temp]);
