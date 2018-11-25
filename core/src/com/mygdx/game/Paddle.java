@@ -49,9 +49,6 @@ public class Paddle extends ApplicationAdapter {
             return;
         }
 
-        if(yv < 0)
-            yv *= -1;
-
         if (momentum <= 0)
             momentum = 1f;
         else
@@ -69,16 +66,15 @@ public class Paddle extends ApplicationAdapter {
             return;
         }
 
-        if(yv > 0)
-            yv *= -1;
+        int negYV = -yv;
 
         if (momentum >= 0)
             momentum = -1f;
         else
             momentum = -1f + momentum * .9f;
 
-        if(paddlePosition.y + yv > 0 && paddlePosition.y + yv < game.getHeight() - HEIGHT)
-            paddlePosition.y += yv;
+        if(paddlePosition.y + negYV > 0 && paddlePosition.y + negYV < game.getHeight() - HEIGHT)
+            paddlePosition.y += negYV;
     }
 
     public void pause()

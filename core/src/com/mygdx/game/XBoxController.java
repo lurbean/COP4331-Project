@@ -10,28 +10,28 @@ public class XBoxController {
     }
 
     public boolean isLeftStickUp() {
-        return controller.getAxis(XBox.AXIS_LEFT_Y) < -.15;
+        return controller.getAxis(XBox.AXIS_LEFT_Y) < -.15f;
     }
     public boolean isLeftStickLeft() {
-        return controller.getAxis(XBox.AXIS_LEFT_X) < -.15;
+        return controller.getAxis(XBox.AXIS_LEFT_X) < -.15f;
     }
     public boolean isLeftStickRight() {
-        return controller.getAxis(XBox.AXIS_LEFT_X) > .15;
+        return controller.getAxis(XBox.AXIS_LEFT_X) > .15f;
     }
     public boolean isLeftStickDown() {
-        return controller.getAxis(XBox.AXIS_LEFT_Y) > .15;
+        return controller.getAxis(XBox.AXIS_LEFT_Y) > .15f;
     }
     public boolean isRightStickUp() {
-        return controller.getAxis(XBox.AXIS_RIGHT_Y) < -.15;
+        return controller.getAxis(XBox.AXIS_RIGHT_Y) < -.15f;
     }
     public boolean isRightStickLeft() {
-        return controller.getAxis(XBox.AXIS_RIGHT_X) < -.15;
+        return controller.getAxis(XBox.AXIS_RIGHT_X) < -.15f;
     }
     public boolean isRightStickRight() {
-        return controller.getAxis(XBox.AXIS_RIGHT_X) > .15;
+        return controller.getAxis(XBox.AXIS_RIGHT_X) > .15f;
     }
     public boolean isRightStickDown() {
-        return controller.getAxis(XBox.AXIS_RIGHT_Y) > .15;
+        return controller.getAxis(XBox.AXIS_RIGHT_Y) > .15f;
     }
     public boolean isAButtonPressed()
     {
@@ -63,11 +63,11 @@ public class XBoxController {
     }
     public boolean isLeftTriggerPressed()
     {
-        return controller.getAxis(XBox.AXIS_LEFT_TRIGGER) > .15;
+        return controller.getAxis(XBox.AXIS_LEFT_TRIGGER) > .15f;
     }
     public boolean isRightTriggerPressed()
     {
-        return controller.getAxis(XBox.AXIS_RIGHT_TRIGGER) < -.15;
+        return controller.getAxis(XBox.AXIS_RIGHT_TRIGGER) < -.15f;
     }
     public boolean isLeftStickPressed()
     {
