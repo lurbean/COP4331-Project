@@ -116,7 +116,7 @@ public class DesktopLauncher {
                 LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
                 config.backgroundFPS = -1;
-                config.title = "Pong"; //Title of Window
+                config.title = "Mortal Pongbat"; //Title of Window
                 config.width = 800;
                 config.height = 580;
                 //settings.DisplaySettings(); // Settings test function
