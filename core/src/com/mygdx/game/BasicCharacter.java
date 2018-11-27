@@ -74,7 +74,7 @@ public class BasicCharacter extends Character{
             return;
         if(Intersector.overlaps(paddle.getRectangle(), ball.getRectangle()))
         {
-            ball.switchVelocity(hitSpeed, paddle.momentum);
+            ball.switchVelocity(hitSpeed, paddle.momentum, side);
             paddleHitSound.play(1.0f);
         }
     }

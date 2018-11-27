@@ -57,7 +57,7 @@ public class DesktopLauncher {
     private JLabel RightCharacterUltimateExtended;
     private BufferedImage mainMenuImage;
 
-    private ImageIcon CharSelect[] = {new ImageIcon("BasicCharacter.png"), new ImageIcon("AdamPaddleLeft.png"), new ImageIcon("3.png"), new ImageIcon("4.png")};
+    private ImageIcon CharSelect[] = {new ImageIcon("BasicCharacter.png"), new ImageIcon("concept_knight.png"), new ImageIcon("concept_magician.png"), new ImageIcon("4.png")};
     private String abilities[] = {"The basic character has no ability",
             "Press 'E'/right trigger to deploy your shield;",
             "Press 'E'/right trigger to create a fake ball the next time the paddle hits the ball.",
@@ -101,13 +101,9 @@ public class DesktopLauncher {
 
     public DesktopLauncher() {
         addBackground();
-
         addPlayListener();
-
         addSettingsListeners();
     }
-
-
 
     private void addPlayListener() {
         playButton.addActionListener(new ActionListener() {

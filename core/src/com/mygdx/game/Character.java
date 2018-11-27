@@ -48,7 +48,7 @@ abstract class Character {
             this.hitPoints = (hP * settings.P1HealthMod) / 100;
             this.damage = (damage * settings.P1Damage) / 100;
             this.hitSpeed = (speed * settings.P1HitSpeed) / 100;
-            this.abilityCooldownModifier *= settings.P1Cooldown / 100;
+            this.abilityCooldownModifier = (this.abilityCooldownModifier * settings.P1Cooldown) / 100;
             paddleSpeed = (paddleSpeed * settings.P1PaddleSpeed) / 100;
         }
         else
@@ -56,12 +56,12 @@ abstract class Character {
             this.hitPoints = (hP * settings.P2HealthMod ) / 100;
             this.damage = (damage * settings.P2Damage) / 100;
             this.hitSpeed = (speed * settings.P2HitSpeed) / 100;
-            this.abilityCooldownModifier *= settings.P2Cooldown / 100;
+            this.abilityCooldownModifier =  (abilityCooldownModifier * settings.P2Cooldown) / 100;
             paddleSpeed = (paddleSpeed * settings.P2PaddleSpeed) / 100;
         }
         this.hitPoints = (this.hitPoints * settings.AllHealthMod) / 100;
         this.paddle = new Paddle(game, side, paddleSpeed);
-        this.abilityCooldownModifier *= settings.AllCooldown / 100;
+        this.abilityCooldownModifier = (this.abilityCooldownModifier * settings.AllCooldown) / 100;
         this.game = game;
         this.ball = ball;
         this.side = side;

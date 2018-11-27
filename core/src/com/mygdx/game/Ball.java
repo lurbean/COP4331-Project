@@ -131,7 +131,7 @@ public class Ball extends ApplicationAdapter {
         }
     }
 
-    public void switchVelocity(int speed, float momentum)
+    public void switchVelocity(int speed, float momentum, boolean side)
     {
         if (Math.abs(xv) > speed)
             xv = (Math.abs(xv) + speed) / 2;
@@ -140,7 +140,7 @@ public class Ball extends ApplicationAdapter {
 
         yv += (int)(momentum/3);
 
-        if (pongBall.x > game.getWidth()/2)
+        if (!side)
         {
            xv *= -1;
         }

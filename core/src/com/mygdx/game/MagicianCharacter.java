@@ -40,13 +40,14 @@ public class MagicianCharacter extends Character{
         {
             fakeBalls[i] = new FakeBall(game, settings);
         }
-
-
     }
 
     public void characterAssetSetup()
     {
-        magicianUlt = new Texture("magUlt.png");
+        if (side)
+            magicianUlt = new Texture("magUlt.png");
+        else
+            magicianUlt = new Texture("magUltRight.png");
         abilityTexture = new Texture("MagicianActive.png");
         abilityTextureFaded = new Texture("MagicianActiveFaded.png");
         abilityTextureHighlight = new Texture("MagicianActiveHighlight.png");
@@ -122,7 +123,7 @@ public class MagicianCharacter extends Character{
             return;
         if(Intersector.overlaps(paddle.getRectangle(), ball.getRectangle()))
         {
-            ball.switchVelocity(hitSpeed, paddle.momentum);
+            ball.switchVelocity(hitSpeed, paddle.momentum, side);
 
             if(numFakeBalls <= maxFakeBalls && createABall == true)
             {
@@ -180,7 +181,7 @@ public class MagicianCharacter extends Character{
             if(controller.isLeftTriggerPressed() == true && ultimateCooldown == 0)
             {
                 ult = true;
-                ultimateCooldown = getNewCooldownInFrames(3);
+                ultimateCooldown = getNewCooldownInFrames(5);
                 ultDuration = 5 * 60;
             }
         }

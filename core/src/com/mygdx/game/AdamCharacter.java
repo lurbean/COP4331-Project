@@ -111,7 +111,7 @@ public class AdamCharacter extends Character{
     public boolean checkIndividualCollision(Rectangle paddleRect, float momentum)
     {
         if(Intersector.overlaps(ball.getRectangle(), paddleRect)) {
-            ball.switchVelocity(hitSpeed, momentum);
+            ball.switchVelocity(hitSpeed, momentum, side);
             paddleHitSound.play(1.0f);
             return true;
         }
